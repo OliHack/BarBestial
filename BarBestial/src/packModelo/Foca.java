@@ -2,12 +2,8 @@ package packModelo;
 
 public class Foca implements ICompAnimalada {
 
-	/**
-	 * 
-	 * @param pCol
-	 * @param pValor
-	 */
-	public Foca(EnumColor pCol, int pValor) {
+
+	public Foca() {
 		// TODO - implement Foca.Foca
 		throw new UnsupportedOperationException();
 	}

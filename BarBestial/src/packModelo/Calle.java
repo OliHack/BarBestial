@@ -6,13 +6,12 @@ public class Calle {
 	private ListaCartaAnimal ListaAnimales;
 
 	private Calle() {
-		// TODO - implement Calle.Calle
-		throw new UnsupportedOperationException();
 	}
 
-	public Calle getCalle() {
-		// TODO - implement Calle.getCalle
-		throw new UnsupportedOperationException();
+	public static Calle getCalle() {
+		if (miCalle==null)
+			miCalle= new Calle();
+		return miCalle;
 	}
 
 	/**
@@ -23,5 +22,10 @@ public class Calle {
 		// TODO - implement Calle.addAnimal
 		throw new UnsupportedOperationException();
 	}
-
+	/**
+	 * Inicializa la lista de cartas (vacia)
+	 */
+	public void inicializar() {
+		ListaAnimales = new ListaCartaAnimal();
+	}
 }

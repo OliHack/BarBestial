@@ -2,12 +2,7 @@ package packModelo;
 
 public class Cebra implements Recurrente, ICompAnimalada {
 
-	/**
-	 * 
-	 * @param pCol
-	 * @param pValor
-	 */
-	public Cebra(EnumColor pCol, int pValor) {
+	public Cebra() {
 		// TODO - implement Cebra.Cebra
 		throw new UnsupportedOperationException();
 	}

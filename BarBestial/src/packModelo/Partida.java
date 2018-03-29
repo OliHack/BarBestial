@@ -6,18 +6,28 @@ public class Partida {
 	private EnumColor turnoColor;
 
 	private Partida() {
-		// TODO - implement Partida.Partida
-		throw new UnsupportedOperationException();
+	}
+	
+	/**
+	 * Inicializa la partida dada una lista de nombres para los jugadores
+	 * 
+	 * @param pNombres lista de nombres de los jugadores
+	 */
+	public void inicializarPartida(String[] pNombres) {
+		CartasEnJuego.getCartasEnJuego().inicializar();
+		ListaJugador.getListaJugador().add(JugadorFactory.getJugadorFactory().crearJugador(pNombres[0],EnumColor.AMARILLO));
+		ListaJugador.getListaJugador().add(JugadorFactory.getJugadorFactory().crearJugador(pNombres[1],EnumColor.AZUL));
+		ListaJugador.getListaJugador().add(JugadorFactory.getJugadorFactory().crearJugador(pNombres[2],EnumColor.ROJO));
+		ListaJugador.getListaJugador().add(JugadorFactory.getJugadorFactory().crearJugador(pNombres[3],EnumColor.VERDE));
+		BarBestial.getBarBestial().inicializar();
+		Calle.getCalle().inicializar();
 	}
 
-	public void inicialzarPartida() {
-		// TODO - implement Partida.inicialzarPartida
-		throw new UnsupportedOperationException();
-	}
-
-	public Partida getPartida() {
-		// TODO - implement Partida.getPartida
-		throw new UnsupportedOperationException();
+	public static Partida getPartida() {
+		if (miPartida == null){
+			miPartida = new Partida();
+		}
+		return miPartida;
 	}
 
 	public void cambiarTurno() {

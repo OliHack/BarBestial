@@ -2,12 +2,8 @@ package packModelo;
 
 public class Mofeta implements ICompAnimalada {
 
-	/**
-	 * 
-	 * @param pCol
-	 * @param pValor
-	 */
-	public Mofeta(EnumColor pCol, int pValor) {
+
+	public Mofeta() {
 		// TODO - implement Mofeta.Mofeta
 		throw new UnsupportedOperationException();
 	}

@@ -2,12 +2,7 @@ package packModelo;
 
 public class Mono implements ICompAnimalada {
 
-	/**
-	 * 
-	 * @param pCol
-	 * @param pValor
-	 */
-	public Mono(EnumColor pCol, int pValor) {
+	public Mono() {
 		// TODO - implement Mono.Mono
 		throw new UnsupportedOperationException();
 	}

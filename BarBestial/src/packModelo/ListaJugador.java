@@ -9,8 +9,6 @@ public class ListaJugador {
 	private static ListaJugador miListaJugador;
 
 	private ListaJugador() {
-		// TODO - implement ListaJugador.ListaJugador
-		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -18,8 +16,7 @@ public class ListaJugador {
 	 * @param pJugador
 	 */
 	public void add(Jugador pJugador) {
-		// TODO - implement ListaJugador.add
-		throw new UnsupportedOperationException();
+		ListaJugador.add(pJugador);
 	}
 
 	/**
@@ -51,16 +48,6 @@ public class ListaJugador {
 
 	/**
 	 * 
-	 * @param pNombre
-	 * @param pColor
-	 */
-	public void addJugador(String pNombre, String pColor) {
-		// TODO - implement ListaJugador.addJugador
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * 
 	 * @param pCol
 	 */
 	public Jugador getJugador(EnumColor pCol) {
@@ -87,14 +74,15 @@ public class ListaJugador {
 		throw new UnsupportedOperationException();
 	}
 
-	public ListaJugador getListaJugador() {
-		// TODO - implement ListaJugador.getListaJugador
-		throw new UnsupportedOperationException();
+	public static ListaJugador getListaJugador() {
+		if (miListaJugador==null) {
+			miListaJugador = new ListaJugador();
+		}
+		return miListaJugador;
 	}
 
 	public Iterator<Jugador> getIterator() {
-		// TODO - implement ListaJugador.getIterator
-		throw new UnsupportedOperationException();
+		return ListaJugador.iterator();
 	}
 
 }

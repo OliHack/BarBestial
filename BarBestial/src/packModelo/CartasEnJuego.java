@@ -6,13 +6,13 @@ public class CartasEnJuego {
 	private ListaCartaAnimal ListaAnimales;
 
 	private CartasEnJuego() {
-		// TODO - implement CartasEnJuego.CartasEnJuego
-		throw new UnsupportedOperationException();
 	}
 
-	public CartasEnJuego getCartasEnJuego() {
-		// TODO - implement CartasEnJuego.getCartasEnJuego
-		throw new UnsupportedOperationException();
+	public static CartasEnJuego getCartasEnJuego() {
+		if (misCartasEnJuego == null) {
+			misCartasEnJuego = new CartasEnJuego();
+		}
+		return misCartasEnJuego;
 	}
 
 	/**
@@ -51,6 +51,12 @@ public class CartasEnJuego {
 	public CartaAnimal getCartaPatada() {
 		// TODO - implement CartasEnJuego.getCartaPatada
 		throw new UnsupportedOperationException();
+	}
+	/**
+	 * Inicializa la lista de cartas (vacia)
+	 */
+	public void inicializar() {
+		ListaAnimales = new ListaCartaAnimal();
 	}
 
 }

@@ -12,14 +12,17 @@ public class CartaAnimal {
 	 * @param pValor
 	 * @param pRec
 	 */
-	public CartaAnimal(EnumColor pCol, int pValor, boolean pRec) {
-		// TODO - implement CartaAnimal.CartaAnimal
-		throw new UnsupportedOperationException();
+	public CartaAnimal(EnumColor pCol, int pValor) {
+		color=pCol;
+		valor=pValor;
 	}
 
 	public void hacerAnimalada() {
 		// TODO - implement CartaAnimal.hacerAnimalada
 		throw new UnsupportedOperationException();
+	}
+	public void setICompAnimalada (ICompAnimalada pAnimalada) {
+		animalada=pAnimalada;
 	}
 
 }

@@ -2,12 +2,8 @@ package packModelo;
 
 public class Hipopotamo implements Recurrente, ICompAnimalada {
 
-	/**
-	 * 
-	 * @param pCol
-	 * @param pValor
-	 */
-	public Hipopotamo(EnumColor pCol, int pValor) {
+	
+	public Hipopotamo() {
 		// TODO - implement Hipopotamo.Hipopotamo
 		throw new UnsupportedOperationException();
 	}

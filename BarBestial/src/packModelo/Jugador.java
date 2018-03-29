@@ -8,27 +8,23 @@ public class Jugador {
 	private EnumColor color;
 
 	/**
+	 * se crea e inicializa un jugador segun el nombre y un color concretamente se
+	 * inicializan su mano (vacia) y su mazo (con las 12 cartas animales diferentes)
 	 * 
 	 * @param pNombre
 	 * @param pCol
 	 */
 	public Jugador(String pNombre, EnumColor pCol) {
-		// TODO - implement Jugador.Jugador
-		throw new UnsupportedOperationException();
-	}
+		nombre = pNombre;
+		color = pCol;
+		mano = new ListaCartaAnimal();
+		mazo = new ListaCartaAnimal();
+		inicializarMazo();
 
-	public void inicializarJugador() {
-		// TODO - implement Jugador.inicializarJugador
-		throw new UnsupportedOperationException();
 	}
 
 	public CartaAnimal robarMazo() {
 		// TODO - implement Jugador.robarMazo
-		throw new UnsupportedOperationException();
-	}
-
-	public void inicializarMano() {
-		// TODO - implement Jugador.inicializarMano
 		throw new UnsupportedOperationException();
 	}
 
@@ -52,15 +48,6 @@ public class Jugador {
 
 	/**
 	 * 
-	 * @param pColor
-	 */
-	public void inicializarMazo(EnumColor pColor) {
-		// TODO - implement Jugador.inicializarMazo
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * 
 	 * @param pCartaAnimal
 	 */
 	public void echarCarta(CartaAnimal pCartaAnimal) {
@@ -71,6 +58,26 @@ public class Jugador {
 	public boolean comprobarCartas() {
 		// TODO - implement Jugador.comprobarCartas
 		throw new UnsupportedOperationException();
+	}
+	
+	/**
+	 * Inicializa el mano del jugador con todas las cartas del mismo color de todos los animales
+	 * 
+	 * 
+	 */
+	private void inicializarMazo() {
+		mazo.add(CartaFactory.getCartaFactory().crearCarta(color, "Leon"));
+		mazo.add(CartaFactory.getCartaFactory().crearCarta(color, "Hipopotamo"));
+		mazo.add(CartaFactory.getCartaFactory().crearCarta(color, "Cocodrilo"));
+		mazo.add(CartaFactory.getCartaFactory().crearCarta(color, "Serpiente"));
+		mazo.add(CartaFactory.getCartaFactory().crearCarta(color, "Jirafa"));
+		mazo.add(CartaFactory.getCartaFactory().crearCarta(color, "Cebra"));
+		mazo.add(CartaFactory.getCartaFactory().crearCarta(color, "Foca"));
+		mazo.add(CartaFactory.getCartaFactory().crearCarta(color, "Camaleon"));
+		mazo.add(CartaFactory.getCartaFactory().crearCarta(color, "Mono"));
+		mazo.add(CartaFactory.getCartaFactory().crearCarta(color, "Canguro"));
+		mazo.add(CartaFactory.getCartaFactory().crearCarta(color, "Loro"));
+		mazo.add(CartaFactory.getCartaFactory().crearCarta(color, "Mofeta"));
 	}
 
 }

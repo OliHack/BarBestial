@@ -2,12 +2,7 @@ package packModelo;
 
 public class Jirafa implements Recurrente, ICompAnimalada {
 
-	/**
-	 * 
-	 * @param pCol
-	 * @param pValor
-	 */
-	public Jirafa(EnumColor pCol, int pValor) {
+	public Jirafa() {
 		// TODO - implement Jirafa.Jirafa
 		throw new UnsupportedOperationException();
 	}

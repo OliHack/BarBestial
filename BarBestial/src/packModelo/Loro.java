@@ -2,12 +2,7 @@ package packModelo;
 
 public class Loro implements ICompAnimalada {
 
-	/**
-	 * 
-	 * @param pCol
-	 * @param pValor
-	 */
-	public Loro(EnumColor pCol, int pValor) {
+	public Loro() {
 		// TODO - implement Loro.Loro
 		throw new UnsupportedOperationException();
 	}

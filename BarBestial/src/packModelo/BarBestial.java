@@ -6,13 +6,12 @@ public class BarBestial {
 	private ListaCartaAnimal ListaAnimales;
 
 	private BarBestial() {
-		// TODO - implement BarBestial.BarBestial
-		throw new UnsupportedOperationException();
 	}
 
-	public BarBestial getBarBestial() {
-		// TODO - implement BarBestial.getBarBestial
-		throw new UnsupportedOperationException();
+	public static BarBestial getBarBestial() {
+		if (miBarBestial == null)
+			miBarBestial = new BarBestial();
+		return miBarBestial;
 	}
 
 	/**
@@ -31,6 +30,12 @@ public class BarBestial {
 	public void addAnimal(CartaAnimal pCartaAnimal) {
 		// TODO - implement BarBestial.addAnimal
 		throw new UnsupportedOperationException();
+	}
+	/**
+	 * Inicializa la lista de cartas (vacia)
+	 */
+	public void inicializar() {
+		ListaAnimales = new ListaCartaAnimal();
 	}
 
 }

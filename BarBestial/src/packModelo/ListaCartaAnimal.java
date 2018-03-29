@@ -1,5 +1,6 @@
 package packModelo;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
@@ -8,8 +9,7 @@ public class ListaCartaAnimal {
 	private Collection<CartaAnimal> ListaAnimales;
 
 	public ListaCartaAnimal() {
-		// TODO - implement ListaCartaAnimal.ListaCartaAnimal
-		throw new UnsupportedOperationException();
+		ListaAnimales = new ArrayList<CartaAnimal>();
 	}
 
 	/**
@@ -17,8 +17,7 @@ public class ListaCartaAnimal {
 	 * @param pCartaAnimal
 	 */
 	public void add(CartaAnimal pCartaAnimal) {
-		// TODO - implement ListaCartaAnimal.add
-		throw new UnsupportedOperationException();
+		ListaAnimales.add(pCartaAnimal);
 	}
 
 	/**
@@ -26,17 +25,7 @@ public class ListaCartaAnimal {
 	 * @param pCartaAnimal
 	 */
 	public void del(CartaAnimal pCartaAnimal) {
-		// TODO - implement ListaCartaAnimal.del
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * 
-	 * @param pColor
-	 */
-	public void inicializarLista(String pColor) {
-		// TODO - implement ListaCartaAnimal.inicializarLista
-		throw new UnsupportedOperationException();
+		ListaAnimales.remove(pCartaAnimal);
 	}
 
 	/**
@@ -59,8 +48,7 @@ public class ListaCartaAnimal {
 	}
 
 	public Iterator<CartaAnimal> getIterator() {
-		// TODO - implement ListaCartaAnimal.getIterator
-		throw new UnsupportedOperationException();
+		return ListaAnimales.iterator();
 	}
 
 }

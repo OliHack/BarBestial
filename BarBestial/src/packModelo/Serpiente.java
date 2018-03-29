@@ -2,12 +2,8 @@ package packModelo;
 
 public class Serpiente implements ICompAnimalada {
 
-	/**
-	 * 
-	 * @param pCol
-	 * @param pValor
-	 */
-	public Serpiente(EnumColor pCol, int pValor) {
+
+	public Serpiente() {
 		// TODO - implement Serpiente.Serpiente
 		throw new UnsupportedOperationException();
 	}

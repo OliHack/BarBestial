@@ -1,12 +1,8 @@
 package packModelo;
 public class Camaleon implements ICompAnimalada {
 
-	/**
-	 * 
-	 * @param pCol
-	 * @param pValor
-	 */
-	public Camaleon(EnumColor pCol, int pValor) {
+
+	public Camaleon() {
 		// TODO - implement Camale�n.Camale�n
 		throw new UnsupportedOperationException();
 	}

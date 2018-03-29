@@ -2,12 +2,8 @@ package packModelo;
 
 public class Cocodrilo implements Recurrente, ICompAnimalada {
 
-	/**
-	 * 
-	 * @param pCol
-	 * @param pValor
-	 */
-	public Cocodrilo(EnumColor pCol, int pValor) {
+
+	public Cocodrilo() {
 		// TODO - implement Cocodrilo.Cocodrilo
 		throw new UnsupportedOperationException();
 	}

@@ -5,23 +5,23 @@ public class JugadorFactory {
 	private static JugadorFactory miJugadorFactory;
 
 	private JugadorFactory() {
-		// TODO - implement JugadorFactory.JugadorFactory
-		throw new UnsupportedOperationException();
 	}
 
-	public JugadorFactory getJugadorFactory() {
-		// TODO - implement JugadorFactory.getJugadorFactory
-		throw new UnsupportedOperationException();
+	public static JugadorFactory getJugadorFactory() {
+		if (miJugadorFactory==null) {
+			miJugadorFactory= new JugadorFactory();
+		}
+		return miJugadorFactory;
 	}
 
 	/**
+	 * Crea un jugador segun  el nombre y el color
 	 * 
 	 * @param pNombre
 	 * @param pColor
 	 */
 	public Jugador crearJugador(String pNombre, EnumColor pColor) {
-		// TODO - implement JugadorFactory.crearJugador
-		throw new UnsupportedOperationException();
+		return new Jugador(pNombre,pColor);
 	}
 
 }
