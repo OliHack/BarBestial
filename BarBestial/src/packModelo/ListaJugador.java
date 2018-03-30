@@ -5,58 +5,14 @@ import java.util.Iterator;
 
 public class ListaJugador {
 
-	private Collection<Jugador> ListaJugador;
-	private static ListaJugador miListaJugador;
+	private static ListaJugador	miListaJugador;
+	private Collection<Jugador>	miLista;
 
 	private ListaJugador() {
 	}
 
 	/**
-	 * 
-	 * @param pJugador
-	 */
-	public void add(Jugador pJugador) {
-		ListaJugador.add(pJugador);
-	}
-
-	/**
-	 * 
-	 * @param pJugador
-	 */
-	public void del(Jugador pJugador) {
-		// TODO - implement ListaJugador.del
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * nos dice si hay un jugador con ese color en la lista
-	 * @param pColor
-	 */
-	public boolean comprobarColor(String pColor) {
-		// TODO - implement ListaJugador.comprobarColor
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * 
-	 * @param pCant
-	 */
-	public void inicializar(int pCant) {
-		// TODO - implement ListaJugador.inicializar
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * 
-	 * @param pCol
-	 */
-	public Jugador getJugador(EnumColor pCol) {
-		// TODO - implement ListaJugador.getJugador
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * 
+	 *
 	 * @param pNombre
 	 * @param pPunt
 	 */
@@ -66,7 +22,39 @@ public class ListaJugador {
 	}
 
 	/**
-	 * 
+	 *
+	 * @param pJugador
+	 */
+	public void add(Jugador pJugador) {
+		miLista.add(pJugador);
+	}
+
+	public boolean comprobarCartas() {
+		boolean comprueba = false;
+		Iterator<Jugador> lista = this.miLista.iterator();
+		while (lista.hasNext()) {
+			if (lista.next().comprobarCartas() == false) {
+				comprueba = false;
+				break;
+			} else {
+				comprueba = true;
+			}
+		}
+		return comprueba;
+	}
+
+	/**
+	 * nos dice si hay un jugador con ese color en la lista
+	 *
+	 * @param pColor
+	 */
+	public boolean comprobarColor(String pColor) {
+		// TODO - implement ListaJugador.comprobarColor
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 *
 	 * @param pNombre
 	 */
 	public boolean comprobarJugador(String pNombre) {
@@ -74,15 +62,48 @@ public class ListaJugador {
 		throw new UnsupportedOperationException();
 	}
 
-	public static ListaJugador getListaJugador() {
-		if (miListaJugador==null) {
-			miListaJugador = new ListaJugador();
-		}
-		return miListaJugador;
+	/**
+	 *
+	 * @param pJugador
+	 */
+	public void del(Jugador pJugador) {
+		// TODO - implement ListaJugador.del
+		throw new UnsupportedOperationException();
 	}
 
 	public Iterator<Jugador> getIterator() {
-		return ListaJugador.iterator();
+		return miLista.iterator();
+	}
+
+	/**
+	 *
+	 * @param pCol
+	 */
+	public Jugador getJugador(EnumColor pCol) {
+		Jugador nuevo = null;
+		Iterator<Jugador> lista = miLista.iterator();
+		while (lista.hasNext()) {
+			if (lista.next().getColor() == pCol) {
+				nuevo = lista.next();
+			}
+		}
+		return nuevo;
+	}
+
+	/**
+	 *
+	 * @param pCant
+	 */
+	public void inicializar(int pCant) {
+		// TODO - implement ListaJugador.inicializar
+		throw new UnsupportedOperationException();
+	}
+
+	public static ListaJugador getListaJugador() {
+		if (ListaJugador.miListaJugador == null) {
+			ListaJugador.miListaJugador = new ListaJugador();
+		}
+		return ListaJugador.miListaJugador;
 	}
 
 }

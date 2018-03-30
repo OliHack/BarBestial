@@ -6,7 +6,7 @@ import java.util.Iterator;
 
 public class ListaCartaAnimal {
 
-	private ArrayList<CartaAnimal> ListaAnimales;
+	private final ArrayList<CartaAnimal> ListaAnimales;
 
 	public ListaCartaAnimal() {
 		ListaAnimales = new ArrayList<CartaAnimal>();
@@ -14,7 +14,7 @@ public class ListaCartaAnimal {
 
 	/**
 	 * Añade la carta de entrada a la lista
-	 * 
+	 *
 	 * @param pCartaAnimal
 	 */
 	public void add(CartaAnimal pCartaAnimal) {
@@ -23,20 +23,11 @@ public class ListaCartaAnimal {
 
 	/**
 	 * Borra la carta de entrada de la lista
-	 * 
+	 *
 	 * @param pCartaAnimal
 	 */
 	public void del(CartaAnimal pCartaAnimal) {
 		ListaAnimales.remove(pCartaAnimal);
-	}
-
-	/**
-	 * 
-	 * @param pValor
-	 */
-	public CartaAnimal getCarta(int pValor) {
-		// TODO - implement ListaCartaAnimal.getCarta
-		throw new UnsupportedOperationException();
 	}
 
 	public void desordenar() {
@@ -48,8 +39,27 @@ public class ListaCartaAnimal {
 		throw new UnsupportedOperationException();
 	}
 
+	/**
+	 *
+	 * @param pValor
+	 */
+	public CartaAnimal getCarta(int pValor) {
+		CartaAnimal nueva = null;
+		Iterator<CartaAnimal> lista = ListaAnimales.iterator();
+		int i = 1;
+		while (lista.hasNext()) {
+			if (pValor == i) {
+				nueva = lista.next();
+			}
+		}
+		return nueva;
+	}
+
 	public Iterator<CartaAnimal> getIterator() {
 		return ListaAnimales.iterator();
 	}
 
+	public ArrayList<CartaAnimal> getListaAnimales() {
+		return ListaAnimales;
+	}
 }

@@ -24,6 +24,13 @@ public class Partida extends JFrame {
 	/**
 	 * Create the frame.
 	 */
+	/*--Descargar--
+	 * fecth
+	 * pull
+	 * --Subir--
+	 * add to index
+	 * commit
+	 * push*/
 	public Partida() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		// setBounds(100, 100, 676, 496);

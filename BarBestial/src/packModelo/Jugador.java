@@ -2,15 +2,16 @@ package packModelo;
 
 public class Jugador {
 
-	private String nombre;
-	private ListaCartaAnimal mano;
-	private ListaCartaAnimal mazo;
-	private EnumColor color;
+	private final String			nombre;
+	private final ListaCartaAnimal	mano;
+	private final ListaCartaAnimal	mazo;
+	private final EnumColor			color;
 
 	/**
-	 * se crea e inicializa un jugador segun el nombre y un color concretamente se
-	 * inicializan su mano (vacia) y su mazo (con las 12 cartas animales diferentes)
-	 * 
+	 * se crea e inicializa un jugador segun el nombre y un color concretamente
+	 * se inicializan su mano (vacia) y su mazo (con las 12 cartas animales
+	 * diferentes)
+	 *
 	 * @param pNombre
 	 * @param pCol
 	 */
@@ -20,50 +21,57 @@ public class Jugador {
 		mano = new ListaCartaAnimal();
 		mazo = new ListaCartaAnimal();
 		inicializarMazo();
-
-	}
-
-	public void robarMazo() {
-		CartaAnimal miCarta=mazo.getCarta(0);
-		mazo.del(miCarta);
-		addMano(miCarta);
 	}
 
 	/**
 	 * Agrega una carta a la mano
+	 *
 	 * @param pCartaAnimal
 	 */
 	public void addMano(CartaAnimal pCartaAnimal) {
 		mano.add(pCartaAnimal);
 	}
 
-	/**
-	 * 
-	 * @param pValor
-	 */
-	public CartaAnimal getCartaMano(int pValor) {
-		// TODO - implement Jugador.getCartaMano
-		throw new UnsupportedOperationException();
+	public boolean comprobarCartas() {
+		if (this.mano.getListaAnimales().isEmpty() && mazo.getListaAnimales().isEmpty())
+			return true;
+		else
+			return false;
 	}
 
 	/**
-	 * 
+	 *
 	 * @param pCartaAnimal
 	 */
 	public void echarCarta(CartaAnimal pCartaAnimal) {
-		// TODO - implement Jugador.echarCarta
-		throw new UnsupportedOperationException();
+		CartasEnJuego.getCartasEnJuego().add(pCartaAnimal);
+		this.mano.del(pCartaAnimal);
+		ListaJugador.getListaJugador().comprobarCartas();
 	}
 
-	public boolean comprobarCartas() {
-		// TODO - implement Jugador.comprobarCartas
-		throw new UnsupportedOperationException();
-	}
-	
 	/**
-	 * Inicializa el mano del jugador con todas las cartas del mismo color de todos los animales
-	 * 
-	 * 
+	 *
+	 * @param pValor
+	 */
+	public CartaAnimal getCartaMano(int pValor) {
+		return this.mano.getCarta(pValor);
+	}
+
+	public EnumColor getColor() {
+		return color;
+	}
+
+	public void robarMazo() {
+		CartaAnimal miCarta = mazo.getCarta(0);
+		mazo.del(miCarta);
+		addMano(miCarta);
+	}
+
+	/**
+	 * Inicializa el mano del jugador con todas las cartas del mismo color de
+	 * todos los animales
+	 *
+	 *
 	 */
 	private void inicializarMazo() {
 		mazo.add(CartaFactory.getCartaFactory().crearCarta(color, "Leon"));
