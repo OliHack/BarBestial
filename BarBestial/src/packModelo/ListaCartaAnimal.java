@@ -1,18 +1,19 @@
 package packModelo;
 
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.Collections;
 import java.util.Iterator;
 
 public class ListaCartaAnimal {
 
-	private Collection<CartaAnimal> ListaAnimales;
+	private ArrayList<CartaAnimal> ListaAnimales;
 
 	public ListaCartaAnimal() {
 		ListaAnimales = new ArrayList<CartaAnimal>();
 	}
 
 	/**
+	 * Añade la carta de entrada a la lista
 	 * 
 	 * @param pCartaAnimal
 	 */
@@ -21,6 +22,7 @@ public class ListaCartaAnimal {
 	}
 
 	/**
+	 * Borra la carta de entrada de la lista
 	 * 
 	 * @param pCartaAnimal
 	 */
@@ -38,8 +40,7 @@ public class ListaCartaAnimal {
 	}
 
 	public void desordenar() {
-		// TODO - implement ListaCartaAnimal.desordenar
-		throw new UnsupportedOperationException();
+		Collections.shuffle(ListaAnimales);
 	}
 
 	public void ejecutarRec() {

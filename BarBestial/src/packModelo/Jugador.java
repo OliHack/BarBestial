@@ -23,9 +23,10 @@ public class Jugador {
 
 	}
 
-	public CartaAnimal robarMazo() {
-		// TODO - implement Jugador.robarMazo
-		throw new UnsupportedOperationException();
+	public void robarMazo() {
+		CartaAnimal miCarta=mazo.getCarta(0);
+		mazo.del(miCarta);
+		mano.add(miCarta);
 	}
 
 	/**
@@ -78,6 +79,7 @@ public class Jugador {
 		mazo.add(CartaFactory.getCartaFactory().crearCarta(color, "Canguro"));
 		mazo.add(CartaFactory.getCartaFactory().crearCarta(color, "Loro"));
 		mazo.add(CartaFactory.getCartaFactory().crearCarta(color, "Mofeta"));
+		mazo.desordenar();
 	}
 
 }
