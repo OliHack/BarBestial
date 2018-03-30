@@ -26,16 +26,15 @@ public class Jugador {
 	public void robarMazo() {
 		CartaAnimal miCarta=mazo.getCarta(0);
 		mazo.del(miCarta);
-		mano.add(miCarta);
+		addMano(miCarta);
 	}
 
 	/**
-	 * 
+	 * Agrega una carta a la mano
 	 * @param pCartaAnimal
 	 */
 	public void addMano(CartaAnimal pCartaAnimal) {
-		// TODO - implement Jugador.addMano
-		throw new UnsupportedOperationException();
+		mano.add(pCartaAnimal);
 	}
 
 	/**
