@@ -3,8 +3,6 @@ package packModelo;
 public class Canguro implements ICompAnimalada {
 
 	public Canguro() {
-		// TODO - implement Canguro.Canguro
-		throw new UnsupportedOperationException();
 	}
 
 	@Override

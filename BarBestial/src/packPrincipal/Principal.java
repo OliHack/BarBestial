@@ -1,10 +1,13 @@
 package packPrincipal;
 
+import packInterfaces.IPartida;
+
 public class Principal {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
+		IPartida.getIPartida();
+		IPartida.empezar();
 	}
 
 }

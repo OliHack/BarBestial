@@ -24,9 +24,10 @@ import packModelo.CartaAnimal;
 import packModelo.EnumColor;
 import packModelo.Jugador;
 import packModelo.ListaCartaAnimal;
+import packModelo.Partida;
 
-public class Partida extends JFrame implements Observer {
-
+public class IPartida extends JFrame implements Observer {
+	private static IPartida	miPrincipal;
 	private final JPanel	contentPane;
 	// inicializamos las variables del panel;
 	private JPanel			posicion1;
@@ -80,7 +81,8 @@ public class Partida extends JFrame implements Observer {
 	 * commit
 	 * push*/
 
-	public Partida() {
+	public IPartida() {
+		setTitle("Principal");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		// setBounds(100, 100, 676, 496);
 		setBounds(100, 100, 1041, 663);
@@ -503,14 +505,27 @@ public class Partida extends JFrame implements Observer {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void empezar() {
 		EventQueue.invokeLater(() -> {
 			try {
-				Partida frame = new Partida();
+				String[] pNombres = new String[4];
+				pNombres[0] = "Jugador1";
+				pNombres[1] = "Jugador2";
+				pNombres[2] = "Jugador3";
+				pNombres[3] = "Jugador4";
+				Partida.getPartida().inicializarPartida(pNombres);
+				IPartida frame = new IPartida();
 				frame.setVisible(true);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		});
+	}
+
+	public static IPartida getIPartida() {
+		if (IPartida.miPrincipal == null) {
+			IPartida.miPrincipal = new IPartida();
+		}
+		return IPartida.miPrincipal;
 	}
 }

@@ -1,14 +1,16 @@
 package packModelo;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
 public class ListaJugador {
 
-	private static ListaJugador	miListaJugador;
-	private Collection<Jugador>	miLista;
+	private static ListaJugador			miListaJugador;
+	private final Collection<Jugador>	miLista;
 
 	private ListaJugador() {
+		miLista = new ArrayList<Jugador>();
 	}
 
 	/**
