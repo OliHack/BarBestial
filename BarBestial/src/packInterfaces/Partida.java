@@ -6,6 +6,10 @@ import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.FlowLayout;
 import java.awt.SystemColor;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -16,10 +20,54 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import packControlador.CBtnHacerJugada;
+import packModelo.CartaAnimal;
+import packModelo.EnumColor;
+import packModelo.Jugador;
+import packModelo.ListaCartaAnimal;
 
-public class Partida extends JFrame {
+public class Partida extends JFrame implements Observer {
 
-	private final JPanel contentPane;
+	private final JPanel	contentPane;
+	// inicializamos las variables del panel;
+	private JPanel			posicion1;
+	private JLabel			carta11;
+	private JLabel			carta12;
+	private JLabel			carta13;
+	private JLabel			carta14;
+	private JPanel			posicion2;
+	private JLabel			carta21;
+	private JLabel			carta22;
+	private JLabel			carta23;
+	private JLabel			carta24;
+	private JPanel			posicion3;
+	private JLabel			carta31;
+	private JLabel			carta32;
+	private JLabel			carta33;
+	private JLabel			carta34;
+	private JPanel			posicion4;
+	private JLabel			carta41;
+	private JLabel			carta42;
+	private JLabel			carta43;
+	private JLabel			carta44;
+	private JComboBox		comboBox1;
+	private JComboBox		comboBox2;
+	private JComboBox		comboBox3;
+	private JComboBox		comboBox4;
+	private JPanel			tablero;
+	private JPanel			panel;
+	private JLabel			lblTurno;
+	private JPanel			panelInferior;
+	private JPanel			pCielo;
+	private JPanel			pCalle;
+	private JButton			btnJugar;
+	private JLabel			cCielo;
+	private JLabel			cCalle;
+	private JPanel			pCola;
+	private JLabel			cola1;
+	private JLabel			cola2;
+	private JLabel			cola3;
+	private JLabel			cola4;
+	private JLabel			cola5;
 
 	/**
 	 * Create the frame.
@@ -31,6 +79,7 @@ public class Partida extends JFrame {
 	 * add to index
 	 * commit
 	 * push*/
+
 	public Partida() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		// setBounds(100, 100, 676, 496);
@@ -82,7 +131,7 @@ public class Partida extends JFrame {
 		posicion1.add(comboBox1);
 
 		JPanel posicion3 = new JPanel();
-		posicion3.setBackground(new Color(0, 0, 205));
+		posicion3.setBackground(Color.BLUE);
 		contentPane.add(posicion3, BorderLayout.SOUTH);
 
 		JLabel carta31 = new JLabel("Carta1");
@@ -316,6 +365,138 @@ public class Partida extends JFrame {
 		cola5.setForeground(Color.BLACK);
 		cola5.setBackground(new Color(255, 102, 102));
 		pCola.add(cola5);
+
+	}
+
+	@Override
+	public void update(Observable observable, Object parametro) {
+		/*
+		 * --observable-- es el objeto que activa su notify en cada momento, por
+		 * lo que se verá en cada momento de que instancia es y se hará update
+		 * en consecuencia --parametro-- es el parámetro del tipo que queramos
+		 * que le vamos a pasar como información
+		 */
+		if (observable instanceof Jugador) {
+			/*
+			 * significa que ha cambiado la mano del jugador en cuestion,
+			 * entonces cambiamos las cartas de la mano del jugador en la
+			 * interfaz como es jugador parametro es una "ListaCartaAnimal"
+			 */
+			this.cambiarMano(((Jugador) observable).getColor(), ((ListaCartaAnimal) parametro).getListaAnimales());
+
+		}
+
+	}
+
+	private void cambiarMano(EnumColor color, ArrayList<CartaAnimal> parametro) {
+		/*
+		 * vamos a cambiar las cartas de la mano del jugador con el color
+		 * indicado
+		 */
+		Iterator<CartaAnimal> lista = parametro.iterator();
+		int posCarta = 1;
+		if (color == EnumColor.ROJO) {
+			limpiarMano(color);
+			while (lista.hasNext()) {
+				int num = lista.next().getValor();
+				switch (posCarta) {
+				case 1:
+					carta11.setText("NºCarta: " + num);
+					break;
+				case 2:
+					carta12.setText("NºCarta: " + num);
+					break;
+				case 3:
+					carta13.setText("NºCarta: " + num);
+					break;
+				case 4:
+					carta14.setText("NºCarta: " + num);
+					break;
+				default:
+					System.out.println("Carta mal colocada");
+					break;
+				}
+				posCarta++;
+			}
+			posCarta = 1;
+		} else if (color == EnumColor.VERDE) {
+			limpiarMano(color);
+			while (lista.hasNext()) {
+				int num = lista.next().getValor();
+				switch (posCarta) {
+				case 1:
+					carta21.setText("NºCarta: " + num);
+					break;
+				case 2:
+					carta22.setText("NºCarta: " + num);
+					break;
+				case 3:
+					carta23.setText("NºCarta: " + num);
+					break;
+				case 4:
+					carta24.setText("NºCarta: " + num);
+					break;
+				default:
+					System.out.println("Carta mal colocada");
+					break;
+				}
+				posCarta++;
+			}
+			posCarta = 1;
+		} else if (color == EnumColor.AZUL) {
+			limpiarMano(color);
+			while (lista.hasNext()) {
+				int num = lista.next().getValor();
+				switch (posCarta) {
+				case 1:
+					carta31.setText("NºCarta: " + num);
+					break;
+				case 2:
+					carta32.setText("NºCarta: " + num);
+					break;
+				case 3:
+					carta33.setText("NºCarta: " + num);
+					break;
+				case 4:
+					carta34.setText("NºCarta: " + num);
+					break;
+				default:
+					System.out.println("Carta mal colocada");
+					break;
+				}
+				posCarta++;
+			}
+			posCarta = 1;
+		} else if (color == EnumColor.AMARILLO) {
+			limpiarMano(color);
+			while (lista.hasNext()) {
+				int num = lista.next().getValor();
+				switch (posCarta) {
+				case 1:
+					carta41.setText("NºCarta: " + num);
+					break;
+				case 2:
+					carta42.setText("NºCarta: " + num);
+					break;
+				case 3:
+					carta43.setText("NºCarta: " + num);
+					break;
+				case 4:
+					carta44.setText("NºCarta: " + num);
+					break;
+				default:
+					System.out.println("Carta mal colocada");
+					break;
+				}
+				posCarta++;
+			}
+			posCarta = 1;
+		}
+
+	}
+
+	private void limpiarMano(EnumColor color) {
+		// TODO Auto-generated method stub
 
 	}
 

@@ -1,6 +1,8 @@
 package packModelo;
 
-public class Jugador {
+import java.util.Observable;
+
+public class Jugador extends Observable {
 
 	private final String			nombre;
 	private final ListaCartaAnimal	mano;
@@ -61,6 +63,12 @@ public class Jugador {
 		return color;
 	}
 
+	public void notificar() {
+		// el jugador va a notificar a la interfaz solo cuando cambie su mano
+		setChanged();
+		notifyObservers(mano);
+	}
+
 	public void robarMazo() {
 		CartaAnimal miCarta = mazo.getCarta(0);
 		mazo.del(miCarta);
@@ -88,5 +96,4 @@ public class Jugador {
 		mazo.add(CartaFactory.getCartaFactory().crearCarta(color, "Mofeta"));
 		mazo.desordenar();
 	}
-
 }

@@ -1,24 +1,18 @@
 package packModelo;
 
 import java.util.Iterator;
+import java.util.Observable;
 
-public class CartasEnJuego {
+public class CartasEnJuego extends Observable {
 
-	private static CartasEnJuego misCartasEnJuego;
-	private ListaCartaAnimal ListaAnimales;
+	private static CartasEnJuego	misCartasEnJuego;
+	private ListaCartaAnimal		ListaAnimales;
 
 	private CartasEnJuego() {
 	}
 
-	public static CartasEnJuego getCartasEnJuego() {
-		if (misCartasEnJuego == null) {
-			misCartasEnJuego = new CartasEnJuego();
-		}
-		return misCartasEnJuego;
-	}
-
 	/**
-	 * 
+	 *
 	 * @param pCartaAnimal
 	 */
 	public void add(CartaAnimal pCartaAnimal) {
@@ -27,7 +21,21 @@ public class CartasEnJuego {
 	}
 
 	/**
+	 * Devuelve un boolean indicando si la cola actual está llena (true) o no
+	 * (false)
 	 * 
+	 * @return
+	 */
+	public boolean colaLlena() {
+		if (ListaAnimales.getListaAnimales().size() < 5)
+			return false;
+		else
+			return true;
+
+	}
+
+	/**
+	 *
 	 * @param pPos
 	 */
 	public void delCarta(int pPos) {
@@ -39,34 +47,11 @@ public class CartasEnJuego {
 		// TODO - implement CartasEnJuego.ejecutarRec
 		throw new UnsupportedOperationException();
 	}
-	/**
-	 * Devuelve un boolean indicando si la cola actual está llena (true) o no (false)
-	 * @return
-	 */
-	public boolean colaLlena() {
-		if (ListaAnimales.getListaAnimales().size() < 5)
-			return false;
-		else
-			return true;
 
-	}
 	/**
-	 * Devuelve las dos primeras cartas de la cola actual, y las elimina de la misma
-	 * 
-	 * @return
-	 */
-	public ListaCartaAnimal getCartasCielo() {
-		Iterator<CartaAnimal> it = ListaAnimales.getIterator();
-		ListaCartaAnimal cielo = new ListaCartaAnimal();
-		for (int i = 0; i < 2; i++)
-			cielo.add(it.next());
-		it.remove();
-		return cielo;
-
-	}
-	/**
-	 * Devuelve la última carta de la cola actual además de eliminarla de la misma
-	 * 
+	 * Devuelve la última carta de la cola actual además de eliminarla de la
+	 * misma
+	 *
 	 * @return
 	 */
 	public CartaAnimal getCartaPatada() {
@@ -81,15 +66,35 @@ public class CartasEnJuego {
 	}
 
 	/**
+	 * Devuelve las dos primeras cartas de la cola actual, y las elimina de la
+	 * misma
+	 *
+	 * @return
+	 */
+	public ListaCartaAnimal getCartasCielo() {
+		Iterator<CartaAnimal> it = ListaAnimales.getIterator();
+		ListaCartaAnimal cielo = new ListaCartaAnimal();
+		for (int i = 0; i < 2; i++) {
+			cielo.add(it.next());
+		}
+		it.remove();
+		return cielo;
+
+	}
+
+	/**
 	 * Inicializa la lista de cartas (vacia)
 	 */
 	public void inicializar() {
 		ListaAnimales = new ListaCartaAnimal();
 	}
+
 	/**
-	 * Revisa las cartas en juego (o cola) para ve si está llena, si lo está, mueve las dos primeras cartas de la cola al Bar Bestial y la última le da la patada.
-	 * 
-	 * 
+	 * Revisa las cartas en juego (o cola) para ve si está llena, si lo está,
+	 * mueve las dos primeras cartas de la cola al Bar Bestial y la última le da
+	 * la patada.
+	 *
+	 *
 	 */
 	public void revisarCola() {
 		if (colaLlena()) {
@@ -97,9 +102,16 @@ public class CartasEnJuego {
 			for (int j = 0; j < sky.getListaAnimales().size(); j++) {
 				BarBestial.getBarBestial().addAnimal(sky.getIterator().next());
 			}
-			
+
 			Calle.getCalle().addAnimal(getCartaPatada());
 		}
+	}
+
+	public static CartasEnJuego getCartasEnJuego() {
+		if (CartasEnJuego.misCartasEnJuego == null) {
+			CartasEnJuego.misCartasEnJuego = new CartasEnJuego();
+		}
+		return CartasEnJuego.misCartasEnJuego;
 	}
 
 }
