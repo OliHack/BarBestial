@@ -28,8 +28,7 @@ public class BarBestial {
 	 * @param pCartaAnimal
 	 */
 	public void addAnimal(CartaAnimal pCartaAnimal) {
-		// TODO - implement BarBestial.addAnimal
-		throw new UnsupportedOperationException();
+		ListaAnimales.add(pCartaAnimal);
 	}
 	/**
 	 * Inicializa la lista de cartas (vacia)

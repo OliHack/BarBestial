@@ -33,11 +33,6 @@ public class Partida {
 		Calle.getCalle().inicializar();
 	}
 
-	public void revisarCola() {
-		// TODO - implement Partida.revisarCola
-		throw new UnsupportedOperationException();
-	}
-
 	public static Partida getPartida() {
 		if (Partida.miPartida == null) {
 			Partida.miPartida = new Partida();
