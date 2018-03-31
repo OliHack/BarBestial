@@ -498,8 +498,22 @@ public class IPartida extends JFrame implements Observer {
 	}
 
 	private void limpiarMano(EnumColor color) {
-		// TODO Auto-generated method stub
-
+		carta11.setText("");
+		carta12.setText("");
+		carta13.setText("");
+		carta14.setText("");
+		carta21.setText("");
+		carta22.setText("");
+		carta23.setText("");
+		carta24.setText("");
+		carta31.setText("");
+		carta32.setText("");
+		carta33.setText("");
+		carta34.setText("");
+		carta41.setText("");
+		carta42.setText("");
+		carta43.setText("");
+		carta44.setText("");
 	}
 
 	/**
