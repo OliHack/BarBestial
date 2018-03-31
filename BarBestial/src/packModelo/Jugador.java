@@ -32,6 +32,7 @@ public class Jugador extends Observable {
 	 */
 	public void addMano(CartaAnimal pCartaAnimal) {
 		mano.add(pCartaAnimal);
+		this.notificar();
 	}
 
 	public boolean comprobarCartas() {
@@ -49,6 +50,7 @@ public class Jugador extends Observable {
 		CartasEnJuego.getCartasEnJuego().add(pCartaAnimal);
 		this.mano.del(pCartaAnimal);
 		ListaJugador.getListaJugador().comprobarCartas();
+		this.notificar();
 	}
 
 	/**
@@ -73,6 +75,7 @@ public class Jugador extends Observable {
 		CartaAnimal miCarta = mazo.getCarta(0);
 		mazo.del(miCarta);
 		addMano(miCarta);
+		this.notificar();
 	}
 
 	/**
