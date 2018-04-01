@@ -42,6 +42,9 @@ public class ListaJugador {
 				comprueba = true;
 			}
 		}
+		if (comprueba) {
+			System.out.println(" Todos los jugadores se han quedado sin cartas. Fin del juego.");
+		}
 		return comprueba;
 	}
 
@@ -83,13 +86,19 @@ public class ListaJugador {
 	 */
 	public Jugador getJugador(EnumColor pCol) {
 		Jugador nuevo = null;
+		boolean enc = false;
 		Iterator<Jugador> lista = miLista.iterator();
-		while (lista.hasNext()) {
-			if (lista.next().getColor() == pCol) {
-				nuevo = lista.next();
+		while (lista.hasNext() && !enc) {
+			nuevo = lista.next();
+			if (nuevo.getColor() == pCol) {
+				enc=true;
 			}
 		}
 		return nuevo;
+	}
+	
+	public int getNumJug() {
+		return miLista.size();
 	}
 
 	/**
@@ -98,6 +107,8 @@ public class ListaJugador {
 	 */
 	public void inicializar(int pCant) {
 		// TODO - implement ListaJugador.inicializar
+
+		
 		throw new UnsupportedOperationException();
 	}
 

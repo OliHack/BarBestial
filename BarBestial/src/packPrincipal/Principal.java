@@ -1,6 +1,6 @@
 package packPrincipal;
 
-import packInterfaces.IPartida;
+import packInterfaces.*;
 
 public class Principal {
 

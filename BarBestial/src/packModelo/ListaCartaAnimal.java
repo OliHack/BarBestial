@@ -55,6 +55,7 @@ public class ListaCartaAnimal {
 		return nueva;
 	}
 
+
 	public Iterator<CartaAnimal> getIterator() {
 		return ListaAnimales.iterator();
 	}

@@ -19,13 +19,16 @@ public class Calle {
 	 * @param pCartaAnimal
 	 */
 	public void addAnimal(CartaAnimal pCartaAnimal) {
-		// TODO - implement Calle.addAnimal
-		throw new UnsupportedOperationException();
+		ListaAnimales.add(pCartaAnimal);
 	}
 	/**
 	 * Inicializa la lista de cartas (vacia)
 	 */
 	public void inicializar() {
 		ListaAnimales = new ListaCartaAnimal();
+	}
+	
+	public int numCartas() {
+		return ListaAnimales.getListaAnimales().size();
 	}
 }

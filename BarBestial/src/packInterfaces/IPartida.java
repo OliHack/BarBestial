@@ -63,6 +63,7 @@ public class IPartida extends JFrame implements Observer {
 	private JButton			btnJugar;
 	private JLabel			cCielo;
 	private JLabel			cCalle;
+	private int 			numCartas=0;
 	private JPanel			pCola;
 	private JLabel			cola1;
 	private JLabel			cola2;
@@ -340,7 +341,7 @@ public class IPartida extends JFrame implements Observer {
 		cola1.setBackground(new Color(255, 102, 102));
 		pCola.add(cola1);
 
-		JLabel cola2 = new JLabel("Carta3");
+		JLabel cola2 = new JLabel("Carta2");
 		cola2.setPreferredSize(new Dimension(120, 200));
 		cola2.setOpaque(true);
 		cola2.setForeground(Color.BLACK);
@@ -370,6 +371,70 @@ public class IPartida extends JFrame implements Observer {
 
 	}
 
+	public JButton getBoton() {
+		return btnJugar;
+	}
+	
+	public int getCartaElegida(EnumColor pColor) {
+		Character aux=null;
+		if (pColor == EnumColor.ROJO) {
+			aux = comboBox1.getSelectedItem().toString().charAt(5);
+		}
+		else if(pColor == EnumColor.VERDE) {
+			aux = comboBox2.getSelectedItem().toString().charAt(5);
+		}
+		else if (pColor == EnumColor.AZUL) {
+			aux = comboBox3.getSelectedItem().toString().charAt(5);
+		}
+		else if (pColor == EnumColor.AMARILLO) {
+			aux = comboBox4.getSelectedItem().toString().charAt(5);
+		}
+		String aux2 = aux.toString();
+		int num = Integer.parseInt(aux2);
+		return num;
+	}
+	
+	public void echarCarta(Color pColor) {
+		String aux=null;
+		if (pColor == Color.RED) {
+			//pCola.add(comboBox1);
+			aux = "carta" + comboBox1.getSelectedItem().toString().charAt(5);
+		}
+		else if (pColor == Color.GREEN) {
+			//pCola.add(comboBox2);
+			aux = "carta" + comboBox2.getSelectedItem().toString().charAt(5);
+		}
+		else if (pColor == Color.BLUE) {
+			//pCola.add(comboBox3);
+			aux = "carta" + comboBox3.getSelectedItem().toString().charAt(5);
+		}
+		else if (pColor == Color.YELLOW) {
+			//pCola.add(comboBox4);
+			aux = "carta" + comboBox4.getSelectedItem().toString().charAt(5);
+		}
+		
+		if(numCartas==0) {
+				cola1.setText(aux);
+			}
+			else if(numCartas==1) {
+				cola2.setText(aux);
+			}
+			else if(numCartas==2) {
+				cola3.setText(aux);
+			}
+			else if(numCartas==3) {
+				cola4.setText(aux);
+			}
+			else if(numCartas==5) {
+				cola5.setText(aux);
+			}
+		
+	}
+	
+	public Color getTurno() {
+		return lblTurno.getBackground();
+	}
+	
 	@Override
 	public void update(Observable observable, Object parametro) {
 		/*

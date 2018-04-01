@@ -36,5 +36,9 @@ public class BarBestial {
 	public void inicializar() {
 		ListaAnimales = new ListaCartaAnimal();
 	}
+	
+	public int numCartas() {
+		return ListaAnimales.getListaAnimales().size();
+	}
 
 }

@@ -23,6 +23,7 @@ public class Partida {
 		CartasEnJuego.getCartasEnJuego().inicializar();
 		ListaJugador.getListaJugador()
 				.add(JugadorFactory.getJugadorFactory().crearJugador(pNombres[0], EnumColor.AMARILLO));
+		
 		ListaJugador.getListaJugador()
 				.add(JugadorFactory.getJugadorFactory().crearJugador(pNombres[1], EnumColor.AZUL));
 		ListaJugador.getListaJugador()

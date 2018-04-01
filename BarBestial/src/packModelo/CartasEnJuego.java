@@ -16,8 +16,7 @@ public class CartasEnJuego extends Observable {
 	 * @param pCartaAnimal
 	 */
 	public void add(CartaAnimal pCartaAnimal) {
-		// TODO - implement CartasEnJuego.add
-		throw new UnsupportedOperationException();
+		ListaAnimales.getListaAnimales().add(pCartaAnimal);
 	}
 
 	/**
@@ -39,8 +38,7 @@ public class CartasEnJuego extends Observable {
 	 * @param pPos
 	 */
 	public void delCarta(int pPos) {
-		// TODO - implement CartasEnJuego.delCarta
-		throw new UnsupportedOperationException();
+		ListaAnimales.getListaAnimales().remove(pPos);
 	}
 
 	public void ejecutarRec() {
@@ -77,7 +75,9 @@ public class CartasEnJuego extends Observable {
 		for (int i = 0; i < 2; i++) {
 			cielo.add(it.next());
 		}
-		it.remove();
+		
+		CartasEnJuego.getCartasEnJuego().delCarta(0);
+		CartasEnJuego.getCartasEnJuego().delCarta(1);
 		return cielo;
 
 	}
@@ -89,6 +89,10 @@ public class CartasEnJuego extends Observable {
 		ListaAnimales = new ListaCartaAnimal();
 	}
 
+	public int numCartas() {
+		return ListaAnimales.getListaAnimales().size();
+	}
+	
 	/**
 	 * Revisa las cartas en juego (o cola) para ve si está llena, si lo está,
 	 * mueve las dos primeras cartas de la cola al Bar Bestial y la última le da

@@ -65,14 +65,26 @@ public class Jugador extends Observable {
 		return color;
 	}
 
+	public String getNombre() {
+		return nombre;
+	}
+	
 	public void notificar() {
 		// el jugador va a notificar a la interfaz solo cuando cambie su mano
 		setChanged();
 		notifyObservers(mano);
 	}
 
+	public ListaCartaAnimal getMano() {
+		return mano;
+	}
+	
+	public ListaCartaAnimal getMazo() {
+		return mazo;
+	}
+	
 	public void robarMazo() {
-		CartaAnimal miCarta = mazo.getCarta(0);
+		CartaAnimal miCarta = mazo.getListaAnimales().get(0);
 		mazo.del(miCarta);
 		addMano(miCarta);
 		this.notificar();

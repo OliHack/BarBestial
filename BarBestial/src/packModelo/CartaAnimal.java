@@ -21,6 +21,10 @@ public class CartaAnimal {
 		return valor;
 	}
 
+	public EnumColor getColor() {
+		return color;
+	}
+	
 	public void hacerAnimalada() {
 		// TODO - implement CartaAnimal.hacerAnimalada
 		throw new UnsupportedOperationException();
