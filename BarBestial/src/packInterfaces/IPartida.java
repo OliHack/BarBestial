@@ -6,8 +6,6 @@ import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.FlowLayout;
 import java.awt.SystemColor;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -20,10 +18,8 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import packControlador.CBtnHacerJugada;
-import packModelo.CartaAnimal;
 import packModelo.EnumColor;
 import packModelo.Jugador;
-import packModelo.ListaCartaAnimal;
 import packModelo.Partida;
 
 public class IPartida extends JFrame implements Observer {
@@ -63,7 +59,7 @@ public class IPartida extends JFrame implements Observer {
 	private JButton			btnJugar;
 	private JLabel			cCielo;
 	private JLabel			cCalle;
-	private int 			numCartas=0;
+	private final int		numCartas	= 0;
 	private JPanel			pCola;
 	private JLabel			cola1;
 	private JLabel			cola2;
@@ -371,70 +367,60 @@ public class IPartida extends JFrame implements Observer {
 
 	}
 
+	public void echarCarta(Color pColor) {
+		String aux = null;
+		if (pColor == Color.RED) {
+			// pCola.add(comboBox1);
+			aux = "carta" + comboBox1.getSelectedItem().toString().charAt(5);
+		} else if (pColor == Color.GREEN) {
+			// pCola.add(comboBox2);
+			aux = "carta" + comboBox2.getSelectedItem().toString().charAt(5);
+		} else if (pColor == Color.BLUE) {
+			// pCola.add(comboBox3);
+			aux = "carta" + comboBox3.getSelectedItem().toString().charAt(5);
+		} else if (pColor == Color.YELLOW) {
+			// pCola.add(comboBox4);
+			aux = "carta" + comboBox4.getSelectedItem().toString().charAt(5);
+		}
+
+		if (numCartas == 0) {
+			cola1.setText(aux);
+		} else if (numCartas == 1) {
+			cola2.setText(aux);
+		} else if (numCartas == 2) {
+			cola3.setText(aux);
+		} else if (numCartas == 3) {
+			cola4.setText(aux);
+		} else if (numCartas == 5) {
+			cola5.setText(aux);
+		}
+
+	}
+
 	public JButton getBoton() {
 		return btnJugar;
 	}
-	
+
 	public int getCartaElegida(EnumColor pColor) {
-		Character aux=null;
+		Character aux = null;
 		if (pColor == EnumColor.ROJO) {
 			aux = comboBox1.getSelectedItem().toString().charAt(5);
-		}
-		else if(pColor == EnumColor.VERDE) {
+		} else if (pColor == EnumColor.VERDE) {
 			aux = comboBox2.getSelectedItem().toString().charAt(5);
-		}
-		else if (pColor == EnumColor.AZUL) {
+		} else if (pColor == EnumColor.AZUL) {
 			aux = comboBox3.getSelectedItem().toString().charAt(5);
-		}
-		else if (pColor == EnumColor.AMARILLO) {
+		} else if (pColor == EnumColor.AMARILLO) {
 			aux = comboBox4.getSelectedItem().toString().charAt(5);
 		}
 		String aux2 = aux.toString();
 		int num = Integer.parseInt(aux2);
 		return num;
 	}
-	
-	public void echarCarta(Color pColor) {
-		String aux=null;
-		if (pColor == Color.RED) {
-			//pCola.add(comboBox1);
-			aux = "carta" + comboBox1.getSelectedItem().toString().charAt(5);
-		}
-		else if (pColor == Color.GREEN) {
-			//pCola.add(comboBox2);
-			aux = "carta" + comboBox2.getSelectedItem().toString().charAt(5);
-		}
-		else if (pColor == Color.BLUE) {
-			//pCola.add(comboBox3);
-			aux = "carta" + comboBox3.getSelectedItem().toString().charAt(5);
-		}
-		else if (pColor == Color.YELLOW) {
-			//pCola.add(comboBox4);
-			aux = "carta" + comboBox4.getSelectedItem().toString().charAt(5);
-		}
-		
-		if(numCartas==0) {
-				cola1.setText(aux);
-			}
-			else if(numCartas==1) {
-				cola2.setText(aux);
-			}
-			else if(numCartas==2) {
-				cola3.setText(aux);
-			}
-			else if(numCartas==3) {
-				cola4.setText(aux);
-			}
-			else if(numCartas==5) {
-				cola5.setText(aux);
-			}
-		
-	}
-	
+
 	public Color getTurno() {
 		return lblTurno.getBackground();
 	}
-	
+
 	@Override
 	public void update(Observable observable, Object parametro) {
 		/*
@@ -449,136 +435,67 @@ public class IPartida extends JFrame implements Observer {
 			 * entonces cambiamos las cartas de la mano del jugador en la
 			 * interfaz como es jugador parametro es una "ListaCartaAnimal"
 			 */
-			this.cambiarMano(((Jugador) observable).getColor(), ((ListaCartaAnimal) parametro).getListaAnimales());
+			int[] info = (int[]) parametro;
+			this.cambiarMano(info);
 
 		}
 
 	}
 
-	private void cambiarMano(EnumColor color, ArrayList<CartaAnimal> parametro) {
+	private void cambiarMano(int[] param) {
 		/*
 		 * vamos a cambiar las cartas de la mano del jugador con el color
 		 * indicado
 		 */
-		Iterator<CartaAnimal> lista = parametro.iterator();
-		int posCarta = 1;
-		if (color == EnumColor.ROJO) {
-			limpiarMano(color);
-			while (lista.hasNext()) {
-				int num = lista.next().getValor();
-				switch (posCarta) {
-				case 1:
-					carta11.setText("NºCarta: " + num);
-					break;
-				case 2:
-					carta12.setText("NºCarta: " + num);
-					break;
-				case 3:
-					carta13.setText("NºCarta: " + num);
-					break;
-				case 4:
-					carta14.setText("NºCarta: " + num);
-					break;
-				default:
-					System.out.println("Carta mal colocada");
-					break;
-				}
-				posCarta++;
-			}
-			posCarta = 1;
-		} else if (color == EnumColor.VERDE) {
-			limpiarMano(color);
-			while (lista.hasNext()) {
-				int num = lista.next().getValor();
-				switch (posCarta) {
-				case 1:
-					carta21.setText("NºCarta: " + num);
-					break;
-				case 2:
-					carta22.setText("NºCarta: " + num);
-					break;
-				case 3:
-					carta23.setText("NºCarta: " + num);
-					break;
-				case 4:
-					carta24.setText("NºCarta: " + num);
-					break;
-				default:
-					System.out.println("Carta mal colocada");
-					break;
-				}
-				posCarta++;
-			}
-			posCarta = 1;
-		} else if (color == EnumColor.AZUL) {
-			limpiarMano(color);
-			while (lista.hasNext()) {
-				int num = lista.next().getValor();
-				switch (posCarta) {
-				case 1:
-					carta31.setText("NºCarta: " + num);
-					break;
-				case 2:
-					carta32.setText("NºCarta: " + num);
-					break;
-				case 3:
-					carta33.setText("NºCarta: " + num);
-					break;
-				case 4:
-					carta34.setText("NºCarta: " + num);
-					break;
-				default:
-					System.out.println("Carta mal colocada");
-					break;
-				}
-				posCarta++;
-			}
-			posCarta = 1;
-		} else if (color == EnumColor.AMARILLO) {
-			limpiarMano(color);
-			while (lista.hasNext()) {
-				int num = lista.next().getValor();
-				switch (posCarta) {
-				case 1:
-					carta41.setText("NºCarta: " + num);
-					break;
-				case 2:
-					carta42.setText("NºCarta: " + num);
-					break;
-				case 3:
-					carta43.setText("NºCarta: " + num);
-					break;
-				case 4:
-					carta44.setText("NºCarta: " + num);
-					break;
-				default:
-					System.out.println("Carta mal colocada");
-					break;
-				}
-				posCarta++;
-			}
-			posCarta = 1;
+		if (param[0] == 1) {
+			limpiarMano(param[0]);
+			carta41.setText("Nº: " + param[1]);
+			carta42.setText("Nº: " + param[2]);
+			carta43.setText("Nº: " + param[3]);
+			carta44.setText("Nº: " + param[4]);
+		} else if (param[0] == 2) {
+			limpiarMano(param[0]);
+			carta21.setText("Nº: " + param[1]);
+			carta22.setText("Nº: " + param[2]);
+			carta23.setText("Nº: " + param[3]);
+			carta24.setText("Nº: " + param[4]);
+		} else if (param[0] == 3) {
+			limpiarMano(param[0]);
+			carta31.setText("Nº: " + param[1]);
+			carta32.setText("Nº: " + param[2]);
+			carta33.setText("Nº: " + param[3]);
+			carta34.setText("Nº: " + param[4]);
+		} else if (param[0] == 4) {
+			limpiarMano(param[0]);
+			carta41.setText("Nº: " + param[1]);
+			carta42.setText("Nº: " + param[2]);
+			carta43.setText("Nº: " + param[3]);
+			carta44.setText("Nº: " + param[4]);
 		}
-
 	}
 
-	private void limpiarMano(EnumColor color) {
-		carta11.setText("");
-		carta12.setText("");
-		carta13.setText("");
-		carta14.setText("");
-		carta21.setText("");
-		carta22.setText("");
-		carta23.setText("");
-		carta24.setText("");
-		carta31.setText("");
-		carta32.setText("");
-		carta33.setText("");
-		carta34.setText("");
-		carta41.setText("");
-		carta42.setText("");
-		carta43.setText("");
-		carta44.setText("");
+	private void limpiarMano(int param) {
+		if (param == 1) {
+			carta11.setText("");
+			carta12.setText("");
+			carta13.setText("");
+			carta14.setText("");
+		} else if (param == 2) {
+			carta21.setText("");
+			carta22.setText("");
+			carta23.setText("");
+			carta24.setText("");
+		} else if (param == 3) {
+			carta31.setText("");
+			carta32.setText("");
+			carta33.setText("");
+			carta34.setText("");
+		} else if (param == 4) {
+			carta41.setText("");
+			carta42.setText("");
+			carta43.setText("");
+			carta44.setText("");
+		}
 	}
 
 	/**

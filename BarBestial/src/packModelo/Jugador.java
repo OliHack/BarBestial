@@ -1,5 +1,7 @@
 package packModelo;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Observable;
 
 public class Jugador extends Observable {
@@ -8,6 +10,7 @@ public class Jugador extends Observable {
 	private final ListaCartaAnimal	mano;
 	private final ListaCartaAnimal	mazo;
 	private final EnumColor			color;
+	private final int[]				info;
 
 	/**
 	 * se crea e inicializa un jugador segun el nombre y un color concretamente
@@ -22,7 +25,30 @@ public class Jugador extends Observable {
 		color = pCol;
 		mano = new ListaCartaAnimal();
 		mazo = new ListaCartaAnimal();
+		info = new int[5];
+		switch (color) {
+		case ROJO:
+			info[0] = 1;
+			break;
+		case VERDE:
+			info[0] = 2;
+			break;
+		case AZUL:
+			info[0] = 3;
+			break;
+		case AMARILLO:
+			info[0] = 4;
+			break;
+		default:
+			info[0] = 0;
+			break;
+		}
+		info[1] = 0;
+		info[2] = 0;
+		info[3] = 0;
+		info[4] = 0;
 		inicializarMazo();
+		inicializarMano();
 	}
 
 	/**
@@ -65,29 +91,52 @@ public class Jugador extends Observable {
 		return color;
 	}
 
-	public String getNombre() {
-		return nombre;
-	}
-	
-	public void notificar() {
-		// el jugador va a notificar a la interfaz solo cuando cambie su mano
-		setChanged();
-		notifyObservers(mano);
-	}
-
 	public ListaCartaAnimal getMano() {
 		return mano;
 	}
-	
+
 	public ListaCartaAnimal getMazo() {
 		return mazo;
 	}
-	
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void notificar() {
+		// el jugador va a notificar a la interfaz solo cuando cambie su mano
+		this.actualizarInfo();
+		setChanged();
+		notifyObservers(info);
+	}
+
 	public void robarMazo() {
 		CartaAnimal miCarta = mazo.getListaAnimales().get(0);
 		mazo.del(miCarta);
 		addMano(miCarta);
 		this.notificar();
+	}
+
+	private void actualizarInfo() {
+		ArrayList<CartaAnimal> arrayCarta = this.mano.getListaAnimales();
+		Iterator<CartaAnimal> it = arrayCarta.iterator();
+		this.vaciarManoObs();
+		int i = 1;
+		while (it.hasNext()) {
+			info[i] = it.next().getValor();
+			it.next();
+			i++;
+			if (i == 5) {
+				break;
+			}
+		}
+	}
+
+	private void inicializarMano() {
+		robarMazo();
+		robarMazo();
+		robarMazo();
+		robarMazo();
 	}
 
 	/**
@@ -110,5 +159,29 @@ public class Jugador extends Observable {
 		mazo.add(CartaFactory.getCartaFactory().crearCarta(color, "Loro"));
 		mazo.add(CartaFactory.getCartaFactory().crearCarta(color, "Mofeta"));
 		mazo.desordenar();
+	}
+
+	private void vaciarManoObs() {
+		switch (color) {
+		case ROJO:
+			info[0] = 1;
+			break;
+		case VERDE:
+			info[0] = 2;
+			break;
+		case AZUL:
+			info[0] = 3;
+			break;
+		case AMARILLO:
+			info[0] = 4;
+			break;
+		default:
+			info[0] = 0;
+			break;
+		}
+		info[1] = 0;
+		info[2] = 0;
+		info[3] = 0;
+		info[4] = 0;
 	}
 }
