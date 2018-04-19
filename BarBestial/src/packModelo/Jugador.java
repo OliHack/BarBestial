@@ -53,11 +53,17 @@ public class Jugador extends Observable {
 	 *
 	 * @param pCartaAnimal
 	 */
-	public void echarCarta(CartaAnimal pCartaAnimal) {
-		CartasEnJuego.getCartasEnJuego().add(pCartaAnimal);
-		this.mano.del(pCartaAnimal);
-		ListaJugador.getListaJugador().comprobarCartas();
-		this.notificar();
+	public void echarCarta(int pCual) {
+		if (mano.getListaAnimales().size() > pCual) {
+			if (!CartasEnJuego.getCartasEnJuego().colaLlena()) {
+				CartaAnimal pCartaAnimal = mano.getListaAnimales().get(pCual);
+				CartasEnJuego.getCartasEnJuego().add(pCartaAnimal);
+				this.mano.del(pCartaAnimal);
+				ListaJugador.getListaJugador().comprobarCartas();
+				Partida.getPartida().cambiarTurno();
+				this.notificar();
+			}
+		}
 	}
 
 	/**
@@ -92,27 +98,22 @@ public class Jugador extends Observable {
 	}
 
 	public void robarMazo() {
-		if (mano.getListaAnimales().size() < 4) {
-			CartaAnimal miCarta = mazo.getListaAnimales().get(0);
-			mazo.del(miCarta);
-			addMano(miCarta);
+		if (!mazo.getListaAnimales().isEmpty()) {
+			if (mano.getListaAnimales().size() < 4) {
+				CartaAnimal miCarta = mazo.getListaAnimales().get(0);
+				mazo.del(miCarta);
+				addMano(miCarta);
+			}
 		}
 	}
 
-/*	private void actualizarInfo() {
-		ArrayList<CartaAnimal> arrayCarta = this.mano.getListaAnimales();
-		Iterator<CartaAnimal> it = arrayCarta.iterator();
-		// this.vaciarManoObs();
-		int i = 1;
-		while (it.hasNext()) {
-			info[i] = it.next().getValor();
-			it.next();
-			i++;
-			if (i == 5) {
-				break;
-			}
-		}
-	}*/
+	/*
+	 * private void actualizarInfo() { ArrayList<CartaAnimal> arrayCarta =
+	 * this.mano.getListaAnimales(); Iterator<CartaAnimal> it =
+	 * arrayCarta.iterator(); // this.vaciarManoObs(); int i = 1; while
+	 * (it.hasNext()) { info[i] = it.next().getValor(); it.next(); i++; if (i == 5)
+	 * { break; } } }
+	 */
 
 	private void inicializarMano() {
 		mano = new ListaCartaAnimal();

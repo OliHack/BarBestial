@@ -8,6 +8,10 @@ public class CartasEnJuego extends Observable {
 	private static CartasEnJuego	misCartasEnJuego;
 	private ListaCartaAnimal		ListaAnimales;
 
+	public ListaCartaAnimal getListaAnimales() {
+		return ListaAnimales;
+	}
+
 	private CartasEnJuego() {
 	}
 

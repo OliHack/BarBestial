@@ -34,11 +34,11 @@ class HU4_RevisarElEstadoDeLaCola {
 		}
 		
 		//Jugamos 5 cartas para llenar la cola.
-		ListaJugador.getListaJugador().getJugador(EnumColor.AZUL).echarCarta(ListaJugador.getListaJugador().getJugador(EnumColor.AZUL).getMano().getListaAnimales().get(0));
-		ListaJugador.getListaJugador().getJugador(EnumColor.AMARILLO).echarCarta(ListaJugador.getListaJugador().getJugador(EnumColor.AMARILLO).getMano().getListaAnimales().get(0));
-		ListaJugador.getListaJugador().getJugador(EnumColor.ROJO).echarCarta(ListaJugador.getListaJugador().getJugador(EnumColor.ROJO).getMano().getListaAnimales().get(0));
-		ListaJugador.getListaJugador().getJugador(EnumColor.VERDE).echarCarta(ListaJugador.getListaJugador().getJugador(EnumColor.VERDE).getMano().getListaAnimales().get(0));
-		ListaJugador.getListaJugador().getJugador(EnumColor.AZUL).echarCarta(ListaJugador.getListaJugador().getJugador(EnumColor.AZUL).getMano().getListaAnimales().get(1));
+		ListaJugador.getListaJugador().getJugador(EnumColor.AZUL).echarCarta(0);
+		ListaJugador.getListaJugador().getJugador(EnumColor.AMARILLO).echarCarta(0);
+		ListaJugador.getListaJugador().getJugador(EnumColor.ROJO).echarCarta(0);
+		ListaJugador.getListaJugador().getJugador(EnumColor.VERDE).echarCarta(0);
+		ListaJugador.getListaJugador().getJugador(EnumColor.AZUL).echarCarta(1);
 		
 		//Una vez que la cola este llena, el gorilla revisara la cola.
 		CartasEnJuego.getCartasEnJuego().revisarCola();
@@ -54,9 +54,9 @@ class HU4_RevisarElEstadoDeLaCola {
 		
 		//Si volvemos  llenar la cola y volvemos a revisar, veremos como en BarBesial tendremos 4 cartas
 		// y en la Calle tendremos 2.
-		ListaJugador.getListaJugador().getJugador(EnumColor.AMARILLO).echarCarta(ListaJugador.getListaJugador().getJugador(EnumColor.AMARILLO).getMano().getListaAnimales().get(1));
-		ListaJugador.getListaJugador().getJugador(EnumColor.ROJO).echarCarta(ListaJugador.getListaJugador().getJugador(EnumColor.ROJO).getMano().getListaAnimales().get(1));
-		ListaJugador.getListaJugador().getJugador(EnumColor.VERDE).echarCarta(ListaJugador.getListaJugador().getJugador(EnumColor.VERDE).getMano().getListaAnimales().get(1));
+		ListaJugador.getListaJugador().getJugador(EnumColor.AMARILLO).echarCarta(1);
+		ListaJugador.getListaJugador().getJugador(EnumColor.ROJO).echarCarta(1);
+		ListaJugador.getListaJugador().getJugador(EnumColor.VERDE).echarCarta(1);
 		
 		CartasEnJuego.getCartasEnJuego().revisarCola();
 		

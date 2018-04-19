@@ -2,15 +2,34 @@ package packModelo;
 
 public class Partida {
 
-	private static Partida	miPartida;
-	private EnumColor		turnoColor;
+	private static Partida miPartida;
+	private EnumColor turnoColor;
+
+	public EnumColor getTurnoColor() {
+		return turnoColor;
+	}
 
 	private Partida() {
 	}
 
 	public void cambiarTurno() {
-		// TODO - implement Partida.cambiarTurno
-		throw new UnsupportedOperationException();
+		switch (turnoColor) {
+		case ROJO:
+			turnoColor = EnumColor.AMARILLO;
+			break;
+		case AZUL:
+			turnoColor = EnumColor.VERDE;
+			break;
+		case VERDE:
+			turnoColor = EnumColor.ROJO;
+			break;
+		case AMARILLO:
+			turnoColor = EnumColor.AZUL;
+			break;
+		default:
+			break;
+		}
+
 	}
 
 	/**
@@ -23,7 +42,7 @@ public class Partida {
 		CartasEnJuego.getCartasEnJuego().inicializar();
 		ListaJugador.getListaJugador()
 				.add(JugadorFactory.getJugadorFactory().crearJugador(pNombres[0], EnumColor.AZUL));
-		
+
 		ListaJugador.getListaJugador()
 				.add(JugadorFactory.getJugadorFactory().crearJugador(pNombres[1], EnumColor.VERDE));
 		ListaJugador.getListaJugador()
@@ -32,7 +51,7 @@ public class Partida {
 				.add(JugadorFactory.getJugadorFactory().crearJugador(pNombres[3], EnumColor.AMARILLO));
 		BarBestial.getBarBestial().inicializar();
 		Calle.getCalle().inicializar();
-		turnoColor= EnumColor.ROJO;
+		turnoColor = EnumColor.ROJO;
 	}
 
 	public static Partida getPartida() {

@@ -37,7 +37,7 @@ class HU3_EcharCarta {
 		/**Prueba Mano Jugador**/
 		
 		//Cuando un jugador echa una carta, pasara a tener una carta menos en su mano
-		ListaJugador.getListaJugador().getJugador(EnumColor.AZUL).echarCarta(ListaJugador.getListaJugador().getJugador(EnumColor.AZUL).getMano().getListaAnimales().get(0));
+		ListaJugador.getListaJugador().getJugador(EnumColor.AZUL).echarCarta(0);
 		assertEquals(ListaJugador.getListaJugador().getJugador(EnumColor.AZUL).getMano().getListaAnimales().size(), Constantes.MANO - 1);
 		
 		
@@ -47,10 +47,10 @@ class HU3_EcharCarta {
 		assertEquals(CartasEnJuego.getCartasEnJuego().numCartas(), 1);
 		
 		//Si echamos mas cartas, se ira llenando (max. 5)
-		ListaJugador.getListaJugador().getJugador(EnumColor.AMARILLO).echarCarta(ListaJugador.getListaJugador().getJugador(EnumColor.AMARILLO).getMano().getListaAnimales().get(0));
-		ListaJugador.getListaJugador().getJugador(EnumColor.ROJO).echarCarta(ListaJugador.getListaJugador().getJugador(EnumColor.ROJO).getMano().getListaAnimales().get(0));
-		ListaJugador.getListaJugador().getJugador(EnumColor.VERDE).echarCarta(ListaJugador.getListaJugador().getJugador(EnumColor.VERDE).getMano().getListaAnimales().get(0));
-		ListaJugador.getListaJugador().getJugador(EnumColor.AZUL).echarCarta(ListaJugador.getListaJugador().getJugador(EnumColor.AZUL).getMano().getListaAnimales().get(1));
+		ListaJugador.getListaJugador().getJugador(EnumColor.AMARILLO).echarCarta(0);
+		ListaJugador.getListaJugador().getJugador(EnumColor.ROJO).echarCarta(0);
+		ListaJugador.getListaJugador().getJugador(EnumColor.VERDE).echarCarta(0);
+		ListaJugador.getListaJugador().getJugador(EnumColor.AZUL).echarCarta(1);
 		
 		assertEquals(CartasEnJuego.getCartasEnJuego().numCartas(), 5);
 		
@@ -77,7 +77,7 @@ class HU3_EcharCarta {
 		System.out.println("�� ATENCION !!Todos los jugadores se han quedado sin cartas,");
 		System.out.println("		por lo que ahora tendria que aparecer el mensaje que indica el final del juego.\n");
 		
-		ListaJugador.getListaJugador().getJugador(EnumColor.AZUL).echarCarta(ListaJugador.getListaJugador().getJugador(EnumColor.AZUL).getMano().getListaAnimales().get(0));
+		ListaJugador.getListaJugador().getJugador(EnumColor.AZUL).echarCarta(0);
 
 		
 		
