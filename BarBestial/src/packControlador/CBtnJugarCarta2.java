@@ -24,10 +24,11 @@ public class CBtnJugarCarta2 implements MouseListener {
 	public void mouseClicked(MouseEvent e) {
 		if (IPartida.getIPartida().getTurnoColor() == Partida.getPartida().getTurnoColor()
 				&& IPartida.getIPartida().getTurnoColor() == colorJBoton) {
-			ListaJugador.getListaJugador().getJugador(Partida.getPartida().getTurnoColor()).echarCarta(1);
-			IPartida.getIPartida().actualizarCola();
-			IPartida.getIPartida().actualizarCartas();
-			IPartida.getIPartida().cambiarTurno();
+			if (ListaJugador.getListaJugador().getJugador(Partida.getPartida().getTurnoColor()).echarCarta(1)) {
+				IPartida.getIPartida().actualizarCola();
+				IPartida.getIPartida().actualizarCartas();
+				IPartida.getIPartida().cambiarTurno();
+			}
 		}
 	}
 

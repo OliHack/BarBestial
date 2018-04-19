@@ -53,7 +53,7 @@ public class Jugador extends Observable {
 	 *
 	 * @param pCartaAnimal
 	 */
-	public void echarCarta(int pCual) {
+	public boolean echarCarta(int pCual) {
 		if (mano.getListaAnimales().size() > pCual) {
 			if (!CartasEnJuego.getCartasEnJuego().colaLlena()) {
 				CartaAnimal pCartaAnimal = mano.getListaAnimales().get(pCual);
@@ -62,8 +62,10 @@ public class Jugador extends Observable {
 				ListaJugador.getListaJugador().comprobarCartas();
 				Partida.getPartida().cambiarTurno();
 				this.notificar();
+				return true;
 			}
 		}
+		return false;
 	}
 
 	/**
