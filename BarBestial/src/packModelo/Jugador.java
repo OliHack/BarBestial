@@ -6,16 +6,15 @@ import java.util.Observable;
 
 public class Jugador extends Observable {
 
-	private final String			nombre;
-	private final ListaCartaAnimal	mano;
-	private final ListaCartaAnimal	mazo;
-	private final EnumColor			color;
-	private final int[]				info;
+	private String nombre;
+	private ListaCartaAnimal mano;
+	private ListaCartaAnimal mazo;
+	private EnumColor color;
+	private int[] info;
 
 	/**
-	 * se crea e inicializa un jugador segun el nombre y un color concretamente
-	 * se inicializan su mano (vacia) y su mazo (con las 12 cartas animales
-	 * diferentes)
+	 * se crea e inicializa un jugador segun el nombre y un color concretamente se
+	 * inicializan su mano (vacia) y su mazo (con las 12 cartas animales diferentes)
 	 *
 	 * @param pNombre
 	 * @param pCol
@@ -23,8 +22,6 @@ public class Jugador extends Observable {
 	public Jugador(String pNombre, EnumColor pCol) {
 		nombre = pNombre;
 		color = pCol;
-		mano = new ListaCartaAnimal();
-		mazo = new ListaCartaAnimal();
 		info = new int[5];
 		switch (color) {
 		case ROJO:
@@ -133,19 +130,17 @@ public class Jugador extends Observable {
 	}
 
 	private void inicializarMano() {
-		robarMazo();
-		robarMazo();
-		robarMazo();
-		robarMazo();
+		mano = new ListaCartaAnimal();
 	}
 
 	/**
-	 * Inicializa el mano del jugador con todas las cartas del mismo color de
-	 * todos los animales
+	 * Inicializa el mano del jugador con todas las cartas del mismo color de todos
+	 * los animales
 	 *
 	 *
 	 */
 	private void inicializarMazo() {
+		mazo = new ListaCartaAnimal();
 		mazo.add(CartaFactory.getCartaFactory().crearCarta(color, "Leon"));
 		mazo.add(CartaFactory.getCartaFactory().crearCarta(color, "Hipopotamo"));
 		mazo.add(CartaFactory.getCartaFactory().crearCarta(color, "Cocodrilo"));

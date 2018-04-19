@@ -1,6 +1,7 @@
 package packPrincipal;
 
 import packInterfaces.*;
+import packModelo.*;
 
 public class Principal {
 	/**
@@ -8,9 +9,8 @@ public class Principal {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-
-		IPartida.getIPartida();
-		IPartida.empezar();
+		
+		IPartida.getIPartida().empezar();
 	}
 
 }

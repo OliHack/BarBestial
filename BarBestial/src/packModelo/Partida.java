@@ -22,16 +22,17 @@ public class Partida {
 	public void inicializarPartida(String[] pNombres) {
 		CartasEnJuego.getCartasEnJuego().inicializar();
 		ListaJugador.getListaJugador()
-				.add(JugadorFactory.getJugadorFactory().crearJugador(pNombres[0], EnumColor.AMARILLO));
+				.add(JugadorFactory.getJugadorFactory().crearJugador(pNombres[0], EnumColor.AZUL));
 		
 		ListaJugador.getListaJugador()
-				.add(JugadorFactory.getJugadorFactory().crearJugador(pNombres[1], EnumColor.AZUL));
+				.add(JugadorFactory.getJugadorFactory().crearJugador(pNombres[1], EnumColor.VERDE));
 		ListaJugador.getListaJugador()
 				.add(JugadorFactory.getJugadorFactory().crearJugador(pNombres[2], EnumColor.ROJO));
 		ListaJugador.getListaJugador()
-				.add(JugadorFactory.getJugadorFactory().crearJugador(pNombres[3], EnumColor.VERDE));
+				.add(JugadorFactory.getJugadorFactory().crearJugador(pNombres[3], EnumColor.AMARILLO));
 		BarBestial.getBarBestial().inicializar();
 		Calle.getCalle().inicializar();
+		turnoColor= EnumColor.ROJO;
 	}
 
 	public static Partida getPartida() {

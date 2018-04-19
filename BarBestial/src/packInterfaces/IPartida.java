@@ -66,19 +66,31 @@ public class IPartida extends JFrame implements Observer {
 	private JLabel			cola3;
 	private JLabel			cola4;
 	private JLabel			cola5;
-
+	
+	
+	/**
+	 * Launch the application.
+	 */
+	public void empezar() {
+		EventQueue.invokeLater(() -> {
+			try {
+				String[] pNombres = new String[4];
+				pNombres[0] = "Jugador1";
+				pNombres[1] = "Jugador2";
+				pNombres[2] = "Jugador3";
+				pNombres[3] = "Jugador4";
+				Partida.getPartida().inicializarPartida(pNombres);
+				IPartida frame =  getIPartida();
+				frame.setVisible(true);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		});
+	}
 	/**
 	 * Create the frame.
 	 */
-	/*--Descargar--
-	 * fecth
-	 * pull
-	 * --Subir--
-	 * add to index
-	 * commit
-	 * push*/
-
-	public IPartida() {
+	private IPartida() {
 		setTitle("Principal");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		// setBounds(100, 100, 676, 496);
@@ -120,7 +132,7 @@ public class IPartida extends JFrame implements Observer {
 		carta14.setOpaque(true);
 		posicion1.add(carta14);
 
-		JComboBox comboBox1 = new JComboBox();
+		JComboBox<String> comboBox1 = new JComboBox<String>();
 		comboBox1.setMaximumRowCount(4);
 		comboBox1.setToolTipText("Mano");
 		comboBox1.addItem("Carta1");
@@ -157,7 +169,7 @@ public class IPartida extends JFrame implements Observer {
 		carta34.setBackground(new Color(0, 153, 255));
 		carta34.setOpaque(true);
 
-		JComboBox comboBox3 = new JComboBox();
+		JComboBox<String> comboBox3 = new JComboBox<String>();
 		comboBox3.setMaximumRowCount(4);
 		comboBox3.setToolTipText("Mano");
 		comboBox3.addItem("Carta1");
@@ -200,7 +212,7 @@ public class IPartida extends JFrame implements Observer {
 		carta44.setBackground(new Color(255, 255, 153));
 		carta44.setOpaque(true);
 
-		JComboBox comboBox4 = new JComboBox();
+		JComboBox<String> comboBox4 = new JComboBox<String>();
 		comboBox4.setMaximumRowCount(4);
 		comboBox4.setToolTipText("Mano");
 		comboBox4.addItem("Carta1");
@@ -247,7 +259,7 @@ public class IPartida extends JFrame implements Observer {
 		 * JComboBox(petStrings); petList.setSelectedIndex(4);
 		 * petList.addActionListener(this);
 		 */
-		JComboBox comboBox2 = new JComboBox();
+		JComboBox<String> comboBox2 = new JComboBox<String>();
 		comboBox2.setMaximumRowCount(4);
 		comboBox2.setToolTipText("Mano");
 		comboBox2.addItem("Carta1");
@@ -498,30 +510,12 @@ public class IPartida extends JFrame implements Observer {
 		}
 	}
 
-	/**
-	 * Launch the application.
-	 */
-	public static void empezar() {
-		EventQueue.invokeLater(() -> {
-			try {
-				String[] pNombres = new String[4];
-				pNombres[0] = "Jugador1";
-				pNombres[1] = "Jugador2";
-				pNombres[2] = "Jugador3";
-				pNombres[3] = "Jugador4";
-				Partida.getPartida().inicializarPartida(pNombres);
-				IPartida frame = new IPartida();
-				frame.setVisible(true);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		});
-	}
+	
 
-	public static IPartida getIPartida() {
-		if (IPartida.miPrincipal == null) {
-			IPartida.miPrincipal = new IPartida();
+	public  static IPartida getIPartida() {
+		if (miPrincipal == null) {
+			miPrincipal = new IPartida();
 		}
-		return IPartida.miPrincipal;
+		return miPrincipal;
 	}
 }
