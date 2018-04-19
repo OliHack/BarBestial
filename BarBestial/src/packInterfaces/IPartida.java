@@ -17,81 +17,95 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-import packControlador.CBtnHacerJugada;
+import packControlador.*;
 import packModelo.EnumColor;
 import packModelo.Jugador;
+import packModelo.ListaJugador;
 import packModelo.Partida;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class IPartida extends JFrame implements Observer {
-	private static IPartida	miPrincipal;
-	private final JPanel	contentPane;
+	private static IPartida miPrincipal;
+	private JPanel contentPane;
 	// inicializamos las variables del panel;
-	private JPanel			posicion1;
-	private JLabel			carta11;
-	private JLabel			carta12;
-	private JLabel			carta13;
-	private JLabel			carta14;
-	private JPanel			posicion2;
-	private JLabel			carta21;
-	private JLabel			carta22;
-	private JLabel			carta23;
-	private JLabel			carta24;
-	private JPanel			posicion3;
-	private JLabel			carta31;
-	private JLabel			carta32;
-	private JLabel			carta33;
-	private JLabel			carta34;
-	private JPanel			posicion4;
-	private JLabel			carta41;
-	private JLabel			carta42;
-	private JLabel			carta43;
-	private JLabel			carta44;
-	private JComboBox		comboBox1;
-	private JComboBox		comboBox2;
-	private JComboBox		comboBox3;
-	private JComboBox		comboBox4;
-	private JPanel			tablero;
-	private JPanel			panel;
-	private JLabel			lblTurno;
-	private JPanel			panelInferior;
-	private JPanel			pCielo;
-	private JPanel			pCalle;
-	private JButton			btnJugar;
-	private JLabel			cCielo;
-	private JLabel			cCalle;
-	private final int		numCartas	= 0;
-	private JPanel			pCola;
-	private JLabel			cola1;
-	private JLabel			cola2;
-	private JLabel			cola3;
-	private JLabel			cola4;
-	private JLabel			cola5;
-	
-	
+	private JPanel posicion1;
+	private JLabel carta11;
+	private JLabel carta12;
+	private JLabel carta13;
+	private JLabel carta14;
+	private JPanel posicion2;
+	private JLabel carta21;
+	private JLabel carta22;
+	private JLabel carta23;
+	private JLabel carta24;
+	private JPanel posicion3;
+	private JLabel carta31;
+	private JLabel carta32;
+	private JLabel carta33;
+	private JLabel carta34;
+	private JPanel posicion4;
+	private JLabel carta41;
+	private JLabel carta42;
+	private JLabel carta43;
+	private JLabel carta44;
+	private JComboBox comboBox1;
+	private JComboBox comboBox2;
+	private JComboBox comboBox3;
+	private JComboBox comboBox4;
+	private JPanel tablero;
+	private JPanel panel;
+	private JLabel lblTurno;
+	private JPanel panelInferior;
+	private JPanel pCielo;
+	private JPanel pCalle;
+	private JButton btnJugar;
+	private JLabel cCielo;
+	private JLabel cCalle;
+	private final int numCartas = 0;
+	private JPanel pCola;
+	private JLabel cola1;
+	private JLabel cola2;
+	private JLabel cola3;
+	private JLabel cola4;
+	private JLabel cola5;
+	private JButton btnCarta11;
+	private JButton btnCarta12;
+	private JButton btnCarta13;
+	private JButton btnCarta14;
+	private JButton btnCarta21;
+	private JButton btnCarta22;
+	private JButton btnCarta23;
+	private JButton btnCarta24;
+	private JButton btnCarta31;
+	private JButton btnCarta32;
+	private JButton btnCarta33;
+	private JButton btnCarta34;
+	private JButton btnCarta41;
+	private JButton btnCarta42;
+	private JButton btnCarta43;
+	private JButton btnCarta44;
+
 	/**
 	 * Launch the application.
 	 */
 	public void empezar() {
 		EventQueue.invokeLater(() -> {
 			try {
-				String[] pNombres = new String[4];
-				pNombres[0] = "Jugador1";
-				pNombres[1] = "Jugador2";
-				pNombres[2] = "Jugador3";
-				pNombres[3] = "Jugador4";
-				Partida.getPartida().inicializarPartida(pNombres);
-				IPartida frame =  getIPartida();
+
+				IPartida frame = getIPartida();
 				frame.setVisible(true);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		});
 	}
+
 	/**
 	 * Create the frame.
 	 */
 	private IPartida() {
-		setTitle("Principal");
+		setTitle("Bar Bestial");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		// setBounds(100, 100, 676, 496);
 		setBounds(100, 100, 1041, 663);
@@ -106,77 +120,75 @@ public class IPartida extends JFrame implements Observer {
 		posicion1.setForeground(Color.BLACK);
 		contentPane.add(posicion1, BorderLayout.NORTH);
 
-		JLabel carta11 = new JLabel("Carta1");
-		carta11.setForeground(new Color(0, 0, 0));
-		carta11.setPreferredSize(new Dimension(50, 75));
-		carta11.setBackground(new Color(255, 102, 102));
-		carta11.setOpaque(true);
-		posicion1.add(carta11);
+		btnCarta11 = new JButton("Carta11");
+		if (ListaJugador.getListaJugador().getJugador(EnumColor.ROJO).getMano().getListaAnimales().size() > 0) {
+			btnCarta11.setText(ListaJugador.getListaJugador().getJugador(EnumColor.ROJO).getMano().getListaAnimales()
+					.get(0).toString());
+		}
+		posicion1.add(btnCarta11);
 
-		JLabel carta12 = new JLabel("Carta2");
-		carta12.setBackground(new Color(255, 102, 102));
-		carta12.setPreferredSize(new Dimension(50, 75));
-		carta12.setBackground(new Color(255, 102, 102));
-		carta12.setOpaque(true);
-		posicion1.add(carta12);
+		btnCarta12 = new JButton("Carta12");
+		if (ListaJugador.getListaJugador().getJugador(EnumColor.ROJO).getMano().getListaAnimales().size() > 1) {
+			btnCarta12.setText(ListaJugador.getListaJugador().getJugador(EnumColor.ROJO).getMano().getListaAnimales()
+					.get(1).toString());
+		}
+		posicion1.add(btnCarta12);
 
-		JLabel carta13 = new JLabel("Carta3");
-		carta13.setPreferredSize(new Dimension(50, 75));
-		carta13.setBackground(new Color(255, 102, 102));
-		carta13.setOpaque(true);
-		posicion1.add(carta13);
+		btnCarta13 = new JButton("Carta13");
+		if (ListaJugador.getListaJugador().getJugador(EnumColor.ROJO).getMano().getListaAnimales().size() > 2) {
+			btnCarta13.setText(ListaJugador.getListaJugador().getJugador(EnumColor.ROJO).getMano().getListaAnimales()
+					.get(2).toString());
+		}
+		posicion1.add(btnCarta13);
 
-		JLabel carta14 = new JLabel("Carta4");
-		carta14.setPreferredSize(new Dimension(50, 75));
-		carta14.setBackground(new Color(255, 102, 102));
-		carta14.setOpaque(true);
-		posicion1.add(carta14);
+		btnCarta14 = new JButton("Carta14");
+		if (ListaJugador.getListaJugador().getJugador(EnumColor.ROJO).getMano().getListaAnimales().size() > 3) {
+			btnCarta14.setText(ListaJugador.getListaJugador().getJugador(EnumColor.ROJO).getMano().getListaAnimales()
+					.get(3).toString());
+		}
+		posicion1.add(btnCarta14);
 
-		JComboBox<String> comboBox1 = new JComboBox<String>();
-		comboBox1.setMaximumRowCount(4);
-		comboBox1.setToolTipText("Mano");
-		comboBox1.addItem("Carta1");
-		comboBox1.addItem("Carta2");
-		comboBox1.addItem("Carta3");
-		comboBox1.addItem("Carta4");
-		posicion1.add(comboBox1);
+		JButton btnMazo1 = new JButton("Mazo");
+		CBtnMazo cbMazo1 = new CBtnMazo(EnumColor.ROJO);
+		btnMazo1.addMouseListener(cbMazo1);
+		posicion1.add(btnMazo1);
 
 		JPanel posicion3 = new JPanel();
 		posicion3.setBackground(Color.BLUE);
 		contentPane.add(posicion3, BorderLayout.SOUTH);
 
-		JLabel carta31 = new JLabel("Carta1");
-		carta31.setPreferredSize(new Dimension(50, 75));
-		posicion3.add(carta31);
-		carta31.setBackground(new Color(0, 153, 255));
-		carta31.setOpaque(true);
+		btnCarta31 = new JButton("Carta31");
+		if (ListaJugador.getListaJugador().getJugador(EnumColor.AZUL).getMano().getListaAnimales().size() > 0) {
+			btnCarta31.setText(ListaJugador.getListaJugador().getJugador(EnumColor.AZUL).getMano().getListaAnimales()
+					.get(0).toString());
+		}
+		posicion3.add(btnCarta31);
 
-		JLabel carta32 = new JLabel("Carta2");
-		carta32.setPreferredSize(new Dimension(50, 75));
-		posicion3.add(carta32);
-		carta32.setBackground(new Color(0, 153, 255));
-		carta32.setOpaque(true);
+		btnCarta32 = new JButton("Carta32");
+		if (ListaJugador.getListaJugador().getJugador(EnumColor.AZUL).getMano().getListaAnimales().size() > 1) {
+			btnCarta32.setText(ListaJugador.getListaJugador().getJugador(EnumColor.AZUL).getMano().getListaAnimales()
+					.get(1).toString());
+		}
+		posicion3.add(btnCarta32);
 
-		JLabel carta33 = new JLabel("Carta3");
-		carta33.setPreferredSize(new Dimension(50, 75));
-		posicion3.add(carta33);
-		carta33.setBackground(new Color(0, 153, 255));
-		carta33.setOpaque(true);
+		btnCarta33 = new JButton("Carta33");
+		if (ListaJugador.getListaJugador().getJugador(EnumColor.AZUL).getMano().getListaAnimales().size() > 2) {
+			btnCarta33.setText(ListaJugador.getListaJugador().getJugador(EnumColor.AZUL).getMano().getListaAnimales()
+					.get(2).toString());
+		}
+		posicion3.add(btnCarta33);
 
-		JLabel carta34 = new JLabel("Carta4");
-		carta34.setPreferredSize(new Dimension(50, 75));
-		posicion3.add(carta34);
-		carta34.setBackground(new Color(0, 153, 255));
-		carta34.setOpaque(true);
+		btnCarta34 = new JButton("Carta34");
+		if (ListaJugador.getListaJugador().getJugador(EnumColor.AZUL).getMano().getListaAnimales().size() > 3) {
+			btnCarta34.setText(ListaJugador.getListaJugador().getJugador(EnumColor.AZUL).getMano().getListaAnimales()
+					.get(3).toString());
+		}
+		posicion3.add(btnCarta34);
 
-		JComboBox<String> comboBox3 = new JComboBox<String>();
-		comboBox3.setMaximumRowCount(4);
-		comboBox3.setToolTipText("Mano");
-		comboBox3.addItem("Carta1");
-		comboBox3.addItem("Carta2");
-		comboBox3.addItem("Carta3");
-		comboBox3.addItem("Carta4");
-		posicion3.add(comboBox3);
+		JButton btnMazo3 = new JButton("Mazo");
+		CBtnMazo cbMazo3 = new CBtnMazo(EnumColor.AZUL);
+		btnMazo3.addMouseListener(cbMazo3);
+		posicion3.add(btnMazo3);
 
 		JPanel posicion4 = new JPanel();
 		posicion4.setBackground(Color.YELLOW);
@@ -184,89 +196,76 @@ public class IPartida extends JFrame implements Observer {
 		// posicion4.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		posicion4.setPreferredSize(new Dimension(85, 75));
 
-		JLabel carta41 = new JLabel("Carta1");
-		carta41.setPreferredSize(new Dimension(50, 75));
-		carta41.setHorizontalAlignment(SwingConstants.CENTER);
-		posicion4.add(carta41);
-		carta41.setBackground(new Color(255, 255, 153));
-		carta41.setOpaque(true);
+		btnCarta41 = new JButton("Carta41");
+		if (ListaJugador.getListaJugador().getJugador(EnumColor.AMARILLO).getMano().getListaAnimales().size() > 0) {
+			btnCarta41.setText(ListaJugador.getListaJugador().getJugador(EnumColor.AMARILLO).getMano()
+					.getListaAnimales().get(0).toString());
+		}
+		posicion4.add(btnCarta41);
 
-		JLabel carta42 = new JLabel("Carta2");
-		carta42.setPreferredSize(new Dimension(50, 75));
-		carta42.setHorizontalAlignment(SwingConstants.CENTER);
-		posicion4.add(carta42);
-		carta42.setBackground(new Color(255, 255, 153));
-		carta42.setOpaque(true);
+		btnCarta42 = new JButton("Carta42");
+		if (ListaJugador.getListaJugador().getJugador(EnumColor.AMARILLO).getMano().getListaAnimales().size() > 1) {
+			btnCarta42.setText(ListaJugador.getListaJugador().getJugador(EnumColor.AMARILLO).getMano()
+					.getListaAnimales().get(1).toString());
+		}
+		posicion4.add(btnCarta42);
 
-		JLabel carta43 = new JLabel("Carta3");
-		carta43.setPreferredSize(new Dimension(50, 75));
-		carta43.setHorizontalAlignment(SwingConstants.CENTER);
-		posicion4.add(carta43);
-		carta43.setBackground(new Color(255, 255, 153));
-		carta43.setOpaque(true);
+		btnCarta43 = new JButton("Carta43");
+		if (ListaJugador.getListaJugador().getJugador(EnumColor.AMARILLO).getMano().getListaAnimales().size() > 2) {
+			btnCarta43.setText(ListaJugador.getListaJugador().getJugador(EnumColor.AMARILLO).getMano()
+					.getListaAnimales().get(2).toString());
+		}
+		posicion4.add(btnCarta43);
 
-		JLabel carta44 = new JLabel("Carta4");
-		carta44.setPreferredSize(new Dimension(50, 75));
-		carta44.setHorizontalAlignment(SwingConstants.CENTER);
-		posicion4.add(carta44);
-		carta44.setBackground(new Color(255, 255, 153));
-		carta44.setOpaque(true);
+		btnCarta44 = new JButton("Carta44");
+		if (ListaJugador.getListaJugador().getJugador(EnumColor.AMARILLO).getMano().getListaAnimales().size() > 3) {
+			btnCarta44.setText(ListaJugador.getListaJugador().getJugador(EnumColor.AMARILLO).getMano()
+					.getListaAnimales().get(3).toString());
+		}
+		posicion4.add(btnCarta44);
 
-		JComboBox<String> comboBox4 = new JComboBox<String>();
-		comboBox4.setMaximumRowCount(4);
-		comboBox4.setToolTipText("Mano");
-		comboBox4.addItem("Carta1");
-		comboBox4.addItem("Carta2");
-		comboBox4.addItem("Carta3");
-		comboBox4.addItem("Carta4");
-		posicion4.add(comboBox4);
+		JButton btnMazo4 = new JButton("Mazo");
+		CBtnMazo cbMazo4 = new CBtnMazo(EnumColor.AMARILLO);
+		btnMazo4.addMouseListener(cbMazo4);
+		posicion4.add(btnMazo4);
 
 		JPanel posicion2 = new JPanel();
 		posicion2.setBackground(Color.GREEN);
 		contentPane.add(posicion2, BorderLayout.EAST);
 		posicion2.setPreferredSize(new Dimension(85, 75));
 
-		JLabel carta21 = new JLabel("Carta1");
-		carta21.setPreferredSize(new Dimension(50, 75));
-		carta21.setBackground(new Color(102, 255, 153));
-		carta21.setOpaque(true);
-		posicion2.add(carta21);
+		btnCarta21 = new JButton("Carta21");
+		if (ListaJugador.getListaJugador().getJugador(EnumColor.VERDE).getMano().getListaAnimales().size() > 0) {
+			btnCarta21.setText(ListaJugador.getListaJugador().getJugador(EnumColor.VERDE).getMano().getListaAnimales()
+					.get(0).toString());
+		}
+		posicion2.add(btnCarta21);
 
-		JLabel carta22 = new JLabel("Carta2");
-		posicion2.add(carta22);
-		carta22.setPreferredSize(new Dimension(50, 75));
-		carta22.setBackground(new Color(102, 255, 153));
-		carta22.setOpaque(true);
+		btnCarta22 = new JButton("Carta22");
+		if (ListaJugador.getListaJugador().getJugador(EnumColor.VERDE).getMano().getListaAnimales().size() > 1) {
+			btnCarta22.setText(ListaJugador.getListaJugador().getJugador(EnumColor.VERDE).getMano().getListaAnimales()
+					.get(1).toString());
+		}
+		posicion2.add(btnCarta22);
 
-		JLabel carta23 = new JLabel("Carta3");
-		posicion2.add(carta23);
-		carta23.setPreferredSize(new Dimension(50, 75));
-		carta23.setBackground(new Color(102, 255, 153));
-		carta23.setOpaque(true);
+		btnCarta23 = new JButton("Carta23");
+		if (ListaJugador.getListaJugador().getJugador(EnumColor.VERDE).getMano().getListaAnimales().size() > 2) {
+			btnCarta23.setText(ListaJugador.getListaJugador().getJugador(EnumColor.VERDE).getMano().getListaAnimales()
+					.get(2).toString());
+		}
+		posicion2.add(btnCarta23);
 
-		JLabel carta24 = new JLabel("Carta4");
-		posicion2.add(carta24);
-		carta24.setPreferredSize(new Dimension(50, 75));
-		carta24.setBackground(new Color(102, 255, 153));
-		carta24.setOpaque(true);
+		btnCarta24 = new JButton("Carta24");
+		if (ListaJugador.getListaJugador().getJugador(EnumColor.VERDE).getMano().getListaAnimales().size() > 3) {
+			btnCarta24.setText(ListaJugador.getListaJugador().getJugador(EnumColor.VERDE).getMano().getListaAnimales()
+					.get(3).toString());
+		}
+		posicion2.add(btnCarta24);
 
-		// se puede hacer un string para el combobox:::::
-		/*
-		 * String[] petStrings = { "Bird", "Cat", "Dog", "Rabbit", "Pig" };
-		 *
-		 * Create the combo box, select item at index 4. //Indices start at 0,
-		 * so 4 specifies the pig. JComboBox petList = new
-		 * JComboBox(petStrings); petList.setSelectedIndex(4);
-		 * petList.addActionListener(this);
-		 */
-		JComboBox<String> comboBox2 = new JComboBox<String>();
-		comboBox2.setMaximumRowCount(4);
-		comboBox2.setToolTipText("Mano");
-		comboBox2.addItem("Carta1");
-		comboBox2.addItem("Carta2");
-		comboBox2.addItem("Carta3");
-		comboBox2.addItem("Carta4");
-		posicion2.add(comboBox2);
+		JButton btnMazo2 = new JButton("Mazo");
+		CBtnMazo cbMazo2 = new CBtnMazo(EnumColor.VERDE);
+		btnMazo2.addMouseListener(cbMazo2);
+		posicion2.add(btnMazo2);
 
 		JPanel tablero = new JPanel();
 		tablero.setBackground(new Color(175, 238, 238));
@@ -409,6 +408,141 @@ public class IPartida extends JFrame implements Observer {
 
 	}
 
+	public void actualizarCartas() {
+		switch (ListaJugador.getListaJugador().getJugador(EnumColor.ROJO).getMano().getListaAnimales().size()) {
+		case 1:
+			btnCarta11.setText(ListaJugador.getListaJugador().getJugador(EnumColor.ROJO).getMano().getListaAnimales()
+					.get(0).toString());
+			break;
+		case 2:
+			btnCarta11.setText(ListaJugador.getListaJugador().getJugador(EnumColor.ROJO).getMano().getListaAnimales()
+					.get(0).toString());
+			btnCarta12.setText(ListaJugador.getListaJugador().getJugador(EnumColor.ROJO).getMano().getListaAnimales()
+					.get(1).toString());
+			break;
+		case 3:
+			btnCarta11.setText(ListaJugador.getListaJugador().getJugador(EnumColor.ROJO).getMano().getListaAnimales()
+					.get(0).toString());
+			btnCarta12.setText(ListaJugador.getListaJugador().getJugador(EnumColor.ROJO).getMano().getListaAnimales()
+					.get(1).toString());
+			btnCarta13.setText(ListaJugador.getListaJugador().getJugador(EnumColor.ROJO).getMano().getListaAnimales()
+					.get(2).toString());
+			break;
+		case 4:
+			btnCarta11.setText(ListaJugador.getListaJugador().getJugador(EnumColor.ROJO).getMano().getListaAnimales()
+					.get(0).toString());
+			btnCarta12.setText(ListaJugador.getListaJugador().getJugador(EnumColor.ROJO).getMano().getListaAnimales()
+					.get(1).toString());
+			btnCarta13.setText(ListaJugador.getListaJugador().getJugador(EnumColor.ROJO).getMano().getListaAnimales()
+					.get(2).toString());
+			btnCarta14.setText(ListaJugador.getListaJugador().getJugador(EnumColor.ROJO).getMano().getListaAnimales()
+					.get(3).toString());
+			break;
+		default:
+			break;
+		}
+		
+		switch (ListaJugador.getListaJugador().getJugador(EnumColor.VERDE).getMano().getListaAnimales().size()) {
+		case 1:
+			btnCarta21.setText(ListaJugador.getListaJugador().getJugador(EnumColor.VERDE).getMano().getListaAnimales()
+					.get(0).toString());
+			break;
+		case 2:
+			btnCarta21.setText(ListaJugador.getListaJugador().getJugador(EnumColor.VERDE).getMano().getListaAnimales()
+					.get(0).toString());
+			btnCarta22.setText(ListaJugador.getListaJugador().getJugador(EnumColor.VERDE).getMano().getListaAnimales()
+					.get(1).toString());
+			break;
+		case 3:
+			btnCarta21.setText(ListaJugador.getListaJugador().getJugador(EnumColor.VERDE).getMano().getListaAnimales()
+					.get(0).toString());
+			btnCarta22.setText(ListaJugador.getListaJugador().getJugador(EnumColor.VERDE).getMano().getListaAnimales()
+					.get(1).toString());
+			btnCarta23.setText(ListaJugador.getListaJugador().getJugador(EnumColor.VERDE).getMano().getListaAnimales()
+					.get(2).toString());
+			break;
+		case 4:
+			btnCarta21.setText(ListaJugador.getListaJugador().getJugador(EnumColor.VERDE).getMano().getListaAnimales()
+					.get(0).toString());
+			btnCarta22.setText(ListaJugador.getListaJugador().getJugador(EnumColor.VERDE).getMano().getListaAnimales()
+					.get(1).toString());
+			btnCarta23.setText(ListaJugador.getListaJugador().getJugador(EnumColor.VERDE).getMano().getListaAnimales()
+					.get(2).toString());
+			btnCarta24.setText(ListaJugador.getListaJugador().getJugador(EnumColor.VERDE).getMano().getListaAnimales()
+					.get(3).toString());
+			break;
+		default:
+			break;
+		}
+		
+		switch (ListaJugador.getListaJugador().getJugador(EnumColor.AZUL).getMano().getListaAnimales().size()) {
+		case 1:
+			btnCarta31.setText(ListaJugador.getListaJugador().getJugador(EnumColor.AZUL).getMano().getListaAnimales()
+					.get(0).toString());
+			break;
+		case 2:
+			btnCarta31.setText(ListaJugador.getListaJugador().getJugador(EnumColor.AZUL).getMano().getListaAnimales()
+					.get(0).toString());
+			btnCarta32.setText(ListaJugador.getListaJugador().getJugador(EnumColor.AZUL).getMano().getListaAnimales()
+					.get(1).toString());
+			break;
+		case 3:
+			btnCarta31.setText(ListaJugador.getListaJugador().getJugador(EnumColor.AZUL).getMano().getListaAnimales()
+					.get(0).toString());
+			btnCarta32.setText(ListaJugador.getListaJugador().getJugador(EnumColor.AZUL).getMano().getListaAnimales()
+					.get(1).toString());
+			btnCarta33.setText(ListaJugador.getListaJugador().getJugador(EnumColor.AZUL).getMano().getListaAnimales()
+					.get(2).toString());
+			break;
+		case 4:
+			btnCarta31.setText(ListaJugador.getListaJugador().getJugador(EnumColor.AZUL).getMano().getListaAnimales()
+					.get(0).toString());
+			btnCarta32.setText(ListaJugador.getListaJugador().getJugador(EnumColor.AZUL).getMano().getListaAnimales()
+					.get(1).toString());
+			btnCarta33.setText(ListaJugador.getListaJugador().getJugador(EnumColor.AZUL).getMano().getListaAnimales()
+					.get(2).toString());
+			btnCarta34.setText(ListaJugador.getListaJugador().getJugador(EnumColor.AZUL).getMano().getListaAnimales()
+					.get(3).toString());
+			break;
+		default:
+			break;
+		}
+		
+		switch (ListaJugador.getListaJugador().getJugador(EnumColor.AMARILLO).getMano().getListaAnimales().size()) {
+		case 1:
+			btnCarta41.setText(ListaJugador.getListaJugador().getJugador(EnumColor.AMARILLO).getMano().getListaAnimales()
+					.get(0).toString());
+			break;
+		case 2:
+			btnCarta41.setText(ListaJugador.getListaJugador().getJugador(EnumColor.AMARILLO).getMano().getListaAnimales()
+					.get(0).toString());
+			btnCarta42.setText(ListaJugador.getListaJugador().getJugador(EnumColor.AMARILLO).getMano().getListaAnimales()
+					.get(1).toString());
+			break;
+		case 3:
+			btnCarta41.setText(ListaJugador.getListaJugador().getJugador(EnumColor.AMARILLO).getMano().getListaAnimales()
+					.get(0).toString());
+			btnCarta42.setText(ListaJugador.getListaJugador().getJugador(EnumColor.AMARILLO).getMano().getListaAnimales()
+					.get(1).toString());
+			btnCarta43.setText(ListaJugador.getListaJugador().getJugador(EnumColor.AMARILLO).getMano().getListaAnimales()
+					.get(2).toString());
+			break;
+		case 4:
+			btnCarta41.setText(ListaJugador.getListaJugador().getJugador(EnumColor.AMARILLO).getMano().getListaAnimales()
+					.get(0).toString());
+			btnCarta42.setText(ListaJugador.getListaJugador().getJugador(EnumColor.AMARILLO).getMano().getListaAnimales()
+					.get(1).toString());
+			btnCarta43.setText(ListaJugador.getListaJugador().getJugador(EnumColor.AMARILLO).getMano().getListaAnimales()
+					.get(2).toString());
+			btnCarta44.setText(ListaJugador.getListaJugador().getJugador(EnumColor.AMARILLO).getMano().getListaAnimales()
+					.get(3).toString());
+			break;
+		default:
+			break;
+		}
+
+	}
+
 	public JButton getBoton() {
 		return btnJugar;
 	}
@@ -436,16 +570,16 @@ public class IPartida extends JFrame implements Observer {
 	@Override
 	public void update(Observable observable, Object parametro) {
 		/*
-		 * --observable-- es el objeto que activa su notify en cada momento, por
-		 * lo que se verá en cada momento de que instancia es y se hará update
-		 * en consecuencia --parametro-- es el parámetro del tipo que queramos
-		 * que le vamos a pasar como información
+		 * --observable-- es el objeto que activa su notify en cada momento, por lo que
+		 * se verá en cada momento de que instancia es y se hará update en consecuencia
+		 * --parametro-- es el parámetro del tipo que queramos que le vamos a pasar como
+		 * información
 		 */
 		if (observable instanceof Jugador) {
 			/*
-			 * significa que ha cambiado la mano del jugador en cuestion,
-			 * entonces cambiamos las cartas de la mano del jugador en la
-			 * interfaz como es jugador parametro es una "ListaCartaAnimal"
+			 * significa que ha cambiado la mano del jugador en cuestion, entonces cambiamos
+			 * las cartas de la mano del jugador en la interfaz como es jugador parametro es
+			 * una "ListaCartaAnimal"
 			 */
 			int[] info = (int[]) parametro;
 			this.cambiarMano(info);
@@ -456,8 +590,7 @@ public class IPartida extends JFrame implements Observer {
 
 	private void cambiarMano(int[] param) {
 		/*
-		 * vamos a cambiar las cartas de la mano del jugador con el color
-		 * indicado
+		 * vamos a cambiar las cartas de la mano del jugador con el color indicado
 		 */
 		if (param[0] == 1) {
 			limpiarMano(param[0]);
@@ -510,9 +643,7 @@ public class IPartida extends JFrame implements Observer {
 		}
 	}
 
-	
-
-	public  static IPartida getIPartida() {
+	public static IPartida getIPartida() {
 		if (miPrincipal == null) {
 			miPrincipal = new IPartida();
 		}

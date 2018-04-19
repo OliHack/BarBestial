@@ -2,9 +2,19 @@ package packModelo;
 
 public class CartaAnimal {
 
-	private final EnumColor	color;
-	private int				valor;
-	private ICompAnimalada	animalada;
+	private final EnumColor color;
+	private int valor;
+	private String tipo;
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
+	private ICompAnimalada animalada;
 
 	/**
 	 *
@@ -12,9 +22,10 @@ public class CartaAnimal {
 	 * @param pValor
 	 * @param pRec
 	 */
-	public CartaAnimal(EnumColor pCol, int pValor) {
+	public CartaAnimal(EnumColor pCol, int pValor, String pTipo) {
 		color = pCol;
 		valor = pValor;
+		tipo = pTipo;
 	}
 
 	public int getValor() {
@@ -24,7 +35,7 @@ public class CartaAnimal {
 	public EnumColor getColor() {
 		return color;
 	}
-	
+
 	public void hacerAnimalada() {
 		// TODO - implement CartaAnimal.hacerAnimalada
 		throw new UnsupportedOperationException();
@@ -36,6 +47,11 @@ public class CartaAnimal {
 
 	public void setValor(int valor) {
 		this.valor = valor;
+	}
+
+	@Override
+	public String toString() {
+		return color.toString() + " " + valor + " " + tipo;
 	}
 
 }
