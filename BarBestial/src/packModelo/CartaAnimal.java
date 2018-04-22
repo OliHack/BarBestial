@@ -5,7 +5,7 @@ public class CartaAnimal {
 	private final EnumColor color;
 	private int valor;
 	private String tipo;
-
+	private boolean activada=false;
 	public String getTipo() {
 		return tipo;
 	}
@@ -52,6 +52,13 @@ public class CartaAnimal {
 	@Override
 	public String toString() {
 		return color.toString() + " " + valor + " " + tipo;
+	}
+
+	public boolean getActivada() {
+		return this.activada;
+	}
+	public void setActivada(boolean param) {
+		this.activada=param;
 	}
 
 }

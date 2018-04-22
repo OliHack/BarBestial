@@ -63,4 +63,32 @@ public class ListaCartaAnimal {
 	public ArrayList<CartaAnimal> getListaAnimales() {
 		return ListaAnimales;
 	}
+
+	public CartaAnimal getLast() {
+		CartaAnimal carta= ListaAnimales.get(ListaAnimales.size()-1);
+		return carta;
+	}
+	/**
+	 *Este método devuelve los que sean recurrentes teniendo 
+	 *en cuenta si se ha ejecutado anteriormente
+	 * 
+	 * @return
+	 */
+
+	public ArrayList<CartaAnimal> getRecurrentes() {
+		Iterator<CartaAnimal> it = ListaAnimales.iterator();
+		ArrayList<CartaAnimal> lista=new ArrayList<CartaAnimal>();
+		while(it.hasNext()) {
+			if((it.next() instanceof Recurrente)&& it.next().getActivada()==false) {
+				lista.add(it.next());
+				it.next();
+			}
+		}
+		return lista;
+	}
+
+	public boolean esta(CartaAnimal pCarta) {
+		// TODO Auto-generated method stub
+		return this.ListaAnimales.contains(pCarta);
+	}
 }

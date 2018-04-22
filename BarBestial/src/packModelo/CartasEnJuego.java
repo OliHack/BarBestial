@@ -1,12 +1,13 @@
 package packModelo;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Observable;
 
 public class CartasEnJuego extends Observable {
 
 	private static CartasEnJuego	misCartasEnJuego;
-	private ListaCartaAnimal		ListaAnimales;
+	private static ListaCartaAnimal		ListaAnimales;
 
 	public ListaCartaAnimal getListaAnimales() {
 		return ListaAnimales;
@@ -36,6 +37,16 @@ public class CartasEnJuego extends Observable {
 			return true;
 
 	}
+	/**
+	 * se ejecutará la animalada del último animal que se encuentre en 
+	 * la cola cuando se ejecute el método
+	 * @param 
+	 */
+	public void ejecutarAnimalada() {
+		CartaAnimal carta= ListaAnimales.getLast();
+		carta.hacerAnimalada();
+		this.ejecutarRec();
+	}
 
 	/**
 	 *
@@ -46,9 +57,16 @@ public class CartasEnJuego extends Observable {
 	}
 
 	public void ejecutarRec() {
-		// TODO - implement CartasEnJuego.ejecutarRec
-		throw new UnsupportedOperationException();
+		ArrayList<CartaAnimal> lista= ListaAnimales.getRecurrentes();
+		Iterator<CartaAnimal> it = lista.iterator();
+		while(it.hasNext()) {
+			if(CartasEnJuego.ListaAnimales.esta(it.next())) {
+				it.next().hacerAnimalada();
+			}
+			it.next();
+		}
 	}
+
 
 	/**
 	 * Devuelve la Ãºltima carta de la cola actual ademÃ¡s de eliminarla de la
