@@ -6,6 +6,9 @@ public class CartaAnimal {
 	private int valor;
 	private String tipo;
 	private boolean activada=false;
+	private ICompAnimalada animalada;
+	
+	
 	public String getTipo() {
 		return tipo;
 	}
@@ -14,7 +17,6 @@ public class CartaAnimal {
 		this.tipo = tipo;
 	}
 
-	private ICompAnimalada animalada;
 
 	/**
 	 *
@@ -37,6 +39,7 @@ public class CartaAnimal {
 	}
 
 	public void hacerAnimalada() {
+		animalada.animalada();
 		// TODO - implement CartaAnimal.hacerAnimalada
 		throw new UnsupportedOperationException();
 	}

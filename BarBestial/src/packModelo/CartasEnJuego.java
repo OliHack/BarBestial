@@ -52,8 +52,14 @@ public class CartasEnJuego extends Observable {
 	 *
 	 * @param pPos
 	 */
-	public void delCarta(int pPos) {
+	public CartaAnimal delCarta(int pPos) {
+		CartaAnimal animal = ListaAnimales.getListaAnimales().get(pPos);
 		ListaAnimales.getListaAnimales().remove(pPos);
+		return animal;
+	}
+	
+	public CartaAnimal getCartaDePos(int pos) {
+		return ListaAnimales.getListaAnimales().get(pos);
 	}
 
 	public void ejecutarRec() {
@@ -68,6 +74,53 @@ public class CartasEnJuego extends Observable {
 	}
 
 
+	public boolean contieneAnimal(String animal) {
+		Iterator<CartaAnimal> it = ListaAnimales.getIterator();		
+		while(it.hasNext()) {
+			CartaAnimal carta = it.next();
+			if(animal.equals(carta.getClass().toString())) {
+				return true;
+			}
+			
+		}
+		return false;
+	}
+	
+	public boolean contieneAnimalRepetido(String animal) {
+		Iterator<CartaAnimal> it = ListaAnimales.getIterator();		
+		int i=0;
+		while(it.hasNext()) {
+			CartaAnimal carta = it.next();
+			if(animal.equals(carta.getClass().toString())) {
+				i++;
+			}		
+		}
+		if (i>1) {
+			return true;
+		}
+		return false;
+	}
+	
+	public void ponerAnimalEnPos(CartaAnimal animal, int pos) {
+		ListaAnimales.getListaAnimales().add(pos, animal);
+	}
+	
+	
+	public void mandarAnimalACalle(String animal){
+		ArrayList<CartaAnimal> lista = new ArrayList<CartaAnimal>();
+		Iterator<CartaAnimal> it = ListaAnimales.getIterator();	
+		int i = 0;
+		while(it.hasNext()) {
+			CartaAnimal carta = it.next();
+			if(contieneAnimal(animal)) {
+				CartaAnimal aux = delCarta(i);
+				Calle.getCalle().addAnimal(aux);
+			}
+			i++;
+		}
+	}
+	
+	
 	/**
 	 * Devuelve la última carta de la cola actual además de eliminarla de la
 	 * misma
