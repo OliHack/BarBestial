@@ -65,18 +65,16 @@ public class ListaCartaAnimal {
 	}
 
 	public CartaAnimal getLast() {
-		CartaAnimal carta= ListaAnimales.get(ListaAnimales.size()-1);
-		return carta;
+		return ListaAnimales.get(ListaAnimales.size()-1);
 	}
 	
 	public int getLastPosition() {
 		return ListaAnimales.size()-1;
 	}
 	
-	public int 
 	
 	/**
-	 *Este método devuelve los que sean recurrentes teniendo 
+	 *Este mï¿½todo devuelve los que sean recurrentes teniendo 
 	 *en cuenta si se ha ejecutado anteriormente
 	 * 
 	 * @return

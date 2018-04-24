@@ -8,7 +8,7 @@ public class Mofeta implements ICompAnimalada {
 
 	@Override
 	public void animalada() {
-		// TODO Auto-generated method stub
+		
 
 	}
 
