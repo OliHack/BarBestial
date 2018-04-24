@@ -5,6 +5,10 @@ public class Calle {
 	private static Calle miCalle;
 	private ListaCartaAnimal ListaAnimales;
 
+	public ListaCartaAnimal getListaAnimales() {
+		return ListaAnimales;
+	}
+
 	private Calle() {
 	}
 

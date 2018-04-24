@@ -5,6 +5,10 @@ public class BarBestial {
 	private static BarBestial miBarBestial;
 	private ListaCartaAnimal ListaAnimales;
 
+	public ListaCartaAnimal getListaAnimales() {
+		return ListaAnimales;
+	}
+
 	private BarBestial() {
 	}
 

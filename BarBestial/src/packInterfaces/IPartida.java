@@ -17,6 +17,8 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import packControlador.*;
+import packModelo.BarBestial;
+import packModelo.Calle;
 import packModelo.CartasEnJuego;
 import packModelo.EnumColor;
 import packModelo.Jugador;
@@ -112,6 +114,8 @@ public class IPartida extends JFrame implements Observer {
 		// setBounds(100, 100, 676, 496);
 		setBounds(100, 100, 1041, 663);
 		contentPane = new JPanel();
+		
+		CartasEnJuego.getCartasEnJuego().addObserver(this);
 
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -617,14 +621,11 @@ public class IPartida extends JFrame implements Observer {
 		 * --parametro-- es el parámetro del tipo que queramos que le vamos a pasar como
 		 * información
 		 */
-		if (observable instanceof Jugador) {
-			/*
-			 * significa que ha cambiado la mano del jugador en cuestion, entonces cambiamos
-			 * las cartas de la mano del jugador en la interfaz como es jugador parametro es
-			 * una "ListaCartaAnimal"
-			 */
-			//int[] info = (int[]) parametro;
-			//this.cambiarMano(info);
+		if (observable instanceof CartasEnJuego) {
+			String cielo = String.format("%d Carta/s",BarBestial.getBarBestial().getListaAnimales().getListaAnimales().size());
+			String calle = String.format("%d Carta/s",Calle.getCalle().getListaAnimales().getListaAnimales().size());
+			cCielo.setText(cielo);
+			cCalle.setText(calle);
 
 		}
 

@@ -38,8 +38,8 @@ public class CartasEnJuego extends Observable {
 
 	}
 	/**
-	 * se ejecutará la animalada del último animal que se encuentre en 
-	 * la cola cuando se ejecute el método
+	 * se ejecutarï¿½ la animalada del ï¿½ltimo animal que se encuentre en 
+	 * la cola cuando se ejecute el mï¿½todo
 	 * @param 
 	 */
 	public void ejecutarAnimalada() {
@@ -99,7 +99,7 @@ public class CartasEnJuego extends Observable {
 		}
 		
 		CartasEnJuego.getCartasEnJuego().delCarta(0);
-		CartasEnJuego.getCartasEnJuego().delCarta(1);
+		CartasEnJuego.getCartasEnJuego().delCarta(0);
 		return cielo;
 
 	}
@@ -130,6 +130,8 @@ public class CartasEnJuego extends Observable {
 			}
 
 			Calle.getCalle().addAnimal(getCartaPatada());
+			setChanged();
+			notifyObservers();
 		}
 	}
 
@@ -139,5 +141,6 @@ public class CartasEnJuego extends Observable {
 		}
 		return CartasEnJuego.misCartasEnJuego;
 	}
+	
 
 }
