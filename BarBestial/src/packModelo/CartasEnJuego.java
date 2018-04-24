@@ -105,6 +105,9 @@ public class CartasEnJuego extends Observable {
 		ListaAnimales.getListaAnimales().add(pos, animal);
 	}
 	
+	public int getLastPosition() {
+		return ListaAnimales.getLastPosition();
+	}
 	
 	public void mandarAnimalACalle(String animal){
 		ArrayList<CartaAnimal> lista = new ArrayList<CartaAnimal>();
