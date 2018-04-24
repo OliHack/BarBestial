@@ -269,14 +269,14 @@ public class IPartida extends JFrame implements Observer {
 		pCalle.setBackground(Color.GRAY);
 		pCalle.setPreferredSize(new Dimension(85, 75));
 
-		JLabel cCielo = new JLabel("Cielo");
+		cCielo = new JLabel("Cielo");
 		cCielo.setPreferredSize(new Dimension(79, 110));
 		cCielo.setHorizontalAlignment(SwingConstants.CENTER);
 		pCielo.add(cCielo);
 		cCielo.setBackground(new Color(160, 82, 45));
 		cCielo.setOpaque(true);
 
-		JLabel cCalle = new JLabel("Calle");
+		cCalle = new JLabel("Calle");
 		cCalle.setPreferredSize(new Dimension(79, 110));
 		cCalle.setBackground(SystemColor.activeCaption);
 		cCalle.setOpaque(true);
@@ -342,7 +342,7 @@ public class IPartida extends JFrame implements Observer {
 	 * 
 	 * }
 	 */
-	public void actualizarCartas() {
+	public void actualizarMazos() {
 		switch (ListaJugador.getListaJugador().getJugador(EnumColor.ROJO).getMano().getListaAnimales().size()) {
 		case 1:
 			btnCarta11.setText(ListaJugador.getListaJugador().getJugador(EnumColor.ROJO).getMano().getListaAnimales()
@@ -623,66 +623,11 @@ public class IPartida extends JFrame implements Observer {
 			 * las cartas de la mano del jugador en la interfaz como es jugador parametro es
 			 * una "ListaCartaAnimal"
 			 */
-			int[] info = (int[]) parametro;
-			this.cambiarMano(info);
+			//int[] info = (int[]) parametro;
+			//this.cambiarMano(info);
 
 		}
 
-	}
-
-	private void cambiarMano(int[] param) {
-		/*
-		 * vamos a cambiar las cartas de la mano del jugador con el color indicado
-		 */
-		if (param[0] == 1) {
-			limpiarMano(param[0]);
-			carta41.setText("Nº: " + param[1]);
-			carta42.setText("Nº: " + param[2]);
-			carta43.setText("Nº: " + param[3]);
-			carta44.setText("Nº: " + param[4]);
-		} else if (param[0] == 2) {
-			limpiarMano(param[0]);
-			carta21.setText("Nº: " + param[1]);
-			carta22.setText("Nº: " + param[2]);
-			carta23.setText("Nº: " + param[3]);
-			carta24.setText("Nº: " + param[4]);
-		} else if (param[0] == 3) {
-			limpiarMano(param[0]);
-			carta31.setText("Nº: " + param[1]);
-			carta32.setText("Nº: " + param[2]);
-			carta33.setText("Nº: " + param[3]);
-			carta34.setText("Nº: " + param[4]);
-		} else if (param[0] == 4) {
-			limpiarMano(param[0]);
-			carta41.setText("Nº: " + param[1]);
-			carta42.setText("Nº: " + param[2]);
-			carta43.setText("Nº: " + param[3]);
-			carta44.setText("Nº: " + param[4]);
-		}
-	}
-
-	private void limpiarMano(int param) {
-		if (param == 1) {
-			carta11.setText("");
-			carta12.setText("");
-			carta13.setText("");
-			carta14.setText("");
-		} else if (param == 2) {
-			carta21.setText("");
-			carta22.setText("");
-			carta23.setText("");
-			carta24.setText("");
-		} else if (param == 3) {
-			carta31.setText("");
-			carta32.setText("");
-			carta33.setText("");
-			carta34.setText("");
-		} else if (param == 4) {
-			carta41.setText("");
-			carta42.setText("");
-			carta43.setText("");
-			carta44.setText("");
-		}
 	}
 
 	public static IPartida getIPartida() {

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Observable;
 
+import javax.swing.JOptionPane;
+
 public class Jugador extends Observable {
 
 	private String nombre;
@@ -63,6 +65,8 @@ public class Jugador extends Observable {
 				Partida.getPartida().cambiarTurno();
 				this.notificar();
 				return true;
+			}else {
+				JOptionPane.showMessageDialog(null, "La cola está llena, no puedes echar más cartas");
 			}
 		}
 		return false;

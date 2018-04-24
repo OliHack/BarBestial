@@ -44,6 +44,7 @@ public class ListaJugador {
 		}
 		if (comprueba) {
 			System.out.println(" Todos los jugadores se han quedado sin cartas. Fin del juego.");
+			//llamar a algun metodo que finalice el juego
 		}
 		return comprueba;
 	}

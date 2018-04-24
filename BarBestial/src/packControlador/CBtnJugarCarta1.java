@@ -4,6 +4,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import packInterfaces.IPartida;
+import packModelo.CartasEnJuego;
 import packModelo.EnumColor;
 import packModelo.ListaJugador;
 import packModelo.Partida;
@@ -25,8 +26,9 @@ public class CBtnJugarCarta1 implements MouseListener {
 		if (IPartida.getIPartida().getTurnoColor() == Partida.getPartida().getTurnoColor()
 				&& IPartida.getIPartida().getTurnoColor() == colorJBoton) {
 			if (ListaJugador.getListaJugador().getJugador(Partida.getPartida().getTurnoColor()).echarCarta(0)) {
+				CartasEnJuego.getCartasEnJuego().revisarCola();
 				IPartida.getIPartida().actualizarCola();
-				IPartida.getIPartida().actualizarCartas();
+				IPartida.getIPartida().actualizarMazos();
 				IPartida.getIPartida().cambiarTurno();
 			}
 		}
