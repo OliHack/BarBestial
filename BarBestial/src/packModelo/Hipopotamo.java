@@ -16,8 +16,8 @@ public class Hipopotamo implements Recurrente, ICompAnimalada {
 				break;
 			}	
 		}
-		CartaAnimal
-		CartasEnJuego.getCartasEnJuego().ponerAnimalEnPos(animal, pos);
+		//CartaAnimal
+		//CartasEnJuego.getCartasEnJuego().ponerAnimalEnPos(animal, pos);
 		// TODO Auto-generated method stub
 
 	}
