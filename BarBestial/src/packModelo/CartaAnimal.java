@@ -5,10 +5,14 @@ public class CartaAnimal {
 	private final EnumColor color;
 	private int valor;
 	private String tipo;
-	private boolean activada=false;
+	private boolean activada = false;
 	private ICompAnimalada animalada;
-	
-	
+	private String pathImg;
+
+	public String getPathImg() {
+		return pathImg;
+	}
+
 	public String getTipo() {
 		return tipo;
 	}
@@ -17,17 +21,18 @@ public class CartaAnimal {
 		this.tipo = tipo;
 	}
 
-
 	/**
 	 *
 	 * @param pCol
 	 * @param pValor
 	 * @param pRec
+	 * @param pPathImg
 	 */
-	public CartaAnimal(EnumColor pCol, int pValor, String pTipo) {
+	public CartaAnimal(EnumColor pCol, int pValor, String pTipo, String pPathImg) {
 		color = pCol;
 		valor = pValor;
 		tipo = pTipo;
+		pathImg = pPathImg;
 	}
 
 	public int getValor() {
@@ -64,8 +69,9 @@ public class CartaAnimal {
 	public boolean activadaRec() {
 		return this.activada;
 	}
+
 	public void setActivada(boolean param) {
-		this.activada=param;
+		this.activada = param;
 	}
 
 }

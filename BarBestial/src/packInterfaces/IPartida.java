@@ -5,10 +5,13 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.FlowLayout;
+import java.awt.Image;
 import java.awt.SystemColor;
 import java.util.Observable;
 import java.util.Observer;
 
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -21,6 +24,7 @@ import packModelo.BarBestial;
 import packModelo.Calle;
 import packModelo.CartasEnJuego;
 import packModelo.EnumColor;
+import packModelo.ListaCartaAnimal;
 import packModelo.ListaJugador;
 
 public class IPartida extends JFrame implements Observer {
@@ -107,8 +111,7 @@ public class IPartida extends JFrame implements Observer {
 	private IPartida() {
 		setTitle("Bar Bestial");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		// setBounds(100, 100, 676, 496);
-		setBounds(100, 100, 1041, 663);
+		setBounds(100, 100, 1041, 844);
 		contentPane = new JPanel();
 
 		CartasEnJuego.getCartasEnJuego().addObserver(this);
@@ -122,22 +125,22 @@ public class IPartida extends JFrame implements Observer {
 		posicion1.setForeground(Color.BLACK);
 		contentPane.add(posicion1, BorderLayout.NORTH);
 
-		btnCarta11 = new JButton("Carta 1");
+		btnCarta11 = new JButton("", new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
 		CBtnJugarCarta1 cbCarta11 = new CBtnJugarCarta1(EnumColor.ROJO);
 		btnCarta11.addMouseListener(cbCarta11);
 		posicion1.add(btnCarta11);
 
-		btnCarta12 = new JButton("Carta 2");
+		btnCarta12 = new JButton("", new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
 		CBtnJugarCarta2 cbCarta12 = new CBtnJugarCarta2(EnumColor.ROJO);
 		btnCarta12.addMouseListener(cbCarta12);
 		posicion1.add(btnCarta12);
 
-		btnCarta13 = new JButton("Carta 3");
+		btnCarta13 = new JButton("", new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
 		CBtnJugarCarta3 cbCarta13 = new CBtnJugarCarta3(EnumColor.ROJO);
 		btnCarta13.addMouseListener(cbCarta13);
 		posicion1.add(btnCarta13);
 
-		btnCarta14 = new JButton("Carta 4");
+		btnCarta14 = new JButton("", new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
 		CBtnJugarCarta4 cbCarta14 = new CBtnJugarCarta4(EnumColor.ROJO);
 		btnCarta14.addMouseListener(cbCarta14);
 		posicion1.add(btnCarta14);
@@ -151,22 +154,22 @@ public class IPartida extends JFrame implements Observer {
 		posicion3.setBackground(Color.BLUE);
 		contentPane.add(posicion3, BorderLayout.SOUTH);
 
-		btnCarta31 = new JButton("Carta 1");
+		btnCarta31 = new JButton("", new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
 		CBtnJugarCarta1 cbCarta31 = new CBtnJugarCarta1(EnumColor.AZUL);
 		btnCarta31.addMouseListener(cbCarta31);
 		posicion3.add(btnCarta31);
 
-		btnCarta32 = new JButton("Carta 2");
+		btnCarta32 = new JButton("", new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
 		CBtnJugarCarta2 cbCarta32 = new CBtnJugarCarta2(EnumColor.AZUL);
 		btnCarta32.addMouseListener(cbCarta32);
 		posicion3.add(btnCarta32);
 
-		btnCarta33 = new JButton("Carta 3");
+		btnCarta33 = new JButton("", new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
 		CBtnJugarCarta3 cbCarta33 = new CBtnJugarCarta3(EnumColor.AZUL);
 		btnCarta33.addMouseListener(cbCarta33);
 		posicion3.add(btnCarta33);
 
-		btnCarta34 = new JButton("Carta 4");
+		btnCarta34 = new JButton("", new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
 		CBtnJugarCarta4 cbCarta34 = new CBtnJugarCarta4(EnumColor.AZUL);
 		btnCarta34.addMouseListener(cbCarta34);
 		posicion3.add(btnCarta34);
@@ -182,22 +185,22 @@ public class IPartida extends JFrame implements Observer {
 		// posicion4.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		posicion4.setPreferredSize(new Dimension(85, 75));
 
-		btnCarta41 = new JButton("Carta 1");
+		btnCarta41 = new JButton("", new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
 		CBtnJugarCarta1 cbCarta41 = new CBtnJugarCarta1(EnumColor.AMARILLO);
 		btnCarta41.addMouseListener(cbCarta41);
 		posicion4.add(btnCarta41);
 
-		btnCarta42 = new JButton("Carta 2");
+		btnCarta42 = new JButton("", new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
 		CBtnJugarCarta2 cbCarta42 = new CBtnJugarCarta2(EnumColor.AMARILLO);
 		btnCarta42.addMouseListener(cbCarta42);
 		posicion4.add(btnCarta42);
 
-		btnCarta43 = new JButton("Carta 3");
+		btnCarta43 = new JButton("", new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
 		CBtnJugarCarta3 cbCarta43 = new CBtnJugarCarta3(EnumColor.AMARILLO);
 		btnCarta43.addMouseListener(cbCarta43);
 		posicion4.add(btnCarta43);
 
-		btnCarta44 = new JButton("Carta 4");
+		btnCarta44 = new JButton("", new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
 		CBtnJugarCarta4 cbCarta44 = new CBtnJugarCarta4(EnumColor.AMARILLO);
 		btnCarta44.addMouseListener(cbCarta44);
 		posicion4.add(btnCarta44);
@@ -212,22 +215,22 @@ public class IPartida extends JFrame implements Observer {
 		contentPane.add(posicion2, BorderLayout.EAST);
 		posicion2.setPreferredSize(new Dimension(85, 75));
 
-		btnCarta21 = new JButton("Carta 1");
+		btnCarta21 = new JButton("", new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
 		CBtnJugarCarta1 cbCarta21 = new CBtnJugarCarta1(EnumColor.VERDE);
 		btnCarta21.addMouseListener(cbCarta21);
 		posicion2.add(btnCarta21);
 
-		btnCarta22 = new JButton("Carta 2");
+		btnCarta22 = new JButton("", new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
 		CBtnJugarCarta2 cbCarta22 = new CBtnJugarCarta2(EnumColor.VERDE);
 		btnCarta22.addMouseListener(cbCarta22);
 		posicion2.add(btnCarta22);
 
-		btnCarta23 = new JButton("Carta 3");
+		btnCarta23 = new JButton("", new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
 		CBtnJugarCarta3 cbCarta23 = new CBtnJugarCarta3(EnumColor.VERDE);
 		btnCarta23.addMouseListener(cbCarta23);
 		posicion2.add(btnCarta23);
 
-		btnCarta24 = new JButton("Carta 4");
+		btnCarta24 = new JButton("", new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
 		CBtnJugarCarta4 cbCarta24 = new CBtnJugarCarta4(EnumColor.VERDE);
 		btnCarta24.addMouseListener(cbCarta24);
 		posicion2.add(btnCarta24);
@@ -287,35 +290,40 @@ public class IPartida extends JFrame implements Observer {
 
 		tablero.add(pCola, BorderLayout.CENTER);
 
-		cola1 = new JLabel("Carta 1");
+		cola1 = new JLabel();
+		cola1.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
 		cola1.setPreferredSize(new Dimension(120, 200));
 		cola1.setOpaque(true);
 		cola1.setForeground(Color.BLACK);
 		cola1.setBackground(new Color(255, 102, 102));
 		pCola.add(cola1);
 
-		cola2 = new JLabel("Carta 2");
+		cola2 = new JLabel();
+		cola2.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
 		cola2.setPreferredSize(new Dimension(120, 200));
 		cola2.setOpaque(true);
 		cola2.setForeground(Color.BLACK);
 		cola2.setBackground(new Color(255, 102, 102));
 		pCola.add(cola2);
 
-		cola3 = new JLabel("Carta 3");
+		cola3 = new JLabel();
+		cola3.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
 		cola3.setPreferredSize(new Dimension(120, 200));
 		cola3.setOpaque(true);
 		cola3.setForeground(Color.BLACK);
 		cola3.setBackground(new Color(255, 102, 102));
 		pCola.add(cola3);
 
-		cola4 = new JLabel("Carta 4");
+		cola4 = new JLabel();
+		cola4.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
 		cola4.setPreferredSize(new Dimension(120, 200));
 		cola4.setOpaque(true);
 		cola4.setForeground(Color.BLACK);
 		cola4.setBackground(new Color(255, 102, 102));
 		pCola.add(cola4);
 
-		cola5 = new JLabel("Carta 5");
+		cola5 = new JLabel();
+		cola5.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
 		cola5.setPreferredSize(new Dimension(120, 200));
 		cola5.setOpaque(true);
 		cola5.setForeground(Color.BLACK);
@@ -325,223 +333,268 @@ public class IPartida extends JFrame implements Observer {
 	}
 
 	public void actualizarMazos() {
-		switch (ListaJugador.getListaJugador().getJugador(EnumColor.ROJO).getMano().getListaAnimales().size()) {
+		ListaCartaAnimal rojo = ListaJugador.getListaJugador().getJugador(EnumColor.ROJO).getMano();
+		switch (rojo.size()) {
 		case 1:
-			btnCarta11.setText(ListaJugador.getListaJugador().getJugador(EnumColor.ROJO).getMano().getListaAnimales()
-					.get(0).toString());
-			btnCarta12.setText("Carta 2");
-			btnCarta13.setText("Carta 3");
-			btnCarta14.setText("Carta 4");
+			try {
+				btnCarta11.setIcon(new ImageIcon(getClass().getResource(rojo.getListaAnimales().get(0).getPathImg())));
+				btnCarta12.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
+				btnCarta13.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
+				btnCarta14.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
+			} catch (Exception ex) {
+				System.out.println(ex);
+			}
 			break;
 		case 2:
-			btnCarta11.setText(ListaJugador.getListaJugador().getJugador(EnumColor.ROJO).getMano().getListaAnimales()
-					.get(0).toString());
-			btnCarta12.setText(ListaJugador.getListaJugador().getJugador(EnumColor.ROJO).getMano().getListaAnimales()
-					.get(1).toString());
-			btnCarta13.setText("Carta 3");
-			btnCarta14.setText("Carta 4");
+			try {
+				btnCarta11.setIcon(new ImageIcon(getClass().getResource(rojo.getListaAnimales().get(0).getPathImg())));
+				btnCarta12.setIcon(new ImageIcon(getClass().getResource(rojo.getListaAnimales().get(1).getPathImg())));
+				btnCarta13.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
+				btnCarta14.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
+			} catch (Exception ex) {
+				System.out.println(ex);
+			}
 			break;
 		case 3:
-			btnCarta11.setText(ListaJugador.getListaJugador().getJugador(EnumColor.ROJO).getMano().getListaAnimales()
-					.get(0).toString());
-			btnCarta12.setText(ListaJugador.getListaJugador().getJugador(EnumColor.ROJO).getMano().getListaAnimales()
-					.get(1).toString());
-			btnCarta13.setText(ListaJugador.getListaJugador().getJugador(EnumColor.ROJO).getMano().getListaAnimales()
-					.get(2).toString());
-			btnCarta14.setText("Carta 4");
+			try {
+				btnCarta11.setIcon(new ImageIcon(getClass().getResource(rojo.getListaAnimales().get(0).getPathImg())));
+				btnCarta12.setIcon(new ImageIcon(getClass().getResource(rojo.getListaAnimales().get(1).getPathImg())));
+				btnCarta13.setIcon(new ImageIcon(getClass().getResource(rojo.getListaAnimales().get(2).getPathImg())));
+				btnCarta14.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
+			} catch (Exception ex) {
+				System.out.println(ex);
+			}
 			break;
 		case 4:
-			btnCarta11.setText(ListaJugador.getListaJugador().getJugador(EnumColor.ROJO).getMano().getListaAnimales()
-					.get(0).toString());
-			btnCarta12.setText(ListaJugador.getListaJugador().getJugador(EnumColor.ROJO).getMano().getListaAnimales()
-					.get(1).toString());
-			btnCarta13.setText(ListaJugador.getListaJugador().getJugador(EnumColor.ROJO).getMano().getListaAnimales()
-					.get(2).toString());
-			btnCarta14.setText(ListaJugador.getListaJugador().getJugador(EnumColor.ROJO).getMano().getListaAnimales()
-					.get(3).toString());
+			try {
+				btnCarta11.setIcon(new ImageIcon(getClass().getResource(rojo.getListaAnimales().get(0).getPathImg())));
+				btnCarta12.setIcon(new ImageIcon(getClass().getResource(rojo.getListaAnimales().get(1).getPathImg())));
+				btnCarta13.setIcon(new ImageIcon(getClass().getResource(rojo.getListaAnimales().get(2).getPathImg())));
+				btnCarta14.setIcon(new ImageIcon(getClass().getResource(rojo.getListaAnimales().get(3).getPathImg())));
+			} catch (Exception ex) {
+				System.out.println(ex);
+			}
 			break;
 		default:
-			btnCarta11.setText("Carta 1");
-			btnCarta12.setText("Carta 2");
-			btnCarta13.setText("Carta 3");
-			btnCarta14.setText("Carta 4");
+			try {
+				btnCarta11.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
+				btnCarta12.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
+				btnCarta13.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
+				btnCarta14.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
+			} catch (Exception ex) {
+				System.out.println(ex);
+			}
 			break;
 		}
 
-		switch (ListaJugador.getListaJugador().getJugador(EnumColor.VERDE).getMano().getListaAnimales().size()) {
+		ListaCartaAnimal verde = ListaJugador.getListaJugador().getJugador(EnumColor.VERDE).getMano();
+		switch (verde.size()) {
 		case 1:
-			btnCarta21.setText(ListaJugador.getListaJugador().getJugador(EnumColor.VERDE).getMano().getListaAnimales()
-					.get(0).toString());
-			btnCarta22.setText("Carta 2");
-			btnCarta23.setText("Carta 3");
-			btnCarta24.setText("Carta 4");
+			try {
+				btnCarta21.setIcon(new ImageIcon(getClass().getResource(verde.getListaAnimales().get(0).getPathImg())));
+				btnCarta22.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
+				btnCarta23.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
+				btnCarta24.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
+			} catch (Exception ex) {
+				System.out.println(ex);
+			}
 			break;
 		case 2:
-			btnCarta21.setText(ListaJugador.getListaJugador().getJugador(EnumColor.VERDE).getMano().getListaAnimales()
-					.get(0).toString());
-			btnCarta22.setText(ListaJugador.getListaJugador().getJugador(EnumColor.VERDE).getMano().getListaAnimales()
-					.get(1).toString());
-			btnCarta23.setText("Carta 3");
-			btnCarta24.setText("Carta 4");
+			try {
+				btnCarta21.setIcon(new ImageIcon(getClass().getResource(verde.getListaAnimales().get(0).getPathImg())));
+				btnCarta22.setIcon(new ImageIcon(getClass().getResource(verde.getListaAnimales().get(1).getPathImg())));
+				btnCarta23.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
+				btnCarta24.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
+			} catch (Exception ex) {
+				System.out.println(ex);
+			}
 			break;
 		case 3:
-			btnCarta21.setText(ListaJugador.getListaJugador().getJugador(EnumColor.VERDE).getMano().getListaAnimales()
-					.get(0).toString());
-			btnCarta22.setText(ListaJugador.getListaJugador().getJugador(EnumColor.VERDE).getMano().getListaAnimales()
-					.get(1).toString());
-			btnCarta23.setText(ListaJugador.getListaJugador().getJugador(EnumColor.VERDE).getMano().getListaAnimales()
-					.get(2).toString());
-			btnCarta24.setText("Carta 4");
+			try {
+				btnCarta21.setIcon(new ImageIcon(getClass().getResource(verde.getListaAnimales().get(0).getPathImg())));
+				btnCarta22.setIcon(new ImageIcon(getClass().getResource(verde.getListaAnimales().get(1).getPathImg())));
+				btnCarta23.setIcon(new ImageIcon(getClass().getResource(verde.getListaAnimales().get(2).getPathImg())));
+				btnCarta24.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
+			} catch (Exception ex) {
+				System.out.println(ex);
+			}
 			break;
 		case 4:
-			btnCarta21.setText(ListaJugador.getListaJugador().getJugador(EnumColor.VERDE).getMano().getListaAnimales()
-					.get(0).toString());
-			btnCarta22.setText(ListaJugador.getListaJugador().getJugador(EnumColor.VERDE).getMano().getListaAnimales()
-					.get(1).toString());
-			btnCarta23.setText(ListaJugador.getListaJugador().getJugador(EnumColor.VERDE).getMano().getListaAnimales()
-					.get(2).toString());
-			btnCarta24.setText(ListaJugador.getListaJugador().getJugador(EnumColor.VERDE).getMano().getListaAnimales()
-					.get(3).toString());
+			try {
+				btnCarta21.setIcon(new ImageIcon(getClass().getResource(verde.getListaAnimales().get(0).getPathImg())));
+				btnCarta22.setIcon(new ImageIcon(getClass().getResource(verde.getListaAnimales().get(1).getPathImg())));
+				btnCarta23.setIcon(new ImageIcon(getClass().getResource(verde.getListaAnimales().get(2).getPathImg())));
+				btnCarta24.setIcon(new ImageIcon(getClass().getResource(verde.getListaAnimales().get(3).getPathImg())));
+			} catch (Exception ex) {
+				System.out.println(ex);
+			}
 			break;
 		default:
-			btnCarta21.setText("Carta 1");
-			btnCarta22.setText("Carta 2");
-			btnCarta23.setText("Carta 3");
-			btnCarta24.setText("Carta 4");
+			try {
+				btnCarta21.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
+				btnCarta22.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
+				btnCarta23.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
+				btnCarta24.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
+			} catch (Exception ex) {
+				System.out.println(ex);
+			}
 			break;
 		}
 
-		switch (ListaJugador.getListaJugador().getJugador(EnumColor.AZUL).getMano().getListaAnimales().size()) {
+		ListaCartaAnimal azul = ListaJugador.getListaJugador().getJugador(EnumColor.AZUL).getMano();
+		switch (azul.size()) {
 		case 1:
-			btnCarta31.setText(ListaJugador.getListaJugador().getJugador(EnumColor.AZUL).getMano().getListaAnimales()
-					.get(0).toString());
-			btnCarta32.setText("Carta 2");
-			btnCarta33.setText("Carta 3");
-			btnCarta34.setText("Carta 4");
+			try {
+				btnCarta31.setIcon(new ImageIcon(getClass().getResource(azul.getListaAnimales().get(0).getPathImg())));
+				btnCarta32.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
+				btnCarta33.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
+				btnCarta34.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
+			} catch (Exception ex) {
+				System.out.println(ex);
+			}
 			break;
 		case 2:
-			btnCarta31.setText(ListaJugador.getListaJugador().getJugador(EnumColor.AZUL).getMano().getListaAnimales()
-					.get(0).toString());
-			btnCarta32.setText(ListaJugador.getListaJugador().getJugador(EnumColor.AZUL).getMano().getListaAnimales()
-					.get(1).toString());
-			btnCarta33.setText("Carta 3");
-			btnCarta34.setText("Carta 4");
+			try {
+				btnCarta31.setIcon(new ImageIcon(getClass().getResource(azul.getListaAnimales().get(0).getPathImg())));
+				btnCarta32.setIcon(new ImageIcon(getClass().getResource(azul.getListaAnimales().get(1).getPathImg())));
+				btnCarta33.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
+				btnCarta34.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
+			} catch (Exception ex) {
+				System.out.println(ex);
+			}
 			break;
 		case 3:
-			btnCarta31.setText(ListaJugador.getListaJugador().getJugador(EnumColor.AZUL).getMano().getListaAnimales()
-					.get(0).toString());
-			btnCarta32.setText(ListaJugador.getListaJugador().getJugador(EnumColor.AZUL).getMano().getListaAnimales()
-					.get(1).toString());
-			btnCarta33.setText(ListaJugador.getListaJugador().getJugador(EnumColor.AZUL).getMano().getListaAnimales()
-					.get(2).toString());
-			btnCarta34.setText("Carta 4");
+			try {
+				btnCarta31.setIcon(new ImageIcon(getClass().getResource(azul.getListaAnimales().get(0).getPathImg())));
+				btnCarta32.setIcon(new ImageIcon(getClass().getResource(azul.getListaAnimales().get(1).getPathImg())));
+				btnCarta33.setIcon(new ImageIcon(getClass().getResource(azul.getListaAnimales().get(2).getPathImg())));
+				btnCarta34.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
+			} catch (Exception ex) {
+				System.out.println(ex);
+			}
 			break;
 		case 4:
-			btnCarta31.setText(ListaJugador.getListaJugador().getJugador(EnumColor.AZUL).getMano().getListaAnimales()
-					.get(0).toString());
-			btnCarta32.setText(ListaJugador.getListaJugador().getJugador(EnumColor.AZUL).getMano().getListaAnimales()
-					.get(1).toString());
-			btnCarta33.setText(ListaJugador.getListaJugador().getJugador(EnumColor.AZUL).getMano().getListaAnimales()
-					.get(2).toString());
-			btnCarta34.setText(ListaJugador.getListaJugador().getJugador(EnumColor.AZUL).getMano().getListaAnimales()
-					.get(3).toString());
+			try {
+				btnCarta31.setIcon(new ImageIcon(getClass().getResource(azul.getListaAnimales().get(0).getPathImg())));
+				btnCarta32.setIcon(new ImageIcon(getClass().getResource(azul.getListaAnimales().get(1).getPathImg())));
+				btnCarta33.setIcon(new ImageIcon(getClass().getResource(azul.getListaAnimales().get(2).getPathImg())));
+				btnCarta34.setIcon(new ImageIcon(getClass().getResource(azul.getListaAnimales().get(3).getPathImg())));
+			} catch (Exception ex) {
+				System.out.println(ex);
+			}
 			break;
 		default:
-			btnCarta31.setText("Carta 1");
-			btnCarta32.setText("Carta 2");
-			btnCarta33.setText("Carta 3");
-			btnCarta34.setText("Carta 4");
+			try {
+				btnCarta31.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
+				btnCarta32.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
+				btnCarta33.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
+				btnCarta34.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
+			} catch (Exception ex) {
+				System.out.println(ex);
+			}
 			break;
 		}
 
-		switch (ListaJugador.getListaJugador().getJugador(EnumColor.AMARILLO).getMano().getListaAnimales().size()) {
+		ListaCartaAnimal amar = ListaJugador.getListaJugador().getJugador(EnumColor.AMARILLO).getMano();
+		switch (amar.size()) {
 		case 1:
-			btnCarta41.setText(ListaJugador.getListaJugador().getJugador(EnumColor.AMARILLO).getMano()
-					.getListaAnimales().get(0).toString());
-			btnCarta42.setText("Carta 2");
-			btnCarta43.setText("Carta 3");
-			btnCarta44.setText("Carta 4");
+			try {
+				btnCarta41.setIcon(new ImageIcon(getClass().getResource(amar.getListaAnimales().get(0).getPathImg())));
+				btnCarta42.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
+				btnCarta43.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
+				btnCarta44.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
+			} catch (Exception ex) {
+				System.out.println(ex);
+			}
 			break;
 		case 2:
-			btnCarta41.setText(ListaJugador.getListaJugador().getJugador(EnumColor.AMARILLO).getMano()
-					.getListaAnimales().get(0).toString());
-			btnCarta42.setText(ListaJugador.getListaJugador().getJugador(EnumColor.AMARILLO).getMano()
-					.getListaAnimales().get(1).toString());
-			btnCarta43.setText("Carta 3");
-			btnCarta44.setText("Carta 4");
+			try {
+				btnCarta41.setIcon(new ImageIcon(getClass().getResource(amar.getListaAnimales().get(0).getPathImg())));
+				btnCarta42.setIcon(new ImageIcon(getClass().getResource(amar.getListaAnimales().get(1).getPathImg())));
+				btnCarta43.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
+				btnCarta44.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
+			} catch (Exception ex) {
+				System.out.println(ex);
+			}
 			break;
 		case 3:
-			btnCarta41.setText(ListaJugador.getListaJugador().getJugador(EnumColor.AMARILLO).getMano()
-					.getListaAnimales().get(0).toString());
-			btnCarta42.setText(ListaJugador.getListaJugador().getJugador(EnumColor.AMARILLO).getMano()
-					.getListaAnimales().get(1).toString());
-			btnCarta43.setText(ListaJugador.getListaJugador().getJugador(EnumColor.AMARILLO).getMano()
-					.getListaAnimales().get(2).toString());
-			btnCarta44.setText("Carta 4");
+			try {
+				btnCarta41.setIcon(new ImageIcon(getClass().getResource(amar.getListaAnimales().get(0).getPathImg())));
+				btnCarta42.setIcon(new ImageIcon(getClass().getResource(amar.getListaAnimales().get(1).getPathImg())));
+				btnCarta43.setIcon(new ImageIcon(getClass().getResource(amar.getListaAnimales().get(2).getPathImg())));
+				btnCarta44.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
+			} catch (Exception ex) {
+				System.out.println(ex);
+			}
 			break;
 		case 4:
-			btnCarta41.setText(ListaJugador.getListaJugador().getJugador(EnumColor.AMARILLO).getMano()
-					.getListaAnimales().get(0).toString());
-			btnCarta42.setText(ListaJugador.getListaJugador().getJugador(EnumColor.AMARILLO).getMano()
-					.getListaAnimales().get(1).toString());
-			btnCarta43.setText(ListaJugador.getListaJugador().getJugador(EnumColor.AMARILLO).getMano()
-					.getListaAnimales().get(2).toString());
-			btnCarta44.setText(ListaJugador.getListaJugador().getJugador(EnumColor.AMARILLO).getMano()
-					.getListaAnimales().get(3).toString());
+			try {
+				btnCarta41.setIcon(new ImageIcon(getClass().getResource(amar.getListaAnimales().get(0).getPathImg())));
+				btnCarta42.setIcon(new ImageIcon(getClass().getResource(amar.getListaAnimales().get(1).getPathImg())));
+				btnCarta43.setIcon(new ImageIcon(getClass().getResource(amar.getListaAnimales().get(2).getPathImg())));
+				btnCarta44.setIcon(new ImageIcon(getClass().getResource(amar.getListaAnimales().get(3).getPathImg())));
+			} catch (Exception ex) {
+				System.out.println(ex);
+			}
 			break;
 		default:
-			btnCarta41.setText("Carta 1");
-			btnCarta42.setText("Carta 2");
-			btnCarta43.setText("Carta 3");
-			btnCarta44.setText("Carta 4");
+			try {
+				btnCarta41.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
+				btnCarta42.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
+				btnCarta43.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
+				btnCarta44.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
+			} catch (Exception ex) {
+				System.out.println(ex);
+			}
 			break;
 		}
 
 	}
 
 	public void actualizarCola() {
-		switch (CartasEnJuego.getCartasEnJuego().getListaAnimales().getListaAnimales().size()) {
+		ListaCartaAnimal cola = CartasEnJuego.getCartasEnJuego().getListaAnimales();
+		switch (cola.getListaAnimales().size()) {
 		case 1:
-			cola1.setText(CartasEnJuego.getCartasEnJuego().getListaAnimales().getListaAnimales().get(0).toString());
-			cola2.setText("Carta 2");
-			cola3.setText("Carta 3");
-			cola4.setText("Carta 4");
-			cola5.setText("Carta 5");
+			cola1.setIcon(new ImageIcon(getClass().getResource(cola.getListaAnimales().get(0).getPathImg())));
+			cola2.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
+			cola3.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
+			cola4.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
+			cola5.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
 			break;
 		case 2:
-			cola1.setText(CartasEnJuego.getCartasEnJuego().getListaAnimales().getListaAnimales().get(0).toString());
-			cola2.setText(CartasEnJuego.getCartasEnJuego().getListaAnimales().getListaAnimales().get(1).toString());
-			cola3.setText("Carta 3");
-			cola4.setText("Carta 4");
-			cola5.setText("Carta 5");
+			cola1.setIcon(new ImageIcon(getClass().getResource(cola.getListaAnimales().get(0).getPathImg())));
+			cola2.setIcon(new ImageIcon(getClass().getResource(cola.getListaAnimales().get(1).getPathImg())));
+			cola3.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
+			cola4.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
+			cola5.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
 			break;
 		case 3:
-			cola1.setText(CartasEnJuego.getCartasEnJuego().getListaAnimales().getListaAnimales().get(0).toString());
-			cola2.setText(CartasEnJuego.getCartasEnJuego().getListaAnimales().getListaAnimales().get(1).toString());
-			cola3.setText(CartasEnJuego.getCartasEnJuego().getListaAnimales().getListaAnimales().get(2).toString());
-			cola4.setText("Carta 4");
-			cola5.setText("Carta 5");
+			cola1.setIcon(new ImageIcon(getClass().getResource(cola.getListaAnimales().get(0).getPathImg())));
+			cola2.setIcon(new ImageIcon(getClass().getResource(cola.getListaAnimales().get(1).getPathImg())));
+			cola3.setIcon(new ImageIcon(getClass().getResource(cola.getListaAnimales().get(2).getPathImg())));
+			cola4.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
+			cola5.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
 			break;
 		case 4:
-			cola1.setText(CartasEnJuego.getCartasEnJuego().getListaAnimales().getListaAnimales().get(0).toString());
-			cola2.setText(CartasEnJuego.getCartasEnJuego().getListaAnimales().getListaAnimales().get(1).toString());
-			cola3.setText(CartasEnJuego.getCartasEnJuego().getListaAnimales().getListaAnimales().get(2).toString());
-			cola4.setText(CartasEnJuego.getCartasEnJuego().getListaAnimales().getListaAnimales().get(3).toString());
-			cola5.setText("Carta 5");
+			cola1.setIcon(new ImageIcon(getClass().getResource(cola.getListaAnimales().get(0).getPathImg())));
+			cola2.setIcon(new ImageIcon(getClass().getResource(cola.getListaAnimales().get(1).getPathImg())));
+			cola3.setIcon(new ImageIcon(getClass().getResource(cola.getListaAnimales().get(2).getPathImg())));
+			cola4.setIcon(new ImageIcon(getClass().getResource(cola.getListaAnimales().get(3).getPathImg())));
+			cola5.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
 			break;
 		case 5:
-			cola1.setText(CartasEnJuego.getCartasEnJuego().getListaAnimales().getListaAnimales().get(0).toString());
-			cola2.setText(CartasEnJuego.getCartasEnJuego().getListaAnimales().getListaAnimales().get(1).toString());
-			cola3.setText(CartasEnJuego.getCartasEnJuego().getListaAnimales().getListaAnimales().get(2).toString());
-			cola4.setText(CartasEnJuego.getCartasEnJuego().getListaAnimales().getListaAnimales().get(3).toString());
-			cola5.setText(CartasEnJuego.getCartasEnJuego().getListaAnimales().getListaAnimales().get(4).toString());
+			cola1.setIcon(new ImageIcon(getClass().getResource(cola.getListaAnimales().get(0).getPathImg())));
+			cola2.setIcon(new ImageIcon(getClass().getResource(cola.getListaAnimales().get(1).getPathImg())));
+			cola3.setIcon(new ImageIcon(getClass().getResource(cola.getListaAnimales().get(2).getPathImg())));
+			cola4.setIcon(new ImageIcon(getClass().getResource(cola.getListaAnimales().get(3).getPathImg())));
+			cola5.setIcon(new ImageIcon(getClass().getResource(cola.getListaAnimales().get(4).getPathImg())));
 			break;
 		default:
-			cola1.setText("Carta 1");
-			cola2.setText("Carta 2");
-			cola3.setText("Carta 3");
-			cola4.setText("Carta 4");
-			cola5.setText("Carta 5");
+			cola1.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
+			cola2.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
+			cola3.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
+			cola4.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
+			cola5.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
 			break;
 		}
 	}
@@ -577,7 +630,6 @@ public class IPartida extends JFrame implements Observer {
 	public JButton getBoton() {
 		return btnJugar;
 	}
-
 
 	@Override
 	public void update(Observable observable, Object parametro) {
