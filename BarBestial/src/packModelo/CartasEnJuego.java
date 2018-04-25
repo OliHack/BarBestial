@@ -44,8 +44,8 @@ public class CartasEnJuego extends Observable {
 	 * @param 
 	 */
 	public void ejecutarAnimalada() {
-		ListaAnimales.getLast().hacerAnimalada();;
-		this.ejecutarRec();
+		ListaAnimales.getLast().hacerAnimalada();
+		//this.ejecutarRec();
 	}
 
 	/**
