@@ -29,6 +29,10 @@ public class ListaCartaAnimal {
 	public void del(CartaAnimal pCartaAnimal) {
 		ListaAnimales.remove(pCartaAnimal);
 	}
+	
+	public int size() {
+		return ListaAnimales.size();
+	}
 
 	public void desordenar() {
 		Collections.shuffle(ListaAnimales);

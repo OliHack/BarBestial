@@ -6,36 +6,39 @@ public class Mofeta implements ICompAnimalada {
 
 	}
 
+	/**
+	 * 
+	 * La animalada de Mofeta consiste en que se obtienen los dos Valores más altos
+	 * de entre todas las cartas de la cola, para posteriormente borrar todas las
+	 * cartas que posean ese Valor.
+	 * 
+	 */
 	@Override
 	public void animalada() {
 		int max = 0;
 		int max2nd = 0;
+
+		ListaCartaAnimal cola = CartasEnJuego.getCartasEnJuego().getListaAnimales();
 		ListaCartaAnimal repelidas = new ListaCartaAnimal();
-		for (int i = 0; i < CartasEnJuego.getCartasEnJuego().getListaAnimales().getListaAnimales().size(); i++) {
-			if (CartasEnJuego.getCartasEnJuego().getListaAnimales().getListaAnimales().get(i)
-					.getAnimalada() instanceof Mofeta) {
-				// Ignorar
+		for (int i = 0; i < cola.size(); i++) {
+			if (cola.getListaAnimales().get(i).getAnimalada() instanceof Mofeta) {
+				// Se ignora porque es una carta Mofeta
 			} else {
-				if (CartasEnJuego.getCartasEnJuego().getListaAnimales().getListaAnimales().get(i).getValor() > max) {
+				if (cola.getListaAnimales().get(i).getValor() > max) {
 					max2nd = max;
-					max = CartasEnJuego.getCartasEnJuego().getListaAnimales().getListaAnimales().get(i).getValor();
-				} else if (CartasEnJuego.getCartasEnJuego().getListaAnimales().getListaAnimales().get(i)
-						.getValor() > max2nd) {
-					max2nd = CartasEnJuego.getCartasEnJuego().getListaAnimales().getListaAnimales().get(i).getValor();
+					max = cola.getListaAnimales().get(i).getValor();
+				} else if (cola.getListaAnimales().get(i).getValor() > max2nd) {
+					max2nd = cola.getListaAnimales().get(i).getValor();
 				}
 			}
 		}
-		for (int i = 0; i < CartasEnJuego.getCartasEnJuego().getListaAnimales().getListaAnimales().size(); i++) {
-			if (CartasEnJuego.getCartasEnJuego().getListaAnimales().getListaAnimales().get(i).getValor() == max
-					|| CartasEnJuego.getCartasEnJuego().getListaAnimales().getListaAnimales().get(i)
-							.getValor() == max2nd) {
-				CartaAnimal repelido = CartasEnJuego.getCartasEnJuego().getListaAnimales().getListaAnimales().get(i);
-				repelidas.add(repelido);
-				CartasEnJuego.getCartasEnJuego().getListaAnimales().del(repelido);
-				Calle.getCalle().addAnimal(repelido);
+		for (int i = 0; i < cola.size(); i++) {
+			CartaAnimal x = cola.getListaAnimales().get(i);
+			if (x.getValor() == max || x.getValor() == max2nd) {
+				repelidas.add(x);
 			}
 		}
-		for (int j = 0; j < repelidas.getListaAnimales().size(); j++) {
+		for (int j = 0; j < repelidas.size(); j++) {
 			CartasEnJuego.getCartasEnJuego().getListaAnimales().del(repelidas.getListaAnimales().get(j));
 			Calle.getCalle().addAnimal(repelidas.getListaAnimales().get(j));
 		}
