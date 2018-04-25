@@ -21,15 +21,18 @@ public class Hipopotamo implements Recurrente, ICompAnimalada {
 		// TODO Auto-generated method stub
 
 	}
-
 	@Override
-	public void ICompAnimalada() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void Recurrente() {
+	public void animalada(int i) {
+		int pos=CartasEnJuego.getCartasEnJuego().getLastPosition(), max = pos;
+		while(pos>0) {
+			pos--;
+			if(CartasEnJuego.getCartasEnJuego().getCartaDePos(pos).getValor()>=Constantes.VALOR_HIPO) {
+				max=pos;
+				break;
+			}	
+		}
+		//CartaAnimal
+		//CartasEnJuego.getCartasEnJuego().ponerAnimalEnPos(animal, pos);
 		// TODO Auto-generated method stub
 
 	}

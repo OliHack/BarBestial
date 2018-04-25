@@ -13,9 +13,10 @@ public class Foca implements ICompAnimalada {
 	}
 
 	@Override
-	public void ICompAnimalada() {
+	public void animalada(int pos) {
 		// TODO Auto-generated method stub
-
+		
 	}
+
 
 }

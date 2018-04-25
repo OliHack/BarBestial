@@ -12,10 +12,11 @@ public class Serpiente implements ICompAnimalada {
 
 	}
 
-	@Override
-	public void ICompAnimalada() {
-		// TODO Auto-generated method stub
 
+	@Override
+	public void animalada(int pos) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

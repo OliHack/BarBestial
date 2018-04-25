@@ -48,6 +48,10 @@ public class CartaAnimal {
 		animalada = pAnimalada;
 	}
 
+	public ICompAnimalada getAnimalada() {
+		return animalada;
+	}
+
 	public void setValor(int valor) {
 		this.valor = valor;
 	}

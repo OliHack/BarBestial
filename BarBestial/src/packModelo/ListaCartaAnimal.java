@@ -87,6 +87,8 @@ public class ListaCartaAnimal {
 			if((it.next() instanceof Recurrente)&& it.next().getActivada()==false) {
 				lista.add(it.next());
 				it.next();
+			}else {
+				lista.add(null);
 			}
 		}
 		return lista;

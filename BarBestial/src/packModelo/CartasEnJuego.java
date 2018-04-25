@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Observable;
 
+
 public class CartasEnJuego extends Observable {
 
 	private static CartasEnJuego	misCartasEnJuego;
