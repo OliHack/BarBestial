@@ -45,8 +45,6 @@ public class CartaAnimal {
 
 	public void hacerAnimalada() {
 		animalada.animalada();
-		// TODO - implement CartaAnimal.hacerAnimalada
-		throw new UnsupportedOperationException();
 	}
 
 	public void setICompAnimalada(ICompAnimalada pAnimalada) {

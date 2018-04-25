@@ -76,7 +76,7 @@ public class CartasEnJuego extends Observable {
 		Iterator<CartaAnimal> it = ListaAnimales.getIterator();
 		while (it.hasNext()) {
 			CartaAnimal carta = it.next();
-			if (animal.equals(carta.getClass().toString())) {
+			if (animal.equals(carta.getTipo())) {
 				return true;
 			}
 
@@ -89,7 +89,7 @@ public class CartasEnJuego extends Observable {
 		int i = 0;
 		while (it.hasNext()) {
 			CartaAnimal carta = it.next();
-			if (animal.equals(carta.getClass().toString())) {
+			if (animal.equals(carta.getTipo())) {
 				i++;
 			}
 		}
@@ -107,15 +107,14 @@ public class CartasEnJuego extends Observable {
 		return ListaAnimales.getLastPosition();
 	}
 
-	public void mandarAnimalACalle(String animal) {
-		ArrayList<CartaAnimal> lista = new ArrayList<CartaAnimal>();
-		Iterator<CartaAnimal> it = ListaAnimales.getIterator();
+	public void mandarAnimalACalle(String animal){
+		Iterator<CartaAnimal> it = ListaAnimales.getListaAnimales().iterator();
 		int i = 0;
-		while (it.hasNext()) {
+		while(it.hasNext()) {
 			CartaAnimal carta = it.next();
-			if (contieneAnimal(animal)) {
-				CartaAnimal aux = delCarta(i);
-				Calle.getCalle().addAnimal(aux);
+			if(carta.getTipo().equals(animal)) {
+				Calle.getCalle().addAnimal(carta);
+				it.remove();		
 			}
 			i++;
 		}
@@ -191,6 +190,10 @@ public class CartasEnJuego extends Observable {
 			CartasEnJuego.misCartasEnJuego = new CartasEnJuego();
 		}
 		return CartasEnJuego.misCartasEnJuego;
+	}
+	
+	public void imprimir() {
+		CartasEnJuego.getCartasEnJuego().getListaAnimales().imprimir();
 	}
 
 }

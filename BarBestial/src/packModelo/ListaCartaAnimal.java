@@ -114,6 +114,12 @@ public class ListaCartaAnimal {
 		return recurrentes;
 	}
 
+	public void imprimir() {
+		for(int i=0; i<ListaAnimales.size();i++) {
+			System.out.println(ListaAnimales.get(i).getTipo()+ListaAnimales.get(i).getColor());
+		}
+	}
+	
 	public boolean esta(CartaAnimal pCarta) {
 		// TODO Auto-generated method stub
 		return this.ListaAnimales.contains(pCarta);
