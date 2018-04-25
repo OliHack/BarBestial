@@ -61,7 +61,7 @@ public class CartaAnimal {
 		return color.toString() + " " + valor + " " + tipo;
 	}
 
-	public boolean getActivada() {
+	public boolean activadaRec() {
 		return this.activada;
 	}
 	public void setActivada(boolean param) {

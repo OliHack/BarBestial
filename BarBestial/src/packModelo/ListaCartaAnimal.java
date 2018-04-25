@@ -29,7 +29,7 @@ public class ListaCartaAnimal {
 	public void del(CartaAnimal pCartaAnimal) {
 		ListaAnimales.remove(pCartaAnimal);
 	}
-	
+
 	public int size() {
 		return ListaAnimales.size();
 	}
@@ -60,20 +60,22 @@ public class ListaCartaAnimal {
 	}
 
 	public boolean otroAnimalExcepto(String pAnimal) {
-		boolean esta=false;
+		boolean esta = false;
 		Iterator<CartaAnimal> lista = ListaAnimales.iterator();
-		while(lista.hasNext()) {
-			if(lista.next().getAnimalada() instanceof Camaleon ==false) {
-				esta=true;
+		while (lista.hasNext()) {
+			if (lista.next().getAnimalada() instanceof Camaleon == false) {
+				esta = true;
 				break;
 			}
 			lista.next();
 		}
 		return esta;
 	}
+
 	public void delLast() {
 		this.ListaAnimales.remove(getLastPosition());
 	}
+
 	public Iterator<CartaAnimal> getIterator() {
 		return ListaAnimales.iterator();
 	}
@@ -83,33 +85,33 @@ public class ListaCartaAnimal {
 	}
 
 	public CartaAnimal getLast() {
-		return ListaAnimales.get(ListaAnimales.size()-1);
+		return ListaAnimales.get(ListaAnimales.size() - 1);
 	}
-	
+
 	public int getLastPosition() {
-		return ListaAnimales.size()-1;
+		return ListaAnimales.size() - 1;
 	}
-	
-	
+
 	/**
-	 *Este m�todo devuelve los que sean recurrentes teniendo 
-	 *en cuenta si se ha ejecutado anteriormente
+	 * Este m�todo devuelve los que sean recurrentes teniendo en cuenta si se ha
+	 * ejecutado anteriormente, además de null en las posiciones donde las cartas no osn recurrentes
 	 * 
 	 * @return
 	 */
 
 	public ArrayList<CartaAnimal> getRecurrentes() {
-		Iterator<CartaAnimal> it = ListaAnimales.iterator();
-		ArrayList<CartaAnimal> lista=new ArrayList<CartaAnimal>();
-		while(it.hasNext()) {
-			if((it.next() instanceof Recurrente)&& it.next().getActivada()==false) {
-				lista.add(it.next());
-				it.next();
-			}else {
-				lista.add(null);
+		// Iterator<CartaAnimal> it = ListaAnimales.iterator();
+		ArrayList<CartaAnimal> recurrentes = new ArrayList<CartaAnimal>();
+		ListaCartaAnimal cola = CartasEnJuego.getCartasEnJuego().getListaAnimales();
+		for (int i = 0; i < cola.size(); i++) {
+			CartaAnimal x = cola.getListaAnimales().get(i);
+			if (x instanceof Recurrente && !x.activadaRec()) {
+				recurrentes.add(x);
+			} else {
+				recurrentes.addAll(null);
 			}
 		}
-		return lista;
+		return recurrentes;
 	}
 
 	public boolean esta(CartaAnimal pCarta) {

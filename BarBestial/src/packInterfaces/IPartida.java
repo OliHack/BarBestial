@@ -21,11 +21,7 @@ import packModelo.BarBestial;
 import packModelo.Calle;
 import packModelo.CartasEnJuego;
 import packModelo.EnumColor;
-import packModelo.Jugador;
 import packModelo.ListaJugador;
-import packModelo.Partida;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 public class IPartida extends JFrame implements Observer {
 	/**
@@ -87,7 +83,7 @@ public class IPartida extends JFrame implements Observer {
 	private JButton btnCarta42;
 	private JButton btnCarta43;
 	private JButton btnCarta44;
-	
+
 	private EnumColor turnoColor;
 
 	/**
@@ -96,7 +92,7 @@ public class IPartida extends JFrame implements Observer {
 	public void empezar() {
 		EventQueue.invokeLater(() -> {
 			try {
-				turnoColor= EnumColor.ROJO;
+				turnoColor = EnumColor.ROJO;
 				IPartida frame = getIPartida();
 				frame.setVisible(true);
 			} catch (Exception e) {
@@ -114,7 +110,7 @@ public class IPartida extends JFrame implements Observer {
 		// setBounds(100, 100, 676, 496);
 		setBounds(100, 100, 1041, 663);
 		contentPane = new JPanel();
-		
+
 		CartasEnJuego.getCartasEnJuego().addObserver(this);
 
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -267,7 +263,7 @@ public class IPartida extends JFrame implements Observer {
 		pCielo.setBackground(Color.GRAY);
 		// posicion4.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		pCielo.setPreferredSize(new Dimension(85, 75));
-		
+
 		JPanel pCalle = new JPanel();
 		tablero.add(pCalle, BorderLayout.EAST);
 		pCalle.setBackground(Color.GRAY);
@@ -328,24 +324,6 @@ public class IPartida extends JFrame implements Observer {
 
 	}
 
-	/*
-	 * public void echarCarta(Color pColor) { String aux = null; if (pColor ==
-	 * Color.RED) { // pCola.add(comboBox1); aux = "carta" +
-	 * comboBox1.getSelectedItem().toString().charAt(5); } else if (pColor ==
-	 * Color.GREEN) { // pCola.add(comboBox2); aux = "carta" +
-	 * comboBox2.getSelectedItem().toString().charAt(5); } else if (pColor ==
-	 * Color.BLUE) { // pCola.add(comboBox3); aux = "carta" +
-	 * comboBox3.getSelectedItem().toString().charAt(5); } else if (pColor ==
-	 * Color.YELLOW) { // pCola.add(comboBox4); aux = "carta" +
-	 * comboBox4.getSelectedItem().toString().charAt(5); }
-	 * 
-	 * if (numCartas == 0) { cola1.setText(aux); } else if (numCartas == 1) {
-	 * cola2.setText(aux); } else if (numCartas == 2) { cola3.setText(aux); } else
-	 * if (numCartas == 3) { cola4.setText(aux); } else if (numCartas == 5) {
-	 * cola5.setText(aux); }
-	 * 
-	 * }
-	 */
 	public void actualizarMazos() {
 		switch (ListaJugador.getListaJugador().getJugador(EnumColor.ROJO).getMano().getListaAnimales().size()) {
 		case 1:
@@ -567,7 +545,8 @@ public class IPartida extends JFrame implements Observer {
 			break;
 		}
 	}
-	public void cambiarTurno(){
+
+	public void cambiarTurno() {
 		switch (turnoColor) {
 		case ROJO:
 			turnoColor = EnumColor.AMARILLO;
@@ -588,7 +567,7 @@ public class IPartida extends JFrame implements Observer {
 		default:
 			break;
 		}
-		
+
 	}
 
 	public EnumColor getTurnoColor() {
@@ -599,19 +578,6 @@ public class IPartida extends JFrame implements Observer {
 		return btnJugar;
 	}
 
-	/*
-	 * public int getCartaElegida(EnumColor pColor) { Character aux = null; if
-	 * (pColor == EnumColor.ROJO) { aux =
-	 * comboBox1.getSelectedItem().toString().charAt(5); } else if (pColor ==
-	 * EnumColor.VERDE) { aux = comboBox2.getSelectedItem().toString().charAt(5); }
-	 * else if (pColor == EnumColor.AZUL) { aux =
-	 * comboBox3.getSelectedItem().toString().charAt(5); } else if (pColor ==
-	 * EnumColor.AMARILLO) { aux = comboBox4.getSelectedItem().toString().charAt(5);
-	 * } String aux2 = aux.toString(); int num = Integer.parseInt(aux2); return num;
-	 * }
-	 * 
-	 * public Color getTurno() { return lblTurno.getBackground(); }
-	 */
 
 	@Override
 	public void update(Observable observable, Object parametro) {
@@ -622,8 +588,9 @@ public class IPartida extends JFrame implements Observer {
 		 * información
 		 */
 		if (observable instanceof CartasEnJuego) {
-			String cielo = String.format("%d Carta/s",BarBestial.getBarBestial().getListaAnimales().getListaAnimales().size());
-			String calle = String.format("%d Carta/s",Calle.getCalle().getListaAnimales().getListaAnimales().size());
+			String cielo = String.format("%d Carta/s",
+					BarBestial.getBarBestial().getListaAnimales().getListaAnimales().size());
+			String calle = String.format("%d Carta/s", Calle.getCalle().getListaAnimales().getListaAnimales().size());
 			cCielo.setText(cielo);
 			cCalle.setText(calle);
 

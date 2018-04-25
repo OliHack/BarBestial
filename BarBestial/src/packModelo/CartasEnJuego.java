@@ -4,11 +4,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Observable;
 
-
 public class CartasEnJuego extends Observable {
 
-	private static CartasEnJuego	misCartasEnJuego;
-	private static ListaCartaAnimal		ListaAnimales;
+	private static CartasEnJuego misCartasEnJuego;
+	private static ListaCartaAnimal ListaAnimales;
 
 	public ListaCartaAnimal getListaAnimales() {
 		return ListaAnimales;
@@ -38,14 +37,16 @@ public class CartasEnJuego extends Observable {
 			return true;
 
 	}
+
 	/**
-	 * se ejecutar� la animalada del �ltimo animal que se encuentre en 
-	 * la cola cuando se ejecute el m�todo
-	 * @param 
+	 * se ejecutar� la animalada del �ltimo animal que se encuentre en la cola
+	 * cuando se ejecute el m�todo
+	 * 
+	 * @param
 	 */
 	public void ejecutarAnimalada() {
 		ListaAnimales.getLast().hacerAnimalada();
-		//this.ejecutarRec();
+		// this.ejecutarRec();
 	}
 
 	/**
@@ -57,76 +58,71 @@ public class CartasEnJuego extends Observable {
 		ListaAnimales.getListaAnimales().remove(pPos);
 		return animal;
 	}
-	
+
 	public CartaAnimal getCartaDePos(int pos) {
 		return ListaAnimales.getListaAnimales().get(pos);
 	}
 
 	public void ejecutarRec() {
-		ArrayList<CartaAnimal> lista= ListaAnimales.getRecurrentes();
-		Iterator<CartaAnimal> it = lista.iterator();
-		while(it.hasNext()) {
-			if(CartasEnJuego.ListaAnimales.esta(it.next())) {
-				it.next().hacerAnimalada();
+		ArrayList<CartaAnimal> lista = ListaAnimales.getRecurrentes();
+		for (int k = 0; k < lista.size(); k++) {
+			if (lista.get(k) != null) {
+				lista.get(k).hacerAnimalada();
 			}
-			it.next();
 		}
 	}
 
-
 	public boolean contieneAnimal(String animal) {
-		Iterator<CartaAnimal> it = ListaAnimales.getIterator();		
-		while(it.hasNext()) {
+		Iterator<CartaAnimal> it = ListaAnimales.getIterator();
+		while (it.hasNext()) {
 			CartaAnimal carta = it.next();
-			if(animal.equals(carta.getClass().toString())) {
+			if (animal.equals(carta.getClass().toString())) {
 				return true;
 			}
-			
+
 		}
 		return false;
 	}
-	
+
 	public boolean contieneAnimalRepetido(String animal) {
-		Iterator<CartaAnimal> it = ListaAnimales.getIterator();		
-		int i=0;
-		while(it.hasNext()) {
+		Iterator<CartaAnimal> it = ListaAnimales.getIterator();
+		int i = 0;
+		while (it.hasNext()) {
 			CartaAnimal carta = it.next();
-			if(animal.equals(carta.getClass().toString())) {
+			if (animal.equals(carta.getClass().toString())) {
 				i++;
-			}		
+			}
 		}
-		if (i>1) {
+		if (i > 1) {
 			return true;
 		}
 		return false;
 	}
-	
+
 	public void ponerAnimalEnPos(CartaAnimal animal, int pos) {
 		ListaAnimales.getListaAnimales().add(pos, animal);
 	}
-	
+
 	public int getLastPosition() {
 		return ListaAnimales.getLastPosition();
 	}
-	
-	public void mandarAnimalACalle(String animal){
+
+	public void mandarAnimalACalle(String animal) {
 		ArrayList<CartaAnimal> lista = new ArrayList<CartaAnimal>();
-		Iterator<CartaAnimal> it = ListaAnimales.getIterator();	
+		Iterator<CartaAnimal> it = ListaAnimales.getIterator();
 		int i = 0;
-		while(it.hasNext()) {
+		while (it.hasNext()) {
 			CartaAnimal carta = it.next();
-			if(contieneAnimal(animal)) {
+			if (contieneAnimal(animal)) {
 				CartaAnimal aux = delCarta(i);
 				Calle.getCalle().addAnimal(aux);
 			}
 			i++;
 		}
 	}
-	
-	
+
 	/**
-	 * Devuelve la última carta de la cola actual además de eliminarla de la
-	 * misma
+	 * Devuelve la última carta de la cola actual además de eliminarla de la misma
 	 *
 	 * @return
 	 */
@@ -142,8 +138,7 @@ public class CartasEnJuego extends Observable {
 	}
 
 	/**
-	 * Devuelve las dos primeras cartas de la cola actual, y las elimina de la
-	 * misma
+	 * Devuelve las dos primeras cartas de la cola actual, y las elimina de la misma
 	 *
 	 * @return
 	 */
@@ -153,7 +148,7 @@ public class CartasEnJuego extends Observable {
 		for (int i = 0; i < 2; i++) {
 			cielo.add(it.next());
 		}
-		
+
 		CartasEnJuego.getCartasEnJuego().delCarta(0);
 		CartasEnJuego.getCartasEnJuego().delCarta(0);
 		return cielo;
@@ -170,11 +165,11 @@ public class CartasEnJuego extends Observable {
 	public int numCartas() {
 		return ListaAnimales.getListaAnimales().size();
 	}
-	
+
 	/**
-	 * Revisa las cartas en juego (o cola) para ve si está llena, si lo está,
-	 * mueve las dos primeras cartas de la cola al Bar Bestial y la última le da
-	 * la patada.
+	 * Revisa las cartas en juego (o cola) para ve si está llena, si lo está, mueve
+	 * las dos primeras cartas de la cola al Bar Bestial y la última le da la
+	 * patada.
 	 *
 	 *
 	 */
@@ -197,6 +192,5 @@ public class CartasEnJuego extends Observable {
 		}
 		return CartasEnJuego.misCartasEnJuego;
 	}
-	
 
 }
