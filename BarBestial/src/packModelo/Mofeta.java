@@ -1,7 +1,5 @@
 package packModelo;
 
-import java.util.Iterator;
-
 public class Mofeta implements ICompAnimalada {
 
 	public Mofeta() {
@@ -31,16 +29,23 @@ public class Mofeta implements ICompAnimalada {
 			if (CartasEnJuego.getCartasEnJuego().getListaAnimales().getListaAnimales().get(i).getValor() == max
 					|| CartasEnJuego.getCartasEnJuego().getListaAnimales().getListaAnimales().get(i)
 							.getValor() == max2nd) {
-				//TODO terminar
+				CartaAnimal repelido = CartasEnJuego.getCartasEnJuego().getListaAnimales().getListaAnimales().get(i);
+				repelidas.add(repelido);
+				CartasEnJuego.getCartasEnJuego().getListaAnimales().del(repelido);
+				Calle.getCalle().addAnimal(repelido);
 			}
+		}
+		for (int j = 0; j < repelidas.getListaAnimales().size(); j++) {
+			CartasEnJuego.getCartasEnJuego().getListaAnimales().del(repelidas.getListaAnimales().get(j));
+			Calle.getCalle().addAnimal(repelidas.getListaAnimales().get(j));
 		}
 
 	}
 
 	@Override
 	public void animalada(int pos) {
-		// TODO Auto-generated method stub
-		
+		animalada();
+
 	}
 
 }
