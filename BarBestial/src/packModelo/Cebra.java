@@ -8,7 +8,8 @@ public class Cebra implements Recurrente, ICompAnimalada {
 
 	@Override
 	public void animalada() {
-		// TODO Auto-generated method stub
+		//la animalada de la cebra se tendrá en cuenta en la animalada de los hipopótamos
+				//y en la de los cocodrilos
 
 	}
 

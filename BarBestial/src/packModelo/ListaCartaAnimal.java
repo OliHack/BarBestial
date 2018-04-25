@@ -55,7 +55,21 @@ public class ListaCartaAnimal {
 		return nueva;
 	}
 
-
+	public boolean otroAnimalExcepto(String pAnimal) {
+		boolean esta=false;
+		Iterator<CartaAnimal> lista = ListaAnimales.iterator();
+		while(lista.hasNext()) {
+			if(lista.next().getAnimalada() instanceof Camaleon ==false) {
+				esta=true;
+				break;
+			}
+			lista.next();
+		}
+		return esta;
+	}
+	public void delLast() {
+		this.ListaAnimales.remove(getLastPosition());
+	}
 	public Iterator<CartaAnimal> getIterator() {
 		return ListaAnimales.iterator();
 	}
