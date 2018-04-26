@@ -27,7 +27,7 @@ public class CartasEnJuego extends Observable {
 	 * @return
 	 */
 	public boolean colaLlena() {
-		if (CartasEnJuego.ListaAnimales.getListaAnimales().size() < 5)
+		if (CartasEnJuego.ListaAnimales.getListaAnimales().size() < Constantes.NUM_CARTAS_COLA)
 			return false;
 		else
 			return true;

@@ -16,7 +16,6 @@ public class Principal {
 		pNombres[3] = "Frank";
 		Partida.getPartida().inicializarPartida(pNombres);
 		IPartida.getIPartida().empezar();
-		//IPantalla.getIPantalla().empezar();
 	}
 
 }

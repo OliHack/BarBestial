@@ -5,6 +5,8 @@ public class Constantes {
 	// Cantidad de cartas para cada jugador
 	public static final int MANO = 4;
 	public static final int MAZO = 12;
+	
+	public static final int NUM_CARTAS_COLA=5;
 
 	public static final int NUM_JUGADORES = 4;
 

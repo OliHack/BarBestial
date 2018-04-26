@@ -22,12 +22,7 @@ public class Jugador extends Observable {
 	public Jugador(String pNombre, EnumColor pCol) {
 		nombre = pNombre;
 		color = pCol;
-		/*
-		 * info = new int[5]; switch (color) { case ROJO: info[0] = 1; break; case
-		 * VERDE: info[0] = 2; break; case AZUL: info[0] = 3; break; case AMARILLO:
-		 * info[0] = 4; break; default: info[0] = 0; break; } info[1] = 0; info[2] = 0;
-		 * info[3] = 0; info[4] = 0;
-		 */
+
 		inicializarMazo();
 		inicializarMano();
 	}
@@ -112,14 +107,6 @@ public class Jugador extends Observable {
 		}
 	}
 
-	/*
-	 * private void actualizarInfo() { ArrayList<CartaAnimal> arrayCarta =
-	 * this.mano.getListaAnimales(); Iterator<CartaAnimal> it =
-	 * arrayCarta.iterator(); // this.vaciarManoObs(); int i = 1; while
-	 * (it.hasNext()) { info[i] = it.next().getValor(); it.next(); i++; if (i == 5)
-	 * { break; } } }
-	 */
-
 	private void inicializarMano() {
 		mano = new ListaCartaAnimal();
 	}
@@ -147,27 +134,4 @@ public class Jugador extends Observable {
 		mazo.desordenar();
 	}
 
-	private void vaciarManoObs() {
-		switch (color) {
-		case ROJO:
-			info[0] = 1;
-			break;
-		case VERDE:
-			info[0] = 2;
-			break;
-		case AZUL:
-			info[0] = 3;
-			break;
-		case AMARILLO:
-			info[0] = 4;
-			break;
-		default:
-			info[0] = 0;
-			break;
-		}
-		info[1] = 0;
-		info[2] = 0;
-		info[3] = 0;
-		info[4] = 0;
-	}
 }

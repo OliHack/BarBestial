@@ -44,7 +44,6 @@ public class ListaCartaAnimal {
 	}
 
 	public boolean esta(CartaAnimal pCarta) {
-		// TODO Auto-generated method stub
 		return this.ListaAnimales.contains(pCarta);
 	}
 
@@ -89,7 +88,6 @@ public class ListaCartaAnimal {
 	 */
 
 	public ArrayList<CartaAnimal> getRecurrentes() {
-		// Iterator<CartaAnimal> it = ListaAnimales.iterator();
 		ArrayList<CartaAnimal> recurrentes = new ArrayList<CartaAnimal>();
 		ListaCartaAnimal cola = CartasEnJuego.getCartasEnJuego().getListaAnimales();
 		for (int i = 0; i < cola.size(); i++) {
