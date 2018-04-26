@@ -2,24 +2,12 @@ package packModelo;
 
 public class CartaAnimal {
 
-	private final EnumColor color;
-	private int valor;
-	private String tipo;
-	private boolean activada = false;
-	private ICompAnimalada animalada;
-	private String pathImg;
-
-	public String getPathImg() {
-		return pathImg;
-	}
-
-	public String getTipo() {
-		return tipo;
-	}
-
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
-	}
+	private final EnumColor	color;
+	private int				valor;
+	private String			tipo;
+	private boolean			activada	= false;
+	private ICompAnimalada	animalada;
+	private final String	pathImg;
 
 	/**
 	 *
@@ -35,24 +23,48 @@ public class CartaAnimal {
 		pathImg = pPathImg;
 	}
 
-	public int getValor() {
-		return valor;
+	public boolean activadaRec() {
+		return this.activada;
+	}
+
+	public ICompAnimalada getAnimalada() {
+		return animalada;
 	}
 
 	public EnumColor getColor() {
 		return color;
 	}
 
+	public String getPathImg() {
+		return pathImg;
+	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public int getValor() {
+		return valor;
+	}
+
 	public void hacerAnimalada() {
 		animalada.animalada();
+	}
+
+	public void hacerAnimaladaRec(int pPos) {
+		animalada.animalada(pPos);
+	}
+
+	public void setActivada(boolean param) {
+		this.activada = param;
 	}
 
 	public void setICompAnimalada(ICompAnimalada pAnimalada) {
 		animalada = pAnimalada;
 	}
 
-	public ICompAnimalada getAnimalada() {
-		return animalada;
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 
 	public void setValor(int valor) {
@@ -62,14 +74,6 @@ public class CartaAnimal {
 	@Override
 	public String toString() {
 		return color.toString() + " " + valor + " " + tipo;
-	}
-
-	public boolean activadaRec() {
-		return this.activada;
-	}
-
-	public void setActivada(boolean param) {
-		this.activada = param;
 	}
 
 }

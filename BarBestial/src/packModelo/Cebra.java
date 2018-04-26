@@ -8,22 +8,27 @@ public class Cebra implements Recurrente, ICompAnimalada {
 
 	@Override
 	public void animalada() {
-		//la animalada de la cebra se tendrá en cuenta en la animalada de los hipopótamos
-				//y en la de los cocodrilos
-
-	}
-
-
-	@Override
-	public void recurrir() {
-		// TODO Auto-generated method stub
+		// la animalada de la cebra se tendrï¿½ en cuenta en la animalada de los
+		// hipopï¿½tamos
+		// y en la de los cocodrilos
 
 	}
 
 	@Override
 	public void animalada(int pos) {
+		System.out.println("Esta cebra no deja a un hipopÃ³tamo o a un cocodrilo hacerle nada");
+		try {
+			Thread.sleep(4000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void recurrir() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

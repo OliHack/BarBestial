@@ -30,8 +30,8 @@ public class ListaCartaAnimal {
 		ListaAnimales.remove(pCartaAnimal);
 	}
 
-	public int size() {
-		return ListaAnimales.size();
+	public void delLast() {
+		this.ListaAnimales.remove(getLastPosition());
 	}
 
 	public void desordenar() {
@@ -41,6 +41,11 @@ public class ListaCartaAnimal {
 	public void ejecutarRec() {
 		// TODO - implement ListaCartaAnimal.ejecutarRec
 		throw new UnsupportedOperationException();
+	}
+
+	public boolean esta(CartaAnimal pCarta) {
+		// TODO Auto-generated method stub
+		return this.ListaAnimales.contains(pCarta);
 	}
 
 	/**
@@ -59,6 +64,51 @@ public class ListaCartaAnimal {
 		return nueva;
 	}
 
+	public Iterator<CartaAnimal> getIterator() {
+		return ListaAnimales.iterator();
+	}
+
+	public CartaAnimal getLast() {
+		return ListaAnimales.get(ListaAnimales.size() - 1);
+	}
+
+	public int getLastPosition() {
+		return ListaAnimales.size() - 1;
+	}
+
+	public ArrayList<CartaAnimal> getListaAnimales() {
+		return ListaAnimales;
+	}
+
+	/**
+	 * Este m�todo devuelve los que sean recurrentes teniendo en cuenta si se ha
+	 * ejecutado anteriormente, además de null en las posiciones donde las
+	 * cartas no osn recurrentes
+	 *
+	 * @return
+	 */
+
+	public ArrayList<CartaAnimal> getRecurrentes() {
+		// Iterator<CartaAnimal> it = ListaAnimales.iterator();
+		ArrayList<CartaAnimal> recurrentes = new ArrayList<CartaAnimal>();
+		ListaCartaAnimal cola = CartasEnJuego.getCartasEnJuego().getListaAnimales();
+		for (int i = 0; i < cola.size(); i++) {
+			CartaAnimal x = cola.getListaAnimales().get(i);
+			if (x instanceof Recurrente && !x.activadaRec()) {
+				recurrentes.add(x);
+			} else {
+				recurrentes.add(null);
+			}
+		}
+		return recurrentes;
+	}
+
+	public void imprimir() {
+		for (int i = 0; i < ListaAnimales.size(); i++) {
+			System.out.println(ListaAnimales.get(i).getTipo() + ListaAnimales.get(i).getColor());
+		}
+	}
+
 	public boolean otroAnimalExcepto(String pAnimal) {
 		boolean esta = false;
 		Iterator<CartaAnimal> lista = ListaAnimales.iterator();
@@ -72,56 +122,7 @@ public class ListaCartaAnimal {
 		return esta;
 	}
 
-	public void delLast() {
-		this.ListaAnimales.remove(getLastPosition());
-	}
-
-	public Iterator<CartaAnimal> getIterator() {
-		return ListaAnimales.iterator();
-	}
-
-	public ArrayList<CartaAnimal> getListaAnimales() {
-		return ListaAnimales;
-	}
-
-	public CartaAnimal getLast() {
-		return ListaAnimales.get(ListaAnimales.size() - 1);
-	}
-
-	public int getLastPosition() {
-		return ListaAnimales.size() - 1;
-	}
-
-	/**
-	 * Este m�todo devuelve los que sean recurrentes teniendo en cuenta si se ha
-	 * ejecutado anteriormente, además de null en las posiciones donde las cartas no osn recurrentes
-	 * 
-	 * @return
-	 */
-
-	public ArrayList<CartaAnimal> getRecurrentes() {
-		// Iterator<CartaAnimal> it = ListaAnimales.iterator();
-		ArrayList<CartaAnimal> recurrentes = new ArrayList<CartaAnimal>();
-		ListaCartaAnimal cola = CartasEnJuego.getCartasEnJuego().getListaAnimales();
-		for (int i = 0; i < cola.size(); i++) {
-			CartaAnimal x = cola.getListaAnimales().get(i);
-			if (x instanceof Recurrente && !x.activadaRec()) {
-				recurrentes.add(x);
-			} else {
-				recurrentes.addAll(null);
-			}
-		}
-		return recurrentes;
-	}
-
-	public void imprimir() {
-		for(int i=0; i<ListaAnimales.size();i++) {
-			System.out.println(ListaAnimales.get(i).getTipo()+ListaAnimales.get(i).getColor());
-		}
-	}
-	
-	public boolean esta(CartaAnimal pCarta) {
-		// TODO Auto-generated method stub
-		return this.ListaAnimales.contains(pCarta);
+	public int size() {
+		return ListaAnimales.size();
 	}
 }

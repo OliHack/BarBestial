@@ -6,12 +6,8 @@ import java.util.Observable;
 
 public class CartasEnJuego extends Observable {
 
-	private static CartasEnJuego misCartasEnJuego;
-	private static ListaCartaAnimal ListaAnimales;
-
-	public ListaCartaAnimal getListaAnimales() {
-		return ListaAnimales;
-	}
+	private static CartasEnJuego	misCartasEnJuego;
+	private static ListaCartaAnimal	ListaAnimales;
 
 	private CartasEnJuego() {
 	}
@@ -21,71 +17,35 @@ public class CartasEnJuego extends Observable {
 	 * @param pCartaAnimal
 	 */
 	public void add(CartaAnimal pCartaAnimal) {
-		ListaAnimales.getListaAnimales().add(pCartaAnimal);
+		CartasEnJuego.ListaAnimales.getListaAnimales().add(pCartaAnimal);
 	}
 
 	/**
 	 * Devuelve un boolean indicando si la cola actual está llena (true) o no
 	 * (false)
-	 * 
+	 *
 	 * @return
 	 */
 	public boolean colaLlena() {
-		if (ListaAnimales.getListaAnimales().size() < 5)
+		if (CartasEnJuego.ListaAnimales.getListaAnimales().size() < 5)
 			return false;
 		else
 			return true;
 
 	}
 
-	/**
-	 * se ejecutar� la animalada del �ltimo animal que se encuentre en la cola
-	 * cuando se ejecute el m�todo
-	 * 
-	 * @param
-	 */
-	public void ejecutarAnimalada() {
-		ListaAnimales.getLast().hacerAnimalada();
-		// this.ejecutarRec();
-	}
-
-	/**
-	 *
-	 * @param pPos
-	 */
-	public CartaAnimal delCarta(int pPos) {
-		CartaAnimal animal = ListaAnimales.getListaAnimales().get(pPos);
-		ListaAnimales.getListaAnimales().remove(pPos);
-		return animal;
-	}
-
-	public CartaAnimal getCartaDePos(int pos) {
-		return ListaAnimales.getListaAnimales().get(pos);
-	}
-
-	public void ejecutarRec() {
-		ArrayList<CartaAnimal> lista = ListaAnimales.getRecurrentes();
-		for (int k = 0; k < lista.size(); k++) {
-			if (lista.get(k) != null) {
-				lista.get(k).hacerAnimalada();
-			}
-		}
-	}
-
 	public boolean contieneAnimal(String animal) {
-		Iterator<CartaAnimal> it = ListaAnimales.getIterator();
+		Iterator<CartaAnimal> it = CartasEnJuego.ListaAnimales.getIterator();
 		while (it.hasNext()) {
 			CartaAnimal carta = it.next();
-			if (animal.equals(carta.getTipo())) {
-				return true;
-			}
+			if (animal.equals(carta.getTipo())) return true;
 
 		}
 		return false;
 	}
 
 	public boolean contieneAnimalRepetido(String animal) {
-		Iterator<CartaAnimal> it = ListaAnimales.getIterator();
+		Iterator<CartaAnimal> it = CartasEnJuego.ListaAnimales.getIterator();
 		int i = 0;
 		while (it.hasNext()) {
 			CartaAnimal carta = it.next();
@@ -93,40 +53,52 @@ public class CartasEnJuego extends Observable {
 				i++;
 			}
 		}
-		if (i > 1) {
-			return true;
-		}
+		if (i > 1) return true;
 		return false;
 	}
 
-	public void ponerAnimalEnPos(CartaAnimal animal, int pos) {
-		ListaAnimales.getListaAnimales().add(pos, animal);
-	}
-
-	public int getLastPosition() {
-		return ListaAnimales.getLastPosition();
-	}
-
-	public void mandarAnimalACalle(String animal){
-		Iterator<CartaAnimal> it = ListaAnimales.getListaAnimales().iterator();
-		int i = 0;
-		while(it.hasNext()) {
-			CartaAnimal carta = it.next();
-			if(carta.getTipo().equals(animal)) {
-				Calle.getCalle().addAnimal(carta);
-				it.remove();		
-			}
-			i++;
-		}
+	/**
+	 *
+	 * @param pPos
+	 */
+	public CartaAnimal delCarta(int pPos) {
+		CartaAnimal animal = CartasEnJuego.ListaAnimales.getListaAnimales().get(pPos);
+		CartasEnJuego.ListaAnimales.getListaAnimales().remove(pPos);
+		return animal;
 	}
 
 	/**
-	 * Devuelve la última carta de la cola actual además de eliminarla de la misma
+	 * se ejecutar� la animalada del �ltimo animal que se encuentre en la cola
+	 * cuando se ejecute el m�todo
+	 *
+	 * @param
+	 */
+	public void ejecutarAnimalada() {
+		CartasEnJuego.ListaAnimales.getLast().hacerAnimalada();
+		// this.ejecutarRec();
+	}
+
+	public void ejecutarRec() {
+		ArrayList<CartaAnimal> lista = CartasEnJuego.ListaAnimales.getRecurrentes();
+		for (int k = 0; k < lista.size(); k++) {
+			if (lista.get(k) != null) {
+				lista.get(k).hacerAnimaladaRec(k);
+			}
+		}
+	}
+
+	public CartaAnimal getCartaDePos(int pos) {
+		return CartasEnJuego.ListaAnimales.getListaAnimales().get(pos);
+	}
+
+	/**
+	 * Devuelve la última carta de la cola actual además de eliminarla de la
+	 * misma
 	 *
 	 * @return
 	 */
 	public CartaAnimal getCartaPatada() {
-		final Iterator<CartaAnimal> itr = ListaAnimales.getIterator();
+		final Iterator<CartaAnimal> itr = CartasEnJuego.ListaAnimales.getIterator();
 		CartaAnimal last = itr.next();
 
 		while (itr.hasNext()) {
@@ -137,12 +109,13 @@ public class CartasEnJuego extends Observable {
 	}
 
 	/**
-	 * Devuelve las dos primeras cartas de la cola actual, y las elimina de la misma
+	 * Devuelve las dos primeras cartas de la cola actual, y las elimina de la
+	 * misma
 	 *
 	 * @return
 	 */
 	public ListaCartaAnimal getCartasCielo() {
-		Iterator<CartaAnimal> it = ListaAnimales.getIterator();
+		Iterator<CartaAnimal> it = CartasEnJuego.ListaAnimales.getIterator();
 		ListaCartaAnimal cielo = new ListaCartaAnimal();
 		for (int i = 0; i < 2; i++) {
 			cielo.add(it.next());
@@ -154,21 +127,48 @@ public class CartasEnJuego extends Observable {
 
 	}
 
+	public int getLastPosition() {
+		return CartasEnJuego.ListaAnimales.getLastPosition();
+	}
+
+	public ListaCartaAnimal getListaAnimales() {
+		return CartasEnJuego.ListaAnimales;
+	}
+
+	public void imprimir() {
+		CartasEnJuego.getCartasEnJuego().getListaAnimales().imprimir();
+	}
+
 	/**
 	 * Inicializa la lista de cartas (vacia)
 	 */
 	public void inicializar() {
-		ListaAnimales = new ListaCartaAnimal();
+		CartasEnJuego.ListaAnimales = new ListaCartaAnimal();
+	}
+
+	public void mandarAnimalACalle(String animal) {
+		Iterator<CartaAnimal> it = CartasEnJuego.ListaAnimales.getListaAnimales().iterator();
+		while (it.hasNext()) {
+			CartaAnimal carta = it.next();
+			if (carta.getTipo().equals(animal)) {
+				Calle.getCalle().addAnimal(carta);
+				it.remove();
+			}
+		}
 	}
 
 	public int numCartas() {
-		return ListaAnimales.getListaAnimales().size();
+		return CartasEnJuego.ListaAnimales.getListaAnimales().size();
+	}
+
+	public void ponerAnimalEnPos(CartaAnimal animal, int pos) {
+		CartasEnJuego.ListaAnimales.getListaAnimales().add(pos, animal);
 	}
 
 	/**
-	 * Revisa las cartas en juego (o cola) para ve si está llena, si lo está, mueve
-	 * las dos primeras cartas de la cola al Bar Bestial y la última le da la
-	 * patada.
+	 * Revisa las cartas en juego (o cola) para ve si está llena, si lo está,
+	 * mueve las dos primeras cartas de la cola al Bar Bestial y la última le da
+	 * la patada.
 	 *
 	 *
 	 */
@@ -190,10 +190,6 @@ public class CartasEnJuego extends Observable {
 			CartasEnJuego.misCartasEnJuego = new CartasEnJuego();
 		}
 		return CartasEnJuego.misCartasEnJuego;
-	}
-	
-	public void imprimir() {
-		CartasEnJuego.getCartasEnJuego().getListaAnimales().imprimir();
 	}
 
 }
