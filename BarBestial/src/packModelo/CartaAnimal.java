@@ -5,7 +5,7 @@ public class CartaAnimal {
 	private final EnumColor	color;
 	private int				valor;
 	private String			tipo;
-	private boolean			activada	= false;
+	private boolean			activada;
 	private ICompAnimalada	animalada;
 	private final String	pathImg;
 
@@ -21,6 +21,7 @@ public class CartaAnimal {
 		valor = pValor;
 		tipo = pTipo;
 		pathImg = pPathImg;
+		activada = false;
 	}
 
 	public boolean activadaRec() {

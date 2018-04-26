@@ -74,11 +74,13 @@ public class CartasEnJuego extends Observable {
 	 * @param
 	 */
 	public void ejecutarAnimalada() {
+		CartasEnJuego.ListaAnimales.getLast().setActivada(true);
 		CartasEnJuego.ListaAnimales.getLast().hacerAnimalada();
-		// this.ejecutarRec();
+		CartasEnJuego.getCartasEnJuego().ejecutarRec();
 	}
 
 	public void ejecutarRec() {
+		System.out.println("Ejecutando recurrencias");
 		ArrayList<CartaAnimal> lista = CartasEnJuego.ListaAnimales.getRecurrentes();
 		for (int k = 0; k < lista.size(); k++) {
 			if (lista.get(k) != null) {
