@@ -24,7 +24,7 @@ public class CBtnJugarCarta4 implements MouseListener {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		if (IPartida.getIPartida().getTurnoColor() == Partida.getPartida().getTurnoColor()
-				&& IPartida.getIPartida().getTurnoColor() == colorJBoton) {
+				&& IPartida.getIPartida().getTurnoColor() == colorJBoton && !IPartida.getIPartida().isCartaEchada()) {
 			if (ListaJugador.getListaJugador().getJugador(Partida.getPartida().getTurnoColor()).echarCarta(3)) {
 				IPartida.getIPartida().actualizarCola();
 				IPartida.getIPartida().actualizarMazos();
