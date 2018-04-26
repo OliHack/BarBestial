@@ -8,33 +8,30 @@ public class Hipopotamo implements Recurrente, ICompAnimalada {
 
 	@Override
 	public void animalada() {
-		int pos=CartasEnJuego.getCartasEnJuego().getLastPosition(), max = pos;
+		int pos=CartasEnJuego.getCartasEnJuego().getLastPosition(), max = 0;
 		while(pos>0) {
 			pos--;
-			if(CartasEnJuego.getCartasEnJuego().getCartaDePos(pos).getValor()>=Constantes.VALOR_HIPO) {
-				max=pos;
+			if(CartasEnJuego.getCartasEnJuego().getCartaDePos(pos).getValor()>=Constantes.VALOR_HIPO || CartasEnJuego.getCartasEnJuego().getCartaDePos(pos).getTipo().equals("Cebra")) {
+				max=pos+1;
 				break;
 			}	
 		}
-		//CartaAnimal
-		//CartasEnJuego.getCartasEnJuego().ponerAnimalEnPos(animal, pos);
-		// TODO Auto-generated method stub
+		CartaAnimal hipo = CartasEnJuego.getCartasEnJuego().delCarta(CartasEnJuego.getCartasEnJuego().getLastPosition());
+		CartasEnJuego.getCartasEnJuego().ponerAnimalEnPos(hipo, max);
 
 	}
 	@Override
 	public void animalada(int i) {
-		int pos=CartasEnJuego.getCartasEnJuego().getLastPosition(), max = pos;
+		int pos=i, max = pos;
 		while(pos>0) {
 			pos--;
-			if(CartasEnJuego.getCartasEnJuego().getCartaDePos(pos).getValor()>=Constantes.VALOR_HIPO) {
+			if(CartasEnJuego.getCartasEnJuego().getCartaDePos(pos).getValor()>=Constantes.VALOR_HIPO || CartasEnJuego.getCartasEnJuego().getCartaDePos(pos).getTipo().equals("Cebra")) {
 				max=pos;
 				break;
 			}	
 		}
-		//CartaAnimal
-		//CartasEnJuego.getCartasEnJuego().ponerAnimalEnPos(animal, pos);
-		// TODO Auto-generated method stub
-
+		CartaAnimal hipo = CartasEnJuego.getCartasEnJuego().delCarta(pos);
+		CartasEnJuego.getCartasEnJuego().ponerAnimalEnPos(hipo, max);
 	}
 
 	@Override

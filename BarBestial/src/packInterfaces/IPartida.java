@@ -34,7 +34,8 @@ public class IPartida extends JFrame implements Observer {
 	private static final long serialVersionUID = 1L;
 	private static IPartida miPrincipal;
 	private JPanel contentPane;
-	// inicializamos las variables del panel;
+	
+	// Componentes de la interfaz
 	private JPanel posicion1;
 	private JLabel carta11;
 	private JLabel carta12;
@@ -64,7 +65,6 @@ public class IPartida extends JFrame implements Observer {
 	private JButton btnJugar;
 	private JLabel cCielo;
 	private JLabel cCalle;
-	private final int numCartas = 0;
 	private JPanel pCola;
 	private JLabel cola1;
 	private JLabel cola2;
@@ -87,8 +87,26 @@ public class IPartida extends JFrame implements Observer {
 	private JButton btnCarta42;
 	private JButton btnCarta43;
 	private JButton btnCarta44;
+	private JButton btnEjecutarAnimaladas;
+	private JButton btnPasarElTurno;
 
+	//ciertos atributos para la gestión de estados
 	private EnumColor turnoColor;
+	private boolean cartaEchada;
+	private boolean animaladasEjecutada;
+
+	//colores personalizados para el apartado gráfico de la interfaz
+	private final static Color miAmarillo = new Color(254, 238, 57);
+	private final static Color miVerde = new Color(75, 217, 72);
+	private final static Color miRojo = new Color(253, 61, 28);
+	private final static Color miAzul = new Color(75, 89, 213);
+
+	public static IPartida getIPartida() {
+		if (miPrincipal == null) {
+			miPrincipal = new IPartida();
+		}
+		return miPrincipal;
+	}
 
 	/**
 	 * Launch the application.
@@ -97,6 +115,8 @@ public class IPartida extends JFrame implements Observer {
 		EventQueue.invokeLater(() -> {
 			try {
 				turnoColor = EnumColor.ROJO;
+				animaladasEjecutada = true;
+				cartaEchada = false;
 				IPartida frame = getIPartida();
 				frame.setVisible(true);
 			} catch (Exception e) {
@@ -121,7 +141,7 @@ public class IPartida extends JFrame implements Observer {
 		contentPane.setLayout(new BorderLayout(0, 0));
 
 		JPanel posicion1 = new JPanel();
-		posicion1.setBackground(Color.RED);
+		posicion1.setBackground(new Color(253, 61, 28));
 		posicion1.setForeground(Color.BLACK);
 		contentPane.add(posicion1, BorderLayout.NORTH);
 
@@ -151,7 +171,7 @@ public class IPartida extends JFrame implements Observer {
 		posicion1.add(btnMazo1);
 
 		JPanel posicion3 = new JPanel();
-		posicion3.setBackground(Color.BLUE);
+		posicion3.setBackground(new Color(75, 89, 213));
 		contentPane.add(posicion3, BorderLayout.SOUTH);
 
 		btnCarta31 = new JButton("", new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
@@ -180,9 +200,8 @@ public class IPartida extends JFrame implements Observer {
 		posicion3.add(btnMazo3);
 
 		JPanel posicion4 = new JPanel();
-		posicion4.setBackground(Color.YELLOW);
+		posicion4.setBackground(new Color(254, 238, 57));
 		contentPane.add(posicion4, BorderLayout.WEST);
-		// posicion4.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		posicion4.setPreferredSize(new Dimension(85, 75));
 
 		btnCarta41 = new JButton("", new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
@@ -211,7 +230,7 @@ public class IPartida extends JFrame implements Observer {
 		posicion4.add(btnMazo4);
 
 		JPanel posicion2 = new JPanel();
-		posicion2.setBackground(Color.GREEN);
+		posicion2.setBackground(new Color(75, 217, 72));
 		contentPane.add(posicion2, BorderLayout.EAST);
 		posicion2.setPreferredSize(new Dimension(85, 75));
 
@@ -251,11 +270,25 @@ public class IPartida extends JFrame implements Observer {
 		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 
 		lblTurno = new JLabel("TURNO");
-		lblTurno.setForeground(new Color(102, 102, 102));
+		lblTurno.setForeground(Color.white);
 		lblTurno.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblTurno.setBackground(Color.RED);
+		lblTurno.setBackground(miRojo);
 		lblTurno.setOpaque(true);
 		panel.add(lblTurno);
+
+		btnEjecutarAnimaladas = new JButton("Ejecutar Animaladas");
+		CBtnEjecAnim cbEjecAnim = new CBtnEjecAnim();
+		btnEjecutarAnimaladas.addMouseListener(cbEjecAnim);
+		// btnEjecutarAnimaladas.setBackground(Color.DARK_GRAY);
+		btnEjecutarAnimaladas.setEnabled(false);
+		panel.add(btnEjecutarAnimaladas);
+
+		btnPasarElTurno = new JButton("Pasar el turno");
+		CBtnPasarTurno cbPasarTurno = new CBtnPasarTurno();
+		btnPasarElTurno.addMouseListener(cbPasarTurno);
+		btnPasarElTurno.setEnabled(false);
+		// btnPasarElTurno.setBackground(Color.DARK_GRAY);
+		panel.add(btnPasarElTurno);
 
 		JPanel panelInferior = new JPanel();
 		tablero.add(panelInferior, BorderLayout.SOUTH);
@@ -603,23 +636,24 @@ public class IPartida extends JFrame implements Observer {
 		switch (turnoColor) {
 		case ROJO:
 			turnoColor = EnumColor.AMARILLO;
-			lblTurno.setBackground(Color.YELLOW);
+			lblTurno.setBackground(miAmarillo);
 			break;
 		case AZUL:
 			turnoColor = EnumColor.VERDE;
-			lblTurno.setBackground(Color.GREEN);
+			lblTurno.setBackground(miVerde);
 			break;
 		case VERDE:
 			turnoColor = EnumColor.ROJO;
-			lblTurno.setBackground(Color.RED);
+			lblTurno.setBackground(miRojo);
 			break;
 		case AMARILLO:
 			turnoColor = EnumColor.AZUL;
-			lblTurno.setBackground(Color.BLUE);
+			lblTurno.setBackground(miAzul);
 			break;
 		default:
 			break;
 		}
+		btnPasarElTurno.setEnabled(false);
 
 	}
 
@@ -650,10 +684,27 @@ public class IPartida extends JFrame implements Observer {
 
 	}
 
-	public static IPartida getIPartida() {
-		if (miPrincipal == null) {
-			miPrincipal = new IPartida();
-		}
-		return miPrincipal;
+	public boolean isAnimaladasEjecutada() {
+		return animaladasEjecutada;
 	}
+
+	public void setAnimaladasEjecutada(boolean animaladasEjecutada) {
+		this.animaladasEjecutada = animaladasEjecutada;
+		if (animaladasEjecutada) {
+			btnEjecutarAnimaladas.setEnabled(false);
+			btnPasarElTurno.setEnabled(true);
+		} else {
+			btnEjecutarAnimaladas.setEnabled(true);
+			btnPasarElTurno.setEnabled(false);
+		}
+	}
+
+	public boolean isCartaEchada() {
+		return cartaEchada;
+	}
+
+	public void setCartaEchada(boolean cartaEchada) {
+		this.cartaEchada = cartaEchada;
+	}
+
 }

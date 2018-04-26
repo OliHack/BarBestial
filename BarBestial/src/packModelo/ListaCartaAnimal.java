@@ -110,6 +110,12 @@ public class ListaCartaAnimal {
 			System.out.println(ListaAnimales.get(i).getTipo() + ListaAnimales.get(i).getColor());
 		}
 	}
+	
+	public void imprimirConValor() {
+		for(int i=0; i<ListaAnimales.size();i++) {
+			System.out.println(ListaAnimales.get(i).getTipo()+ListaAnimales.get(i).getColor()+ " --> " + ListaAnimales.get(i).getValor());
+		}
+	}
 
 	public boolean otroAnimalExcepto(String pAnimal) {
 		boolean esta = false;

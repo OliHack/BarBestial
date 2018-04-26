@@ -8,7 +8,11 @@ public class Jirafa implements Recurrente, ICompAnimalada {
 
 	@Override
 	public void animalada() {
-		// TODO Auto-generated method stub
+		int ult = CartasEnJuego.getCartasEnJuego().getLastPosition();
+		if (CartasEnJuego.getCartasEnJuego().getCartaDePos(ult).getValor() > CartasEnJuego.getCartasEnJuego().getCartaDePos(ult-1).getValor()){
+			CartaAnimal animal = CartasEnJuego.getCartasEnJuego().delCarta(ult);
+			CartasEnJuego.getCartasEnJuego().ponerAnimalEnPos(animal, ult-1);
+		}
 
 	}
 
@@ -20,9 +24,11 @@ public class Jirafa implements Recurrente, ICompAnimalada {
 	}
 
 	@Override
-	public void animalada(int pos) {
-		// TODO Auto-generated method stub
-		
+	public void animalada (int i){
+		if (CartasEnJuego.getCartasEnJuego().getCartaDePos(i).getValor() > CartasEnJuego.getCartasEnJuego().getCartaDePos(i-1).getValor()){
+			CartaAnimal animal = CartasEnJuego.getCartasEnJuego().delCarta(i);
+			CartasEnJuego.getCartasEnJuego().ponerAnimalEnPos(animal, i-1);
+		}
 	}
 
 }

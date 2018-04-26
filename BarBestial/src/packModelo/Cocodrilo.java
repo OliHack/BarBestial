@@ -8,14 +8,43 @@ public class Cocodrilo implements Recurrente, ICompAnimalada {
 
 	@Override
 	public void animalada() {
-		int pos = CartasEnJuego.getCartasEnJuego().getListaAnimales().getLastPosition();
-		this.animalada(pos);
+		int pos=CartasEnJuego.getCartasEnJuego().getLastPosition(), max = 0;
+		while(pos>0) {
+			pos--;
+			if(CartasEnJuego.getCartasEnJuego().getCartaDePos(pos).getValor()>=Constantes.VALOR_COCO || CartasEnJuego.getCartasEnJuego().getCartaDePos(pos).getTipo().equals("Cebra")) {
+				max=pos+1;
+				break;
+			}	
+			else {
+				CartaAnimal animal = CartasEnJuego.getCartasEnJuego().delCarta(pos);
+				Calle.getCalle().addAnimal(animal);
+			}
+		}
+		CartaAnimal coco = CartasEnJuego.getCartasEnJuego().delCarta(CartasEnJuego.getCartasEnJuego().getLastPosition());
+		CartasEnJuego.getCartasEnJuego().ponerAnimalEnPos(coco, max);
+
 	}
 
 	@Override
 	public void animalada(int pPos) {
 		// pPos=0,1,2,3 o 4
-		CartaAnimal cocodrilo = CartasEnJuego.getCartasEnJuego().getListaAnimales().getCarta(pPos);
+		
+		int pos=pPos, max = 0;
+		while(pos>0) {
+			pos--;
+			if(CartasEnJuego.getCartasEnJuego().getCartaDePos(pos).getValor()>=Constantes.VALOR_COCO || CartasEnJuego.getCartasEnJuego().getCartaDePos(pos).getTipo().equals("Cebra")) {
+				max=pos+1;
+				break;
+			}	
+			else {
+				CartaAnimal animal = CartasEnJuego.getCartasEnJuego().delCarta(pos);
+				Calle.getCalle().addAnimal(animal);
+			}
+		}
+		CartaAnimal coco = CartasEnJuego.getCartasEnJuego().delCarta(CartasEnJuego.getCartasEnJuego().getLastPosition());
+		CartasEnJuego.getCartasEnJuego().ponerAnimalEnPos(coco, max);
+		
+		/*CartaAnimal cocodrilo = CartasEnJuego.getCartasEnJuego().getListaAnimales().getCarta(pPos);
 		int pos = pPos - 1;
 		if (CartasEnJuego.getCartasEnJuego().numCartas() == 1 || pPos == 0) {
 			System.out.println("Cocodrilo no puede comer :(( ");
@@ -35,7 +64,7 @@ public class Cocodrilo implements Recurrente, ICompAnimalada {
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 	}
 
 	@Override
