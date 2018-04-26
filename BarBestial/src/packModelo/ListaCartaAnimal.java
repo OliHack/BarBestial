@@ -55,11 +55,14 @@ public class ListaCartaAnimal {
 	public CartaAnimal getCarta(int pValor) {
 		CartaAnimal nueva = null;
 		Iterator<CartaAnimal> lista = ListaAnimales.iterator();
-		int i = 1;
+		int i = 0;
 		while (lista.hasNext()) {
 			if (pValor == i) {
 				nueva = lista.next();
+				break;
 			}
+			i++;
+			lista.next();
 		}
 		return nueva;
 	}
@@ -87,15 +90,14 @@ public class ListaCartaAnimal {
 	 *
 	 * @return
 	 */
-
+ 
 	public ArrayList<CartaAnimal> getRecurrentes() {
-		// Iterator<CartaAnimal> it = ListaAnimales.iterator();
 		ArrayList<CartaAnimal> recurrentes = new ArrayList<CartaAnimal>();
 		ListaCartaAnimal cola = CartasEnJuego.getCartasEnJuego().getListaAnimales();
 		for (int i = 0; i < cola.size(); i++) {
-			CartaAnimal x = cola.getListaAnimales().get(i);
-			if (x instanceof Recurrente && !x.activadaRec()) {
-				recurrentes.add(x);
+			if (cola.getListaAnimales().get(i).getAnimalada() instanceof Recurrente
+					&& !cola.getListaAnimales().get(i).activadaRec()) {
+				recurrentes.add(cola.getListaAnimales().get(i));
 			} else {
 				recurrentes.add(null);
 			}
