@@ -28,16 +28,25 @@ class HU5_RealizarAnimalada {
 		 * la cola CartasEnJuego de tal forma que se vea el correcto funcionamiento de las animaladas.
 		 */
 		
-		/**Leon**/
-
-		System.out.println(" #######################################################");
-		System.out.println("#		PRUEBAS DE LEON				#");
-		System.out.println(" ####################################################### \n");
+		//Cartas que vamos a necesitar para las pruebas
 		CartaAnimal leonVerde = CartaFactory.getCartaFactory().crearCarta(EnumColor.VERDE, "Leon");
 		CartaAnimal hipoAmarillo = CartaFactory.getCartaFactory().crearCarta(EnumColor.AMARILLO, "Hipopotamo");
 		CartaAnimal cebraAzul = CartaFactory.getCartaFactory().crearCarta(EnumColor.AZUL, "Cebra");
 		CartaAnimal cocodRojo = CartaFactory.getCartaFactory().crearCarta(EnumColor.ROJO, "Cocodrilo");
+		CartaAnimal focaVerde= CartaFactory.getCartaFactory().crearCarta(EnumColor.VERDE, "Foca");
 		CartaAnimal loroVerde = CartaFactory.getCartaFactory().crearCarta(EnumColor.VERDE, "Loro");
+		CartaAnimal leonRojo = CartaFactory.getCartaFactory().crearCarta(EnumColor.ROJO, "Leon");
+		CartaAnimal monoRojo = CartaFactory.getCartaFactory().crearCarta(EnumColor.ROJO, "Mono");
+		CartaAnimal monoAmarillo = CartaFactory.getCartaFactory().crearCarta(EnumColor.AMARILLO, "Mono");
+		CartaAnimal jirafaRojo = CartaFactory.getCartaFactory().crearCarta(EnumColor.ROJO, "Jirafa");
+		CartaAnimal serpAzul= CartaFactory.getCartaFactory().crearCarta(EnumColor.AZUL, "Serpiente");
+		
+		/**Leon**/
+
+		System.out.println(" ###################################################");
+		System.out.println("#		PRUEBAS DE LEON			#");
+		System.out.println(" ################################################### \n");
+		
 		
 		//Las añadimos a CartasEnJuego
 		CartasEnJuego.getCartasEnJuego().add(hipoAmarillo);
@@ -47,7 +56,7 @@ class HU5_RealizarAnimalada {
 		CartasEnJuego.getCartasEnJuego().add(leonVerde);
 		
 		System.out.println(" -------------------------------------------------------");
-		System.out.println("-	1. CASO DE LEON(ÚNICO) Y SIN MONOS 		-");
+		System.out.println("-	1. CASO: UN LEON Y SIN MONOS 			-");
 		System.out.println(" -------------------------------------------------------\n");
 		
 		//Inicialmente el leon está en última posicion(simulando que acaba de ser echada por el jugador
@@ -66,11 +75,8 @@ class HU5_RealizarAnimalada {
 		CartasEnJuego.getCartasEnJuego().getListaAnimales().getListaAnimales().clear();
 		
 		System.out.println("\n -------------------------------------------------------");
-		System.out.println("-	2. CASO DE LEON(+ DE 1) Y SIN MONOS 		-");
-		System.out.println(" -------------------------------------------------------\n");
-		
-		//Creamos otro Leon para colocarlo en la cola
-		CartaAnimal leonRojo = CartaFactory.getCartaFactory().crearCarta(EnumColor.ROJO, "Leon");
+		System.out.println("-	2. CASO: + DE UN LEON Y SIN MONOS 		-");
+		System.out.println(" -------------------------------------------------------\n");		
 		
 		//Añadimos animales a la cola (con dos Leones)
 		CartasEnJuego.getCartasEnJuego().add(hipoAmarillo);
@@ -98,12 +104,8 @@ class HU5_RealizarAnimalada {
 		Calle.getCalle().getListaAnimales().getListaAnimales().clear();
 
 		System.out.println("\n -------------------------------------------------------");
-		System.out.println("-	3. CASO DE LEON(ÚNICO) Y CON MONOS 		-");
+		System.out.println("-	3. CASO: UN LEON Y CON MONOS 			-");
 		System.out.println(" -------------------------------------------------------\n");
-	
-		//Creamos cartas de Monos para probar este caso	
-		CartaAnimal monoRojo = CartaFactory.getCartaFactory().crearCarta(EnumColor.ROJO, "Mono");
-		CartaAnimal monoAmarillo = CartaFactory.getCartaFactory().crearCarta(EnumColor.AMARILLO, "Mono");
 
 		//Añadimos animales a la cola (con dos Monos)
 		CartasEnJuego.getCartasEnJuego().add(hipoAmarillo);
@@ -128,11 +130,316 @@ class HU5_RealizarAnimalada {
 		CartasEnJuego.getCartasEnJuego().getListaAnimales().getListaAnimales().clear();
 		Calle.getCalle().getListaAnimales().getListaAnimales().clear();
 		
+		
+		
 		/**Hipopotamo**/
 
 		System.out.println("\n #######################################################");
 		System.out.println("#		PRUEBAS DE HIPOPOTAMO			#");
 		System.out.println(" ####################################################### \n");
-	}
+	
+		//Las añadimos a CartasEnJuego
+		CartasEnJuego.getCartasEnJuego().add(monoAmarillo);
+		CartasEnJuego.getCartasEnJuego().add(monoRojo);
+		CartasEnJuego.getCartasEnJuego().add(cocodRojo);
+		CartasEnJuego.getCartasEnJuego().add(loroVerde);
+		CartasEnJuego.getCartasEnJuego().add(hipoAmarillo);
+		
+		System.out.println(" -------------------------------------------------------");
+		System.out.println("-	1. CASO : TODAS CARTAS MAS DEBILES 		-");
+		System.out.println(" -------------------------------------------------------\n");
+		
+		//En la cola todos los animales son mas debiles que el hipopotamo
+		//por lo que cuando embista se colocará primero.		
+		System.out.println(" --> El orden inicial de la cola es: \n");
+		CartasEnJuego.getCartasEnJuego().imprimir();
+		
+		//Ejecutamos la animalada
+		CartasEnJuego.getCartasEnJuego().ejecutarAnimalada();
+		
+		//Por lo que el Hipopotamo debria acabar primero
+		System.out.println("\n --> En este momento, el HipopotamoAmarillo, que realiza la animalada, debería colocarse primero al ser el animal con más fuerza: \n");
+		CartasEnJuego.getCartasEnJuego().imprimir();
+		
+		CartasEnJuego.getCartasEnJuego().getListaAnimales().getListaAnimales().clear();
+
+		
+		System.out.println("\n -------------------------------------------------------");
+		System.out.println("-	2. CASO : CARTAS + FUERTES EN LA COLA 		-");
+		System.out.println(" -------------------------------------------------------\n");
+		
+		//Las añadimos a CartasEnJuego
+		CartasEnJuego.getCartasEnJuego().add(monoAmarillo);
+		CartasEnJuego.getCartasEnJuego().add(leonVerde);
+		CartasEnJuego.getCartasEnJuego().add(cocodRojo);
+		CartasEnJuego.getCartasEnJuego().add(loroVerde);
+		CartasEnJuego.getCartasEnJuego().add(hipoAmarillo);
+	
+		//En la cola hay un animal mas fuerte que el hipopotamo
+		//por lo que cuando embista se colocará detras de este.		
+		System.out.println(" --> El orden inicial de la cola es: \n");
+		CartasEnJuego.getCartasEnJuego().imprimir();
+		
+		//Ejecutamos la animalada
+		CartasEnJuego.getCartasEnJuego().ejecutarAnimalada();
+		
+		//Por lo que el LHipopotamo deberia acabar detras del Leon
+		System.out.println("\n --> En este momento, el HipopotamoAmarillo, que realiza la animalada, debería colocarse detras del Leon, ya que este es más fuerte: \n");
+		CartasEnJuego.getCartasEnJuego().imprimir();
+			
+		CartasEnJuego.getCartasEnJuego().getListaAnimales().getListaAnimales().clear();
+	
+		System.out.println("\n -------------------------------------------------------");
+		System.out.println("-	3. CASO : CEBRA EN LA COLA 			-");
+		System.out.println(" -------------------------------------------------------\n");
+		
+		//Las añadimos a CartasEnJuego
+		CartasEnJuego.getCartasEnJuego().add(monoAmarillo);
+		CartasEnJuego.getCartasEnJuego().add(leonVerde);
+		CartasEnJuego.getCartasEnJuego().add(cebraAzul);
+		CartasEnJuego.getCartasEnJuego().add(loroVerde);
+		CartasEnJuego.getCartasEnJuego().add(hipoAmarillo);
+	
+		//En la cola hay un animal mas fuerte que el hipopotamo
+		//y una cebra(posicion 3) por lo que se colocara detras de la cebra.		
+		System.out.println(" --> El orden inicial de la cola es: \n");
+		CartasEnJuego.getCartasEnJuego().imprimir();
+		
+		//Ejecutamos la animalada
+		CartasEnJuego.getCartasEnJuego().ejecutarAnimalada();
+		
+		//Por lo que el Hipopotamo derberia acabar detras de la Cebra
+		System.out.println("\n --> En este momento, el HipopotamoAmarillo, que realiza la animalada, debería colocarse detras de la Cebra, en cuarta posición: \n");
+		CartasEnJuego.getCartasEnJuego().imprimir();
+			
+		CartasEnJuego.getCartasEnJuego().getListaAnimales().getListaAnimales().clear();
+		
+		
+		
+		/**Cocodrilo**/
+
+		System.out.println("\n ###################################################");
+		System.out.println("#		PRUEBAS DE COCODRILO		#");
+		System.out.println(" ################################################### \n");
+		
+		//Las añadimos a CartasEnJuego
+		CartasEnJuego.getCartasEnJuego().add(monoAmarillo);
+		CartasEnJuego.getCartasEnJuego().add(monoRojo);
+		CartasEnJuego.getCartasEnJuego().add(loroVerde);
+		CartasEnJuego.getCartasEnJuego().add(jirafaRojo);
+		CartasEnJuego.getCartasEnJuego().add(cocodRojo);
+		
+		System.out.println(" -------------------------------------------------------");
+		System.out.println("-	1. CASO : TODAS CARTAS MAS DEBILES POR DELANTE	-");
+		System.out.println(" -------------------------------------------------------\n");
+				
+		//En la cola todos los animales por delante son mas debiles que el cocodrilo
+		//por lo que cuando haga la animalada se colocará primero.		
+		System.out.println(" --> El orden inicial de la cola es: \n");
+		CartasEnJuego.getCartasEnJuego().imprimir();
+		
+		//Ejecutamos la animalada
+		CartasEnJuego.getCartasEnJuego().ejecutarAnimalada();
+				
+		//Por lo que el Cocodrilo debería de acabar primero
+		System.out.println("\n --> En este momento, el CocodriloRojo, que realiza la animalada, debería colocarse primero, ya que todos los de delante son más débiles: \n");
+		CartasEnJuego.getCartasEnJuego().imprimir();
+		
+		System.out.println("\n --> Y vemos que los animales que el Cocodrilo se ha 'comido' estan en la Calle: \n");
+		Calle.getCalle().getListaAnimales().imprimir();
+		
+		CartasEnJuego.getCartasEnJuego().getListaAnimales().getListaAnimales().clear();
+		Calle.getCalle().getListaAnimales().getListaAnimales().clear();
+		
+		System.out.println(" -------------------------------------------------------");
+		System.out.println("-	2. CASO : CARTAS MAS FUERTES POR DELANTE	-");
+		System.out.println(" -------------------------------------------------------\n");
+		
+		//Las añadimos a CartasEnJuego
+		CartasEnJuego.getCartasEnJuego().add(monoAmarillo);
+		CartasEnJuego.getCartasEnJuego().add(hipoAmarillo);
+		CartasEnJuego.getCartasEnJuego().add(loroVerde);
+		CartasEnJuego.getCartasEnJuego().add(jirafaRojo);
+		CartasEnJuego.getCartasEnJuego().add(cocodRojo);
+		
+		
+		//En la cola hay animales por delante que son mas fuertes que el cocodrilo
+		//por lo que cuando haga la animalada se colocará detras de un animal mas fuerte que él.		
+		System.out.println(" --> El orden inicial de la cola es: \n");
+		CartasEnJuego.getCartasEnJuego().imprimir();
+		
+		//Ejecutamos la animalada
+		CartasEnJuego.getCartasEnJuego().ejecutarAnimalada();
+				
+		//Por lo que el Cocodrilo debería de acabar detras del hipoAmarillo
+		System.out.println("\n --> En este momento, el CocodriloRojo, que realiza la animalada, debería colocarse detras del HipopotanoAmarillo, ya que es más fuerte que él: \n");
+		CartasEnJuego.getCartasEnJuego().imprimir();
+		
+		System.out.println("\n --> Y vemos que los animales que el Cocodrilo se ha 'comido' antes de llegar a su posición estan en la Calle: \n");
+		Calle.getCalle().getListaAnimales().imprimir();
+		
+		CartasEnJuego.getCartasEnJuego().getListaAnimales().getListaAnimales().clear();
+		Calle.getCalle().getListaAnimales().getListaAnimales().clear();
+	
+		System.out.println("\n -------------------------------------------------------");
+		System.out.println("-	3. CASO : CEBRA EN LA COLA 			-");
+		System.out.println(" -------------------------------------------------------\n");
+		
+		//Las añadimos a CartasEnJuego
+		CartasEnJuego.getCartasEnJuego().add(leonVerde);
+		CartasEnJuego.getCartasEnJuego().add(cebraAzul);
+		CartasEnJuego.getCartasEnJuego().add(monoAmarillo);
+		CartasEnJuego.getCartasEnJuego().add(loroVerde);
+		CartasEnJuego.getCartasEnJuego().add(cocodRojo);
+	
+		//En la cola hay un animal mas fuerte que el cocodrilo
+		//y una cebra(posicion 3) por lo que se colocara detras de la cebra.		
+		System.out.println(" --> El orden inicial de la cola es: \n");
+		CartasEnJuego.getCartasEnJuego().imprimir();
+		
+		//Ejecutamos la animalada
+		CartasEnJuego.getCartasEnJuego().ejecutarAnimalada();
+		
+		//Por lo que el Cocodrilo debría acabar detrás de la cebra
+		System.out.println("\n --> En este momento, el CocodriloRojo, que realiza la animalada, debería colocarse detras de la Cebra, en tercera posición: \n");
+		CartasEnJuego.getCartasEnJuego().imprimir();
+		
+		System.out.println("\n --> Y vemos que los animales que el Cocodrilo se ha 'comido' antes de llegar a su posición estan en la Calle: \n");
+		Calle.getCalle().getListaAnimales().imprimir();
+			
+		CartasEnJuego.getCartasEnJuego().getListaAnimales().getListaAnimales().clear();
+		Calle.getCalle().getListaAnimales().getListaAnimales().clear();
+		
+		
+		
+		/**Serpiente**/
+
+		System.out.println("\n ###################################################");
+		System.out.println("#		PRUEBAS DE SERPIENTE		#");
+		System.out.println(" ################################################### \n");
+		
+		//Las añadimos a CartasEnJuego
+		CartasEnJuego.getCartasEnJuego().add(monoAmarillo);
+		CartasEnJuego.getCartasEnJuego().add(monoRojo);
+		CartasEnJuego.getCartasEnJuego().add(loroVerde);
+		CartasEnJuego.getCartasEnJuego().add(jirafaRojo);
+		CartasEnJuego.getCartasEnJuego().add(serpAzul);
+		
+		System.out.println(" -------------------------------------------------------");
+		System.out.println("-	1. CASO : ORDENAR TODAS LAS CARTAS		-");
+		System.out.println(" -------------------------------------------------------\n");
+		
+		//La cola se ordena de mayor a menor 		
+		System.out.println(" --> El orden inicial de la cola es: \n");
+		CartasEnJuego.getCartasEnJuego().imprimirConValor();
+			
+		//Ejecutamos la animalada
+		CartasEnJuego.getCartasEnJuego().ejecutarAnimalada();
+		
+		//Por lo que la cola ahora estaría ordenada
+		System.out.println("\n --> En este momento,la cola deberá haberse ordenado de mayor a menor: \n");
+		CartasEnJuego.getCartasEnJuego().imprimirConValor();
+					
+		CartasEnJuego.getCartasEnJuego().getListaAnimales().getListaAnimales().clear();
+		
+		
+		
+		/**Jirafa**/
+
+		System.out.println("\n ###################################################");
+		System.out.println("#		PRUEBAS DE JIRAFA		#");
+		System.out.println(" ################################################### \n");
+		
+		//Las añadimos a CartasEnJuego
+		CartasEnJuego.getCartasEnJuego().add(monoAmarillo);
+		CartasEnJuego.getCartasEnJuego().add(monoRojo);
+		CartasEnJuego.getCartasEnJuego().add(serpAzul);
+		CartasEnJuego.getCartasEnJuego().add(loroVerde);
+		CartasEnJuego.getCartasEnJuego().add(jirafaRojo);
+		
+		System.out.println(" -------------------------------------------------------");
+		System.out.println("-	1. CASO : ANIMAL + DEBIL DELANTE 		-");
+		System.out.println(" -------------------------------------------------------\n");
+		
+		//En la cola hay un animal más débil inmediatamente delante	
+		System.out.println(" --> El orden inicial de la cola es: \n");
+		CartasEnJuego.getCartasEnJuego().imprimir();
+				
+		//Ejecutamos la animalada
+		CartasEnJuego.getCartasEnJuego().ejecutarAnimalada();
+				
+		//Por lo que el Cocodrilo debría acabar detrás de la cebra
+		System.out.println("\n --> En este momento, la JirafaRojo, que realiza la animalada, debería colocarse por delante del Loro ya que es un animal más débil: \n");
+		CartasEnJuego.getCartasEnJuego().imprimir();
+		
+		CartasEnJuego.getCartasEnJuego().getListaAnimales().getListaAnimales().clear();
+		
+		System.out.println("\n -------------------------------------------------------");
+		System.out.println("-	2. CASO : ANIMAL + FUERTE DELANTE 			-");
+		System.out.println(" -------------------------------------------------------\n");
+		
+		//Las añadimos a CartasEnJuego
+		CartasEnJuego.getCartasEnJuego().add(monoAmarillo);
+		CartasEnJuego.getCartasEnJuego().add(loroVerde);
+		CartasEnJuego.getCartasEnJuego().add(monoRojo);
+		CartasEnJuego.getCartasEnJuego().add(serpAzul);
+		CartasEnJuego.getCartasEnJuego().add(jirafaRojo);
+				
+		//En la cola hay un animal más débil inmediatamente delante	
+		System.out.println(" --> El orden inicial de la cola es: \n");
+		CartasEnJuego.getCartasEnJuego().imprimir();
+				
+		//Ejecutamos la animalada
+		CartasEnJuego.getCartasEnJuego().ejecutarAnimalada();
+				
+		//Por lo que el Cocodrilo debría acabar detrás de la cebra
+		System.out.println("\n --> En este momento, la JirafaRojo, que realiza la animalada, debería deberia de quedarse donde está ya que la Serpiente es un animal más fuerte: \n");
+		CartasEnJuego.getCartasEnJuego().imprimir();
+		
+		CartasEnJuego.getCartasEnJuego().getListaAnimales().getListaAnimales().clear();
+
+		
+		
+		/**Cebra**/
+
+		System.out.println("\n ###################################################");
+		System.out.println("#		PRUEBAS DE CEBRA		#");
+		System.out.println(" ################################################### \n");
+		
+		System.out.println(" --> La Cebra no tiene más animalada que no ser adelantadas por el Hipopotamo ni por el Cocodrilo.");
+	
+	
+		
+		
+		/**Foca**/
+
+		System.out.println("\n ###################################################");
+		System.out.println("#		PRUEBAS DE FOCA			#");
+		System.out.println(" ################################################### \n");
+		
+		//Las añadimos a CartasEnJuego
+		CartasEnJuego.getCartasEnJuego().add(monoAmarillo);
+		CartasEnJuego.getCartasEnJuego().add(leonRojo);
+		CartasEnJuego.getCartasEnJuego().add(serpAzul);
+		CartasEnJuego.getCartasEnJuego().add(hipoAmarillo);
+		CartasEnJuego.getCartasEnJuego().add(focaVerde);
+				
+		System.out.println(" -------------------------------------------------------");
+		System.out.println("-	1. CASO : ORDEN INVERSO DE LA COLA 		-");
+		System.out.println(" -------------------------------------------------------\n");
+					
+		System.out.println(" --> El orden inicial de la cola es: \n");
+		CartasEnJuego.getCartasEnJuego().imprimir();
+						
+		//Ejecutamos la animalada
+		CartasEnJuego.getCartasEnJuego().ejecutarAnimalada();
+						
+		//La foca invierte el orden de la cola
+		System.out.println("\n --> En este momento, la FocaVerde, que realiza la animalada, habrá invertido el sentido de la cola: \n");
+		CartasEnJuego.getCartasEnJuego().imprimir();
+				
+		CartasEnJuego.getCartasEnJuego().getListaAnimales().getListaAnimales().clear();
+		
+		}
 
 }

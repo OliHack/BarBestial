@@ -139,6 +139,10 @@ public class CartasEnJuego extends Observable {
 		CartasEnJuego.getCartasEnJuego().getListaAnimales().imprimir();
 	}
 
+	public void imprimirConValor() {
+		CartasEnJuego.getCartasEnJuego().getListaAnimales().imprimirConValor();
+	}
+	
 	/**
 	 * Inicializa la lista de cartas (vacia)
 	 */

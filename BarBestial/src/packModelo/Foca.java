@@ -1,5 +1,7 @@
 package packModelo;
 
+import java.util.*;
+
 public class Foca implements ICompAnimalada {
 
 	public Foca() {
@@ -8,8 +10,7 @@ public class Foca implements ICompAnimalada {
 
 	@Override
 	public void animalada() {
-		// TODO Auto-generated method stub
-
+		Collections.reverse(CartasEnJuego.getCartasEnJuego().getListaAnimales().getListaAnimales());
 	}
 
 	@Override
