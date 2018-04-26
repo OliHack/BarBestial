@@ -1,7 +1,5 @@
 package packModelo;
 
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Observable;
 
 import javax.swing.JOptionPane;
@@ -62,7 +60,6 @@ public class Jugador extends Observable {
 				CartasEnJuego.getCartasEnJuego().add(pCartaAnimal);
 				this.mano.del(pCartaAnimal);
 				ListaJugador.getListaJugador().comprobarCartas();
-				Partida.getPartida().cambiarTurno();
 				this.notificar();
 				return true;
 			}else {
@@ -110,6 +107,8 @@ public class Jugador extends Observable {
 				mazo.del(miCarta);
 				addMano(miCarta);
 			}
+		}else {
+			JOptionPane.showMessageDialog(null, "¡No tienes más cartas!");
 		}
 	}
 

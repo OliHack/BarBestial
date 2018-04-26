@@ -87,8 +87,19 @@ public class IPartida extends JFrame implements Observer {
 	private JButton btnCarta42;
 	private JButton btnCarta43;
 	private JButton btnCarta44;
+	private JButton btnEjecutarAnimaladas;
 
 	private EnumColor turnoColor;
+	private boolean cartaEchada;
+	private boolean animaladasEjecutada;
+	private JButton btnPasarElTurno;
+
+	public static IPartida getIPartida() {
+		if (miPrincipal == null) {
+			miPrincipal = new IPartida();
+		}
+		return miPrincipal;
+	}
 
 	/**
 	 * Launch the application.
@@ -97,6 +108,8 @@ public class IPartida extends JFrame implements Observer {
 		EventQueue.invokeLater(() -> {
 			try {
 				turnoColor = EnumColor.ROJO;
+				animaladasEjecutada = true;
+				cartaEchada = false;
 				IPartida frame = getIPartida();
 				frame.setVisible(true);
 			} catch (Exception e) {
@@ -256,6 +269,20 @@ public class IPartida extends JFrame implements Observer {
 		lblTurno.setBackground(Color.RED);
 		lblTurno.setOpaque(true);
 		panel.add(lblTurno);
+
+		btnEjecutarAnimaladas = new JButton("Ejecutar Animaladas");
+		CBtnEjecAnim cbEjecAnim = new CBtnEjecAnim();
+		btnEjecutarAnimaladas.addMouseListener(cbEjecAnim);
+		//btnEjecutarAnimaladas.setBackground(Color.DARK_GRAY);
+		btnEjecutarAnimaladas.setEnabled(false);
+		panel.add(btnEjecutarAnimaladas);
+
+		btnPasarElTurno = new JButton("Pasar el turno");
+		CBtnPasarTurno cbPasarTurno = new CBtnPasarTurno();
+		btnPasarElTurno.addMouseListener(cbPasarTurno);
+		btnPasarElTurno.setEnabled(false);
+	//	btnPasarElTurno.setBackground(Color.DARK_GRAY);
+		panel.add(btnPasarElTurno);
 
 		JPanel panelInferior = new JPanel();
 		tablero.add(panelInferior, BorderLayout.SOUTH);
@@ -620,6 +647,7 @@ public class IPartida extends JFrame implements Observer {
 		default:
 			break;
 		}
+		btnPasarElTurno.setEnabled(false);
 
 	}
 
@@ -650,10 +678,27 @@ public class IPartida extends JFrame implements Observer {
 
 	}
 
-	public static IPartida getIPartida() {
-		if (miPrincipal == null) {
-			miPrincipal = new IPartida();
-		}
-		return miPrincipal;
+	public boolean isAnimaladasEjecutada() {
+		return animaladasEjecutada;
 	}
+
+	public void setAnimaladasEjecutada(boolean animaladasEjecutada) {
+		this.animaladasEjecutada = animaladasEjecutada;
+		if (animaladasEjecutada) {
+			btnEjecutarAnimaladas.setEnabled(false);
+			btnPasarElTurno.setEnabled(true);
+		}else {
+			btnEjecutarAnimaladas.setEnabled(true);
+			btnPasarElTurno.setEnabled(false);
+		}
+	}
+
+	public boolean isCartaEchada() {
+		return cartaEchada;
+	}
+
+	public void setCartaEchada(boolean cartaEchada) {
+		this.cartaEchada = cartaEchada;
+	}
+
 }
