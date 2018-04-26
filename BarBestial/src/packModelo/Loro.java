@@ -2,6 +2,8 @@ package packModelo;
 
 import java.util.*;
 
+import javax.swing.JOptionPane;
+
 public class Loro implements ICompAnimalada {
 
 	public Loro() {
@@ -10,15 +12,18 @@ public class Loro implements ICompAnimalada {
 
 	@Override
 	public void animalada() {
-		int pos;
-		//Se le pide al jugador que indique que animal quiere que vaya a Calle
-		System.out.println("Elige el animal que quieres mandar a 'ES LO QUE HAY' indicando su posicion (1 - 5) en la cola. ");
-		Scanner aux = new Scanner(System.in);
-		pos = aux.nextInt(); 
+		String[] choices = {"1","2","3","4"};
+	    String input = (String) JOptionPane.showInputDialog(null, "Loro: Elija el animal que quieres echar",
+	        "The Choice of a Lifetime", JOptionPane.QUESTION_MESSAGE, null, // Use
+	                                                                        // default
+	                                                                        // icon
+	        choices, // Array of choices
+	        choices[0]); // Initial choice
+	    //System.out.println(input);
+	    int num=Integer.parseInt(input)-1; 
 		
-		CartaAnimal animal = CartasEnJuego.getCartasEnJuego().delCarta(pos);
+		CartaAnimal animal = CartasEnJuego.getCartasEnJuego().delCarta(num);
 		Calle.getCalle().addAnimal(animal);
-		// TODO Auto-generated method stub
 
 	}
 

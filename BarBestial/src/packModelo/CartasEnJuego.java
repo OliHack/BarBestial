@@ -27,7 +27,7 @@ public class CartasEnJuego extends Observable {
 	 * @return
 	 */
 	public boolean colaLlena() {
-		if (CartasEnJuego.ListaAnimales.getListaAnimales().size() < Constantes.NUM_CARTAS_COLA)
+		if (CartasEnJuego.ListaAnimales.getListaAnimales().size() < 5)
 			return false;
 		else
 			return true;
@@ -57,6 +57,22 @@ public class CartasEnJuego extends Observable {
 		return false;
 	}
 
+	public int getPosDeCartaRepetida(CartaAnimal animal) {
+		Iterator<CartaAnimal> it = CartasEnJuego.ListaAnimales.getIterator();
+		int i = 0, j=0;
+		while (it.hasNext()) {
+			CartaAnimal carta = it.next();
+			if (animal==carta) {
+				j++;
+			}
+			if(j==2) {
+				break;
+			}
+			i++;
+		}
+		return i;
+	}
+	
 	/**
 	 *
 	 * @param pPos
@@ -74,13 +90,11 @@ public class CartasEnJuego extends Observable {
 	 * @param
 	 */
 	public void ejecutarAnimalada() {
-		CartasEnJuego.ListaAnimales.getLast().setActivada(true);
 		CartasEnJuego.ListaAnimales.getLast().hacerAnimalada();
-		CartasEnJuego.getCartasEnJuego().ejecutarRec();
+		// this.ejecutarRec();
 	}
 
 	public void ejecutarRec() {
-		System.out.println("Ejecutando recurrencias");
 		ArrayList<CartaAnimal> lista = CartasEnJuego.ListaAnimales.getRecurrentes();
 		for (int k = 0; k < lista.size(); k++) {
 			if (lista.get(k) != null) {
@@ -151,6 +165,20 @@ public class CartasEnJuego extends Observable {
 	public void inicializar() {
 		CartasEnJuego.ListaAnimales = new ListaCartaAnimal();
 	}
+	
+	public CartaAnimal animalMasFuerte() {
+		Iterator<CartaAnimal> it = CartasEnJuego.ListaAnimales.getListaAnimales().iterator();
+		int max = 0;
+		CartaAnimal animal=null;
+		while (it.hasNext()) {
+			CartaAnimal carta = it.next();
+			if (carta.getValor()>max) {
+				animal = carta;
+				max = carta.getValor();
+			}
+		}
+		return animal;
+	}
 
 	public void mandarAnimalACalle(String animal) {
 		Iterator<CartaAnimal> it = CartasEnJuego.ListaAnimales.getListaAnimales().iterator();
@@ -199,3 +227,7 @@ public class CartasEnJuego extends Observable {
 	}
 
 }
+
+
+
+
