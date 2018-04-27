@@ -20,6 +20,20 @@ public class CartasEnJuego extends Observable {
 		CartasEnJuego.ListaAnimales.getListaAnimales().add(pCartaAnimal);
 	}
 
+	public CartaAnimal animalMasFuerte() {
+		Iterator<CartaAnimal> it = CartasEnJuego.ListaAnimales.getListaAnimales().iterator();
+		int max = 0;
+		CartaAnimal animal = null;
+		while (it.hasNext()) {
+			CartaAnimal carta = it.next();
+			if (carta.getValor() > max) {
+				animal = carta;
+				max = carta.getValor();
+			}
+		}
+		return animal;
+	}
+
 	/**
 	 * Devuelve un boolean indicando si la cola actual está llena (true) o no
 	 * (false)
@@ -57,22 +71,6 @@ public class CartasEnJuego extends Observable {
 		return false;
 	}
 
-	public int getPosDeCartaRepetida(CartaAnimal animal) {
-		Iterator<CartaAnimal> it = CartasEnJuego.ListaAnimales.getIterator();
-		int i = 0, j=0;
-		while (it.hasNext()) {
-			CartaAnimal carta = it.next();
-			if (animal==carta) {
-				j++;
-			}
-			if(j==2) {
-				break;
-			}
-			i++;
-		}
-		return i;
-	}
-	
 	/**
 	 *
 	 * @param pPos
@@ -90,8 +88,9 @@ public class CartasEnJuego extends Observable {
 	 * @param
 	 */
 	public void ejecutarAnimalada() {
+		CartasEnJuego.ListaAnimales.getLast().setActivada(true);
 		CartasEnJuego.ListaAnimales.getLast().hacerAnimalada();
-		// this.ejecutarRec();
+		CartasEnJuego.getCartasEnJuego().ejecutarRec();
 	}
 
 	public void ejecutarRec() {
@@ -151,6 +150,22 @@ public class CartasEnJuego extends Observable {
 		return CartasEnJuego.ListaAnimales;
 	}
 
+	public int getPosDeCartaRepetida(CartaAnimal animal) {
+		Iterator<CartaAnimal> it = CartasEnJuego.ListaAnimales.getIterator();
+		int i = 0, j = 0;
+		while (it.hasNext()) {
+			CartaAnimal carta = it.next();
+			if (animal == carta) {
+				j++;
+			}
+			if (j == 2) {
+				break;
+			}
+			i++;
+		}
+		return i;
+	}
+
 	public void imprimir() {
 		CartasEnJuego.getCartasEnJuego().getListaAnimales().imprimir();
 	}
@@ -158,26 +173,12 @@ public class CartasEnJuego extends Observable {
 	public void imprimirConValor() {
 		CartasEnJuego.getCartasEnJuego().getListaAnimales().imprimirConValor();
 	}
-	
+
 	/**
 	 * Inicializa la lista de cartas (vacia)
 	 */
 	public void inicializar() {
 		CartasEnJuego.ListaAnimales = new ListaCartaAnimal();
-	}
-	
-	public CartaAnimal animalMasFuerte() {
-		Iterator<CartaAnimal> it = CartasEnJuego.ListaAnimales.getListaAnimales().iterator();
-		int max = 0;
-		CartaAnimal animal=null;
-		while (it.hasNext()) {
-			CartaAnimal carta = it.next();
-			if (carta.getValor()>max) {
-				animal = carta;
-				max = carta.getValor();
-			}
-		}
-		return animal;
 	}
 
 	public void mandarAnimalACalle(String animal) {
@@ -227,7 +228,3 @@ public class CartasEnJuego extends Observable {
 	}
 
 }
-
-
-
-

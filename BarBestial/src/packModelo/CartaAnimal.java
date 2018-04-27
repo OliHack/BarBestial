@@ -57,7 +57,7 @@ public class CartaAnimal {
 	}
 
 	public void setActivada(boolean param) {
-		this.activada = param;
+		activada = param;
 	}
 
 	public void setICompAnimalada(ICompAnimalada pAnimalada) {
