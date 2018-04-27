@@ -3,35 +3,42 @@ package packModelo;
 public class Hipopotamo implements Recurrente, ICompAnimalada {
 
 	public Hipopotamo() {
-		
+
 	}
 
 	@Override
 	public void animalada() {
-		int pos=CartasEnJuego.getCartasEnJuego().getLastPosition(), max = 0;
-		while(pos>0) {
+		int pos = CartasEnJuego.getCartasEnJuego().getLastPosition(), max = 0;
+		while (pos > 0) {
 			pos--;
-			if(CartasEnJuego.getCartasEnJuego().getCartaDePos(pos).getValor()>=Constantes.VALOR_HIPO || CartasEnJuego.getCartasEnJuego().getCartaDePos(pos).getTipo().equals("Cebra")) {
-				max=pos+1;
+			if (CartasEnJuego.getCartasEnJuego().getCartaDePos(pos).getValor() >= Constantes.VALOR_HIPO
+					|| CartasEnJuego.getCartasEnJuego().getCartaDePos(pos).getTipo().equals("Cebra")) {
+				max = pos + 1;
 				break;
-			}	
+			}
 		}
-		CartaAnimal hipo = CartasEnJuego.getCartasEnJuego().delCarta(CartasEnJuego.getCartasEnJuego().getLastPosition());
+		CartaAnimal hipo = CartasEnJuego.getCartasEnJuego()
+				.delCarta(CartasEnJuego.getCartasEnJuego().getLastPosition());
 		CartasEnJuego.getCartasEnJuego().ponerAnimalEnPos(hipo, max);
 
 	}
+
 	@Override
-	public void animalada(int i) {
-		int pos=i, max = pos;
-		while(pos>0) {
-			pos--;
-			if(CartasEnJuego.getCartasEnJuego().getCartaDePos(pos).getValor()>=Constantes.VALOR_HIPO || CartasEnJuego.getCartasEnJuego().getCartaDePos(pos).getTipo().equals("Cebra")) {
-				max=pos;
-				break;
-			}	
+	public void animalada(int pPos) {
+		// pPos=0,1,2,3 o 4
+		CartaAnimal hipo = CartasEnJuego.getCartasEnJuego().getListaAnimales().getCarta(pPos);
+		int pos = pPos - 1;
+		if (CartasEnJuego.getCartasEnJuego().numCartas() == 1 || pPos == 0) {
+			System.out.println("Cocodrilo no puede comer :(( ");
+		} else {
+			if (CartasEnJuego.getCartasEnJuego().getCartaDePos(pos).getValor() < 10 && CartasEnJuego.getCartasEnJuego()
+					.getListaAnimales().getCarta(pos).getAnimalada() instanceof Cebra == false) {
+				CartasEnJuego.getCartasEnJuego().getListaAnimales().getListaAnimales().add(pos, hipo);
+				CartasEnJuego.getCartasEnJuego().getListaAnimales().getListaAnimales().remove(pPos + 1);
+				this.animalada(pos);
+			}
 		}
-		CartaAnimal hipo = CartasEnJuego.getCartasEnJuego().delCarta(pos);
-		CartasEnJuego.getCartasEnJuego().ponerAnimalEnPos(hipo, max);
+		System.out.println("Terminada la recurrencia del Hipopotamo");
 	}
 
 	@Override

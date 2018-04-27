@@ -86,7 +86,11 @@ public class PruebaCanguro {
 		System.out.println("-	4. Caso saltar una o dos pos en la segunda pos-");
 		System.out.println(" -------------------------------------------------------\n");
 
+		CartaAnimal jirafaRoja = CartaFactory.getCartaFactory().crearCarta(EnumColor.ROJO, "Jirafa");
+
 		CartasEnJuego.getCartasEnJuego().add(loroVerde);
+		CartasEnJuego.getCartasEnJuego().add(loroRojo);
+		CartasEnJuego.getCartasEnJuego().add(jirafaRoja);
 		CartasEnJuego.getCartasEnJuego().add(canguVerde);
 
 		System.out.println(" --> El orden inicial de la cola es: \n");
