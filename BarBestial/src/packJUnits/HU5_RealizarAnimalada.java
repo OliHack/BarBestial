@@ -1,6 +1,7 @@
 package packJUnits;
 
 import org.junit.Test;
+import org.junit.jupiter.api.*;
 
 import packModelo.Calle;
 import packModelo.CartaAnimal;
@@ -671,15 +672,15 @@ class HU5_RealizarAnimalada {
 		System.out.println("#		PRUEBAS DE Canguro				#");
 		System.out.println(" ####################################################### \n");
 
-		CartaAnimal loroVerde = CartaFactory.getCartaFactory().crearCarta(EnumColor.VERDE, "Loro");
+		CartaAnimal loroVerdee = CartaFactory.getCartaFactory().crearCarta(EnumColor.VERDE, "Loro");
 		CartaAnimal cocoAmarillo = CartaFactory.getCartaFactory().crearCarta(EnumColor.AMARILLO, "Cocodrilo");
-		CartaAnimal mofetaAzul = CartaFactory.getCartaFactory().crearCarta(EnumColor.AZUL, "Mofeta");
+		CartaAnimal mofetaAzull = CartaFactory.getCartaFactory().crearCarta(EnumColor.AZUL, "Mofeta");
 		CartaAnimal loroRojo = CartaFactory.getCartaFactory().crearCarta(EnumColor.ROJO, "Loro");
 		CartaAnimal canguVerde = CartaFactory.getCartaFactory().crearCarta(EnumColor.VERDE, "Canguro");
 
-		CartasEnJuego.getCartasEnJuego().add(loroVerde);
+		CartasEnJuego.getCartasEnJuego().add(loroVerdee);
 		CartasEnJuego.getCartasEnJuego().add(cocoAmarillo);
-		CartasEnJuego.getCartasEnJuego().add(mofetaAzul);
+		CartasEnJuego.getCartasEnJuego().add(mofetaAzull);
 		CartasEnJuego.getCartasEnJuego().add(loroRojo);
 		CartasEnJuego.getCartasEnJuego().add(canguVerde);
 
@@ -734,7 +735,7 @@ class HU5_RealizarAnimalada {
 		System.out.println("-	4. Caso saltar una o dos pos en la segunda pos-");
 		System.out.println(" -------------------------------------------------------\n");
 
-		CartasEnJuego.getCartasEnJuego().add(loroVerde);
+		CartasEnJuego.getCartasEnJuego().add(loroVerdee);
 		CartasEnJuego.getCartasEnJuego().add(canguVerde);
 
 		System.out.println(" --> El orden inicial de la cola es: \n");
