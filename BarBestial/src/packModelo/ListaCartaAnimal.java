@@ -21,6 +21,12 @@ public class ListaCartaAnimal {
 		ListaAnimales.add(pCartaAnimal);
 	}
 
+	public void setAll(boolean t) {
+		for (int i = 0; i < ListaAnimales.size(); i++) {
+			ListaAnimales.get(i).setActivada(t);
+		}
+	}
+
 	/**
 	 * Borra la carta de entrada de la lista
 	 *
@@ -84,12 +90,12 @@ public class ListaCartaAnimal {
 
 	/**
 	 * Este m�todo devuelve los que sean recurrentes teniendo en cuenta si se ha
-	 * ejecutado anteriormente, además de null en las posiciones donde las
-	 * cartas no osn recurrentes
+	 * ejecutado anteriormente, además de null en las posiciones donde las cartas no
+	 * osn recurrentes
 	 *
 	 * @return
 	 */
- 
+
 	public ArrayList<CartaAnimal> getRecurrentes() {
 		ArrayList<CartaAnimal> recurrentes = new ArrayList<CartaAnimal>();
 		ListaCartaAnimal cola = CartasEnJuego.getCartasEnJuego().getListaAnimales();
@@ -109,10 +115,11 @@ public class ListaCartaAnimal {
 			System.out.println(ListaAnimales.get(i).getTipo() + ListaAnimales.get(i).getColor());
 		}
 	}
-	
+
 	public void imprimirConValor() {
-		for(int i=0; i<ListaAnimales.size();i++) {
-			System.out.println(ListaAnimales.get(i).getTipo()+ListaAnimales.get(i).getColor()+ " --> " + ListaAnimales.get(i).getValor());
+		for (int i = 0; i < ListaAnimales.size(); i++) {
+			System.out.println(ListaAnimales.get(i).getTipo() + ListaAnimales.get(i).getColor() + " --> "
+					+ ListaAnimales.get(i).getValor());
 		}
 	}
 

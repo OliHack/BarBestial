@@ -6,8 +6,8 @@ import java.util.Observable;
 
 public class CartasEnJuego extends Observable {
 
-	private static CartasEnJuego	misCartasEnJuego;
-	private static ListaCartaAnimal	ListaAnimales;
+	private static CartasEnJuego misCartasEnJuego;
+	private static ListaCartaAnimal ListaAnimales;
 
 	private CartasEnJuego() {
 	}
@@ -52,7 +52,8 @@ public class CartasEnJuego extends Observable {
 		Iterator<CartaAnimal> it = CartasEnJuego.ListaAnimales.getIterator();
 		while (it.hasNext()) {
 			CartaAnimal carta = it.next();
-			if (animal.equals(carta.getTipo())) return true;
+			if (animal.equals(carta.getTipo()))
+				return true;
 
 		}
 		return false;
@@ -67,7 +68,8 @@ public class CartasEnJuego extends Observable {
 				i++;
 			}
 		}
-		if (i > 1) return true;
+		if (i > 1)
+			return true;
 		return false;
 	}
 
@@ -91,6 +93,11 @@ public class CartasEnJuego extends Observable {
 		CartasEnJuego.ListaAnimales.getLast().setActivada(true);
 		CartasEnJuego.ListaAnimales.getLast().hacerAnimalada();
 		CartasEnJuego.getCartasEnJuego().ejecutarRec();
+		setAll(false);
+	}
+
+	public void setAll(boolean t) {
+		ListaAnimales.setAll(t);
 	}
 
 	public void ejecutarRec() {
@@ -107,8 +114,7 @@ public class CartasEnJuego extends Observable {
 	}
 
 	/**
-	 * Devuelve la última carta de la cola actual además de eliminarla de la
-	 * misma
+	 * Devuelve la última carta de la cola actual además de eliminarla de la misma
 	 *
 	 * @return
 	 */
@@ -124,8 +130,7 @@ public class CartasEnJuego extends Observable {
 	}
 
 	/**
-	 * Devuelve las dos primeras cartas de la cola actual, y las elimina de la
-	 * misma
+	 * Devuelve las dos primeras cartas de la cola actual, y las elimina de la misma
 	 *
 	 * @return
 	 */
@@ -188,6 +193,8 @@ public class CartasEnJuego extends Observable {
 			if (carta.getTipo().equals(animal)) {
 				Calle.getCalle().addAnimal(carta);
 				it.remove();
+				setChanged();
+				notifyObservers();
 			}
 		}
 	}
@@ -201,9 +208,9 @@ public class CartasEnJuego extends Observable {
 	}
 
 	/**
-	 * Revisa las cartas en juego (o cola) para ve si está llena, si lo está,
-	 * mueve las dos primeras cartas de la cola al Bar Bestial y la última le da
-	 * la patada.
+	 * Revisa las cartas en juego (o cola) para ve si está llena, si lo está, mueve
+	 * las dos primeras cartas de la cola al Bar Bestial y la última le da la
+	 * patada.
 	 *
 	 *
 	 */
