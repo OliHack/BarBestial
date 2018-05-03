@@ -39,8 +39,14 @@ public class ListaCartaAnimal {
 	}
 
 	public void ejecutarRec() {
-		// TODO - implement ListaCartaAnimal.ejecutarRec
-		throw new UnsupportedOperationException();
+		for (int k = 0; k < ListaAnimales.size(); k++) {
+			if (ListaAnimales.get(k).hacerAnimaladaRec(k)) {
+				break;
+			}
+		}
+		if (!todasActivas()) {
+			this.ejecutarRec();
+		}
 	}
 
 	public boolean esta(CartaAnimal pCarta) {
@@ -89,7 +95,7 @@ public class ListaCartaAnimal {
 	 *
 	 * @return
 	 */
- 
+
 	public ArrayList<CartaAnimal> getRecurrentes() {
 		ArrayList<CartaAnimal> recurrentes = new ArrayList<CartaAnimal>();
 		ListaCartaAnimal cola = CartasEnJuego.getCartasEnJuego().getListaAnimales();
@@ -104,15 +110,21 @@ public class ListaCartaAnimal {
 		return recurrentes;
 	}
 
+	public void hacerAnimalada() {
+		this.getLast().hacerAnimalada();
+
+	}
+
 	public void imprimir() {
 		for (int i = 0; i < ListaAnimales.size(); i++) {
 			System.out.println(ListaAnimales.get(i).getTipo() + ListaAnimales.get(i).getColor());
 		}
 	}
-	
+
 	public void imprimirConValor() {
-		for(int i=0; i<ListaAnimales.size();i++) {
-			System.out.println(ListaAnimales.get(i).getTipo()+ListaAnimales.get(i).getColor()+ " --> " + ListaAnimales.get(i).getValor());
+		for (int i = 0; i < ListaAnimales.size(); i++) {
+			System.out.println(ListaAnimales.get(i).getTipo() + ListaAnimales.get(i).getColor() + " --> "
+					+ ListaAnimales.get(i).getValor());
 		}
 	}
 
@@ -131,5 +143,17 @@ public class ListaCartaAnimal {
 
 	public int size() {
 		return ListaAnimales.size();
+	}
+
+	private boolean todasActivas() {
+		boolean act = true;
+		for (int k = 0; k < ListaAnimales.size(); k++) {
+			if (ListaAnimales.get(k).getAnimalada() instanceof Recurrente
+					&& ListaAnimales.get(k).activadaRec() == false) {
+				act = false;
+				break;
+			}
+		}
+		return act;
 	}
 }

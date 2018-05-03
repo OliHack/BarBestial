@@ -49,11 +49,17 @@ public class CartaAnimal {
 	}
 
 	public void hacerAnimalada() {
+		this.setActivada(true);
 		animalada.animalada();
 	}
 
-	public void hacerAnimaladaRec(int pPos) {
-		animalada.animalada(pPos);
+	public boolean hacerAnimaladaRec(int pPos) {
+		if (this.animalada instanceof Recurrente && this.activada == false) {
+			animalada.animalada(pPos);
+			this.setActivada(true);
+			return true;
+		} else
+			return false;
 	}
 
 	public void setActivada(boolean param) {

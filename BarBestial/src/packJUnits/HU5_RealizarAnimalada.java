@@ -70,7 +70,7 @@ class HU5_RealizarAnimalada {
 		CartasEnJuego.getCartasEnJuego().imprimir();
 
 		// Ejecutamos la animalada
-		CartasEnJuego.getCartasEnJuego().ejecutarAnimalada();
+		CartasEnJuego.getCartasEnJuego().jugarTurno();
 		// a1.hacerAnimalada();
 
 		// Por lo que el Leon deber�a de ser el primero
@@ -94,7 +94,7 @@ class HU5_RealizarAnimalada {
 		CartasEnJuego.getCartasEnJuego().imprimir();
 
 		// Ejecutamos la animalada
-		CartasEnJuego.getCartasEnJuego().ejecutarAnimalada();
+		CartasEnJuego.getCartasEnJuego().jugarTurno();
 
 		// Por lo que el Leon deber�a de acabar en la Calle (Patada)
 		System.out.println(
@@ -124,7 +124,7 @@ class HU5_RealizarAnimalada {
 		CartasEnJuego.getCartasEnJuego().imprimir();
 
 		// Ejecutamos la animalada
-		CartasEnJuego.getCartasEnJuego().ejecutarAnimalada();
+		CartasEnJuego.getCartasEnJuego().jugarTurno();
 
 		// Por lo que el Leon deber�a estar primero de la cola y los monos en la
 		// Calle.
@@ -161,7 +161,7 @@ class HU5_RealizarAnimalada {
 		CartasEnJuego.getCartasEnJuego().imprimir();
 
 		// Ejecutamos la animalada
-		CartasEnJuego.getCartasEnJuego().ejecutarAnimalada();
+		CartasEnJuego.getCartasEnJuego().jugarTurno();
 
 		// Por lo que el Hipopotamo debria acabar primero
 		System.out.println(
@@ -187,7 +187,7 @@ class HU5_RealizarAnimalada {
 		CartasEnJuego.getCartasEnJuego().imprimir();
 
 		// Ejecutamos la animalada
-		CartasEnJuego.getCartasEnJuego().ejecutarAnimalada();
+		CartasEnJuego.getCartasEnJuego().jugarTurno();
 
 		// Por lo que el LHipopotamo deberia acabar detras del Leon
 		System.out.println(
@@ -213,7 +213,7 @@ class HU5_RealizarAnimalada {
 		CartasEnJuego.getCartasEnJuego().imprimir();
 
 		// Ejecutamos la animalada
-		CartasEnJuego.getCartasEnJuego().ejecutarAnimalada();
+		CartasEnJuego.getCartasEnJuego().jugarTurno();
 
 		// Por lo que el Hipopotamo derberia acabar detras de la Cebra
 		System.out.println(
@@ -246,7 +246,7 @@ class HU5_RealizarAnimalada {
 		CartasEnJuego.getCartasEnJuego().imprimir();
 
 		// Ejecutamos la animalada
-		CartasEnJuego.getCartasEnJuego().ejecutarAnimalada();
+		CartasEnJuego.getCartasEnJuego().jugarTurno();
 
 		// Por lo que el Cocodrilo deber�a de acabar primero
 		System.out.println(
@@ -278,7 +278,7 @@ class HU5_RealizarAnimalada {
 		CartasEnJuego.getCartasEnJuego().imprimir();
 
 		// Ejecutamos la animalada
-		CartasEnJuego.getCartasEnJuego().ejecutarAnimalada();
+		CartasEnJuego.getCartasEnJuego().jugarTurno();
 
 		// Por lo que el Cocodrilo deber�a de acabar detras del hipoAmarillo
 		System.out.println(
@@ -309,7 +309,7 @@ class HU5_RealizarAnimalada {
 		CartasEnJuego.getCartasEnJuego().imprimir();
 
 		// Ejecutamos la animalada
-		CartasEnJuego.getCartasEnJuego().ejecutarAnimalada();
+		CartasEnJuego.getCartasEnJuego().jugarTurno();
 
 		// Por lo que el Cocodrilo debr�a acabar detr�s de la cebra
 		System.out.println(
@@ -345,7 +345,7 @@ class HU5_RealizarAnimalada {
 		CartasEnJuego.getCartasEnJuego().imprimirConValor();
 
 		// Ejecutamos la animalada
-		CartasEnJuego.getCartasEnJuego().ejecutarAnimalada();
+		CartasEnJuego.getCartasEnJuego().jugarTurno();
 
 		// Por lo que la cola ahora estar�a ordenada
 		System.out.println("\n --> En este momento,la cola deber� haberse ordenado de mayor a menor: \n");
@@ -375,7 +375,7 @@ class HU5_RealizarAnimalada {
 		CartasEnJuego.getCartasEnJuego().imprimir();
 
 		// Ejecutamos la animalada
-		CartasEnJuego.getCartasEnJuego().ejecutarAnimalada();
+		CartasEnJuego.getCartasEnJuego().jugarTurno();
 
 		// Por lo que el Cocodrilo debr�a acabar detr�s de la cebra
 		System.out.println(
@@ -400,7 +400,7 @@ class HU5_RealizarAnimalada {
 		CartasEnJuego.getCartasEnJuego().imprimir();
 
 		// Ejecutamos la animalada
-		CartasEnJuego.getCartasEnJuego().ejecutarAnimalada();
+		CartasEnJuego.getCartasEnJuego().jugarTurno();
 
 		// Por lo que el Cocodrilo debr�a acabar detr�s de la cebra
 		System.out.println(
@@ -439,7 +439,7 @@ class HU5_RealizarAnimalada {
 		CartasEnJuego.getCartasEnJuego().imprimir();
 
 		// Ejecutamos la animalada
-		CartasEnJuego.getCartasEnJuego().ejecutarAnimalada();
+		CartasEnJuego.getCartasEnJuego().jugarTurno();
 
 		// La foca invierte el orden de la cola
 		System.out.println(
@@ -476,7 +476,7 @@ class HU5_RealizarAnimalada {
 
 		// Elegimos el animalar a suplantar en este turno
 		// En este caso elegiremos la de la Serpiente
-		CartasEnJuego.getCartasEnJuego().ejecutarAnimalada();
+		CartasEnJuego.getCartasEnJuego().jugarTurno();
 
 		System.out.println(
 				"\n --> En este momento, el CamaleonAmarillo har� la animalada de la serpiente(ordenar de mayor a menor). \n");
@@ -503,7 +503,7 @@ class HU5_RealizarAnimalada {
 
 		// Elegimos el animalar a suplantar en este turno
 		// En este caso elegiremos la del Hipopotamo
-		CartasEnJuego.getCartasEnJuego().ejecutarAnimalada();
+		CartasEnJuego.getCartasEnJuego().jugarTurno();
 
 		System.out.println("\n --> En este momento, el CamaleonAmarillo har� la animalada del Hipopotamo. \n");
 		System.out.println(" --> Por lo que el CamaleonAmarillo se colocar� segundo: \n");
@@ -533,7 +533,7 @@ class HU5_RealizarAnimalada {
 		CartasEnJuego.getCartasEnJuego().imprimir();
 
 		// Ejecutamos la animalada
-		CartasEnJuego.getCartasEnJuego().ejecutarAnimalada();
+		CartasEnJuego.getCartasEnJuego().jugarTurno();
 
 		// La animalada del mono no debe de tener efecto
 		System.out.println(
@@ -558,7 +558,7 @@ class HU5_RealizarAnimalada {
 		CartasEnJuego.getCartasEnJuego().imprimir();
 
 		// Ejecutamos la animalada
-		CartasEnJuego.getCartasEnJuego().ejecutarAnimalada();
+		CartasEnJuego.getCartasEnJuego().jugarTurno();
 
 		// El mono recien jugado se debera de poner primero, seguido de los
 		// dem�s monos
@@ -592,7 +592,7 @@ class HU5_RealizarAnimalada {
 		CartasEnJuego.getCartasEnJuego().imprimir();
 
 		// Ejecutamos la animalada
-		CartasEnJuego.getCartasEnJuego().ejecutarAnimalada();
+		CartasEnJuego.getCartasEnJuego().jugarTurno();
 
 		System.out.println("\n --> En este momento, el CanguroAzul adelanta a uno o dos animales: \n");
 		System.out.println("  +  Si seleccionas '1' el canguro se colocar� cuarto.");
@@ -622,7 +622,7 @@ class HU5_RealizarAnimalada {
 		CartasEnJuego.getCartasEnJuego().imprimir();
 
 		// Ejecutamos la animalada
-		CartasEnJuego.getCartasEnJuego().ejecutarAnimalada();
+		CartasEnJuego.getCartasEnJuego().jugarTurno();
 
 		System.out.println("\n --> En este momento, el LoroVerde echa a un animal de la cola: \n");
 		CartasEnJuego.getCartasEnJuego().imprimir();
@@ -654,7 +654,7 @@ class HU5_RealizarAnimalada {
 		CartasEnJuego.getCartasEnJuego().imprimirConValor();
 
 		// Ejecutamos la animalada
-		CartasEnJuego.getCartasEnJuego().ejecutarAnimalada();
+		CartasEnJuego.getCartasEnJuego().jugarTurno();
 
 		// La mofeta echar� al hipopotamo y a los leones
 		System.out.println(
@@ -691,7 +691,7 @@ class HU5_RealizarAnimalada {
 		System.out.println(" --> El orden inicial de la cola es: \n");
 		CartasEnJuego.getCartasEnJuego().imprimir();
 
-		CartasEnJuego.getCartasEnJuego().ejecutarAnimalada();
+		CartasEnJuego.getCartasEnJuego().jugarTurno();
 
 		System.out.println("\n --> El canguro debería de haber saltado una o dos posiciones: \n");
 		CartasEnJuego.getCartasEnJuego().imprimir();
@@ -709,7 +709,7 @@ class HU5_RealizarAnimalada {
 		CartasEnJuego.getCartasEnJuego().imprimir();
 
 		// Ejecutamos la animalada
-		CartasEnJuego.getCartasEnJuego().ejecutarAnimalada();
+		CartasEnJuego.getCartasEnJuego().jugarTurno();
 
 		System.out.println("\n --> El canguro debería de haber saltado una o dos posiciones: \n");
 		CartasEnJuego.getCartasEnJuego().imprimir();
@@ -725,7 +725,7 @@ class HU5_RealizarAnimalada {
 		CartasEnJuego.getCartasEnJuego().imprimir();
 
 		// Ejecutamos la animalada
-		CartasEnJuego.getCartasEnJuego().ejecutarAnimalada();
+		CartasEnJuego.getCartasEnJuego().jugarTurno();
 
 		System.out.println("\n --> El canguro debería de haber saltado una o dos posiciones: \n");
 		CartasEnJuego.getCartasEnJuego().imprimir();
@@ -742,7 +742,7 @@ class HU5_RealizarAnimalada {
 		CartasEnJuego.getCartasEnJuego().imprimir();
 
 		// Ejecutamos la animalada
-		CartasEnJuego.getCartasEnJuego().ejecutarAnimalada();
+		CartasEnJuego.getCartasEnJuego().jugarTurno();
 
 		System.out.println("\n --> El canguro debería de haber saltado una o dos posiciones: \n");
 		CartasEnJuego.getCartasEnJuego().imprimir();

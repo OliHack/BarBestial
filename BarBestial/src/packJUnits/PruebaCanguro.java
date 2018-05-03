@@ -42,7 +42,7 @@ public class PruebaCanguro {
 		System.out.println(" --> El orden inicial de la cola es: \n");
 		CartasEnJuego.getCartasEnJuego().imprimir();
 
-		CartasEnJuego.getCartasEnJuego().ejecutarAnimalada();
+		CartasEnJuego.getCartasEnJuego().jugarTurno();
 
 		System.out.println("\n --> El canguro debería de haber saltado una o dos posiciones: \n");
 		CartasEnJuego.getCartasEnJuego().imprimir();
@@ -60,7 +60,7 @@ public class PruebaCanguro {
 		CartasEnJuego.getCartasEnJuego().imprimir();
 
 		// Ejecutamos la animalada
-		CartasEnJuego.getCartasEnJuego().ejecutarAnimalada();
+		CartasEnJuego.getCartasEnJuego().jugarTurno();
 
 		System.out.println("\n --> El canguro debería de haber saltado una o dos posiciones: \n");
 		CartasEnJuego.getCartasEnJuego().imprimir();
@@ -76,7 +76,7 @@ public class PruebaCanguro {
 		CartasEnJuego.getCartasEnJuego().imprimir();
 
 		// Ejecutamos la animalada
-		CartasEnJuego.getCartasEnJuego().ejecutarAnimalada();
+		CartasEnJuego.getCartasEnJuego().jugarTurno();
 
 		System.out.println("\n --> El canguro debería de haber saltado una o dos posiciones: \n");
 		CartasEnJuego.getCartasEnJuego().imprimir();
@@ -97,7 +97,7 @@ public class PruebaCanguro {
 		CartasEnJuego.getCartasEnJuego().imprimir();
 
 		// Ejecutamos la animalada
-		CartasEnJuego.getCartasEnJuego().ejecutarAnimalada();
+		CartasEnJuego.getCartasEnJuego().jugarTurno();
 
 		System.out.println("\n --> El canguro debería de haber saltado una o dos posiciones: \n");
 		CartasEnJuego.getCartasEnJuego().imprimir();

@@ -1,6 +1,5 @@
 package packModelo;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Observable;
 
@@ -81,25 +80,10 @@ public class CartasEnJuego extends Observable {
 		return animal;
 	}
 
-	/**
-	 * se ejecutar� la animalada del �ltimo animal que se encuentre en la cola
-	 * cuando se ejecute el m�todo
-	 *
-	 * @param
-	 */
-	public void ejecutarAnimalada() {
-		CartasEnJuego.ListaAnimales.getLast().setActivada(true);
-		CartasEnJuego.ListaAnimales.getLast().hacerAnimalada();
-		CartasEnJuego.getCartasEnJuego().ejecutarRec();
-	}
-
 	public void ejecutarRec() {
-		ArrayList<CartaAnimal> lista = CartasEnJuego.ListaAnimales.getRecurrentes();
-		for (int k = 0; k < lista.size(); k++) {
-			if (lista.get(k) != null) {
-				lista.get(k).hacerAnimaladaRec(k);
-			}
-		}
+		CartasEnJuego.getCartasEnJuego();
+		CartasEnJuego.ListaAnimales.ejecutarRec();
+
 	}
 
 	public CartaAnimal getCartaDePos(int pos) {
@@ -179,6 +163,17 @@ public class CartasEnJuego extends Observable {
 	 */
 	public void inicializar() {
 		CartasEnJuego.ListaAnimales = new ListaCartaAnimal();
+	}
+
+	/**
+	 * se ejecutar� la animalada del �ltimo animal que se encuentre en la cola
+	 * cuando se ejecute el m�todo
+	 *
+	 * @param
+	 */
+	public void jugarTurno() {
+		CartasEnJuego.ListaAnimales.hacerAnimalada();
+		CartasEnJuego.getCartasEnJuego().ejecutarRec();
 	}
 
 	public void mandarAnimalACalle(String animal) {

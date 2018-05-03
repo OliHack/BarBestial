@@ -16,7 +16,7 @@ public class Camaleon implements ICompAnimalada {
 				
 			
 			String[] choices = {"1","2","3","4"};
-		    String input = (String) JOptionPane.showInputDialog(null, "Camaleón: Elija la posicion de la carta que desea copiar",
+		    String input = (String) JOptionPane.showInputDialog(null, "Camaleï¿½n: Elija la posicion de la carta que desea copiar",
 		        "The Choice of a Lifetime", JOptionPane.QUESTION_MESSAGE, null, // Use
 		                                                                        // default
 		                                                                        // icon
@@ -33,7 +33,7 @@ public class Camaleon implements ICompAnimalada {
 					CartasEnJuego.getCartasEnJuego().ponerAnimalEnPos(carta, ult);
 					/*System.out.println("\n --> El orden ahora es :\n");
 					CartasEnJuego.getCartasEnJuego().imprimir();*/
-					CartasEnJuego.getCartasEnJuego().ejecutarAnimalada();
+					CartasEnJuego.getCartasEnJuego().jugarTurno();
 					int rep = CartasEnJuego.getCartasEnJuego().getPosDeCartaRepetida(carta);
 					CartaAnimal animalBorr = CartasEnJuego.getCartasEnJuego().delCarta(rep);
 					CartasEnJuego.getCartasEnJuego().ponerAnimalEnPos(camaleon, rep);
