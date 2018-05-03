@@ -21,6 +21,12 @@ public class ListaCartaAnimal {
 		ListaAnimales.add(pCartaAnimal);
 	}
 
+	public void setAll(boolean t) {
+		for (int i = 0; i < ListaAnimales.size(); i++) {
+			ListaAnimales.get(i).setActivada(t);
+		}
+	}
+
 	/**
 	 * Borra la carta de entrada de la lista
 	 *
@@ -90,8 +96,8 @@ public class ListaCartaAnimal {
 
 	/**
 	 * Este m�todo devuelve los que sean recurrentes teniendo en cuenta si se ha
-	 * ejecutado anteriormente, además de null en las posiciones donde las
-	 * cartas no osn recurrentes
+	 * ejecutado anteriormente, además de null en las posiciones donde las cartas no
+	 * osn recurrentes
 	 *
 	 * @return
 	 */

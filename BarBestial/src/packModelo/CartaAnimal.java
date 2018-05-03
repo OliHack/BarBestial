@@ -2,12 +2,12 @@ package packModelo;
 
 public class CartaAnimal {
 
-	private final EnumColor	color;
-	private int				valor;
-	private String			tipo;
-	private boolean			activada;
-	private ICompAnimalada	animalada;
-	private final String	pathImg;
+	private final EnumColor color;
+	private int valor;
+	private String tipo;
+	private boolean activada;
+	private ICompAnimalada animalada;
+	private final String pathImg;
 
 	/**
 	 *

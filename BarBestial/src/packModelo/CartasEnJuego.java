@@ -80,6 +80,19 @@ public class CartasEnJuego extends Observable {
 		return animal;
 	}
 
+	/**
+	 * se ejecutar� la animalada del �ltimo animal que se encuentre en la cola
+	 * cuando se ejecute el m�todo
+	 *
+	 * @param
+	 */
+	public void ejecutarAnimalada() {
+		CartasEnJuego.ListaAnimales.getLast().setActivada(true);
+		CartasEnJuego.ListaAnimales.getLast().hacerAnimalada();
+		CartasEnJuego.getCartasEnJuego().ejecutarRec();
+		setAll(false);
+	}
+
 	public void ejecutarRec() {
 		CartasEnJuego.getCartasEnJuego();
 		CartasEnJuego.ListaAnimales.ejecutarRec();
@@ -183,6 +196,8 @@ public class CartasEnJuego extends Observable {
 			if (carta.getTipo().equals(animal)) {
 				Calle.getCalle().addAnimal(carta);
 				it.remove();
+				setChanged();
+				notifyObservers();
 			}
 		}
 	}
@@ -213,6 +228,10 @@ public class CartasEnJuego extends Observable {
 			setChanged();
 			notifyObservers();
 		}
+	}
+
+	public void setAll(boolean t) {
+		CartasEnJuego.ListaAnimales.setAll(t);
 	}
 
 	public static CartasEnJuego getCartasEnJuego() {
