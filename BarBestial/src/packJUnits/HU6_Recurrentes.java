@@ -49,7 +49,7 @@ public class HU6_Recurrentes {
 		CartasEnJuego.getCartasEnJuego().imprimir();
 
 		// Ejecutamos la animalada
-		CartasEnJuego.getCartasEnJuego().ejecutarAnimalada();
+		CartasEnJuego.getCartasEnJuego().jugarTurno();
 
 		// Por lo que el LHipopotamo deberia acabar detras del Leon
 		System.out.println(
@@ -75,7 +75,7 @@ public class HU6_Recurrentes {
 		CartasEnJuego.getCartasEnJuego().imprimir();
 
 		// Ejecutamos la animalada
-		CartasEnJuego.getCartasEnJuego().ejecutarAnimalada();
+		CartasEnJuego.getCartasEnJuego().jugarTurno();
 
 		// Por lo que el Hipopotamo derberia acabar detras de la Cebra
 		System.out.println(
@@ -108,7 +108,7 @@ public class HU6_Recurrentes {
 		CartasEnJuego.getCartasEnJuego().imprimir();
 
 		// Ejecutamos la animalada
-		CartasEnJuego.getCartasEnJuego().ejecutarAnimalada();
+		CartasEnJuego.getCartasEnJuego().jugarTurno();
 
 		// Por lo que el Cocodrilo deber�a de acabar primero
 		System.out.println(
@@ -140,7 +140,7 @@ public class HU6_Recurrentes {
 		CartasEnJuego.getCartasEnJuego().imprimir();
 
 		// Ejecutamos la animalada
-		CartasEnJuego.getCartasEnJuego().ejecutarAnimalada();
+		CartasEnJuego.getCartasEnJuego().jugarTurno();
 
 		// Por lo que el Cocodrilo deber�a de acabar detras del hipoAmarillo
 		System.out.println(
@@ -171,7 +171,7 @@ public class HU6_Recurrentes {
 		CartasEnJuego.getCartasEnJuego().imprimir();
 
 		// Ejecutamos la animalada
-		CartasEnJuego.getCartasEnJuego().ejecutarAnimalada();
+		CartasEnJuego.getCartasEnJuego().jugarTurno();
 
 		// Por lo que el Cocodrilo debr�a acabar detr�s de la cebra
 		System.out.println(
@@ -206,7 +206,7 @@ public class HU6_Recurrentes {
 		CartasEnJuego.getCartasEnJuego().imprimir();
 
 		// Ejecutamos la animalada
-		CartasEnJuego.getCartasEnJuego().ejecutarAnimalada();
+		CartasEnJuego.getCartasEnJuego().jugarTurno();
 
 		// Por lo que el Cocodrilo debr�a acabar detr�s de la cebra
 		System.out.println(
@@ -231,7 +231,7 @@ public class HU6_Recurrentes {
 		CartasEnJuego.getCartasEnJuego().imprimir();
 
 		// Ejecutamos la animalada
-		CartasEnJuego.getCartasEnJuego().ejecutarAnimalada();
+		CartasEnJuego.getCartasEnJuego().jugarTurno();
 
 		// Por lo que el Cocodrilo debr�a acabar detr�s de la cebra
 		System.out.println(

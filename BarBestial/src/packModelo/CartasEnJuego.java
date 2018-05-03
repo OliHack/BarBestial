@@ -1,13 +1,12 @@
 package packModelo;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Observable;
 
 public class CartasEnJuego extends Observable {
 
-	private static CartasEnJuego misCartasEnJuego;
-	private static ListaCartaAnimal ListaAnimales;
+	private static CartasEnJuego	misCartasEnJuego;
+	private static ListaCartaAnimal	ListaAnimales;
 
 	private CartasEnJuego() {
 	}
@@ -58,8 +57,7 @@ public class CartasEnJuego extends Observable {
 		Iterator<CartaAnimal> it = CartasEnJuego.ListaAnimales.getIterator();
 		while (it.hasNext()) {
 			CartaAnimal carta = it.next();
-			if (animal.equals(carta.getTipo()))
-				return true;
+			if (animal.equals(carta.getTipo())) return true;
 
 		}
 		return false;
@@ -74,8 +72,7 @@ public class CartasEnJuego extends Observable {
 				i++;
 			}
 		}
-		if (i > 1)
-			return true;
+		if (i > 1) return true;
 		return false;
 	}
 
@@ -102,17 +99,10 @@ public class CartasEnJuego extends Observable {
 		setAll(false);
 	}
 
-	public void setAll(boolean t) {
-		ListaAnimales.setAll(t);
-	}
-
 	public void ejecutarRec() {
-		ArrayList<CartaAnimal> lista = CartasEnJuego.ListaAnimales.getRecurrentes();
-		for (int k = 0; k < lista.size(); k++) {
-			if (lista.get(k) != null) {
-				lista.get(k).hacerAnimaladaRec(k);
-			}
-		}
+		CartasEnJuego.getCartasEnJuego();
+		CartasEnJuego.ListaAnimales.ejecutarRec();
+
 	}
 
 	public CartaAnimal getCartaDePos(int pos) {
@@ -120,7 +110,8 @@ public class CartasEnJuego extends Observable {
 	}
 
 	/**
-	 * Devuelve la última carta de la cola actual además de eliminarla de la misma
+	 * Devuelve la última carta de la cola actual además de eliminarla de la
+	 * misma
 	 *
 	 * @return
 	 */
@@ -136,7 +127,8 @@ public class CartasEnJuego extends Observable {
 	}
 
 	/**
-	 * Devuelve las dos primeras cartas de la cola actual, y las elimina de la misma
+	 * Devuelve las dos primeras cartas de la cola actual, y las elimina de la
+	 * misma
 	 *
 	 * @return
 	 */
@@ -192,6 +184,17 @@ public class CartasEnJuego extends Observable {
 		CartasEnJuego.ListaAnimales = new ListaCartaAnimal();
 	}
 
+	/**
+	 * se ejecutar� la animalada del �ltimo animal que se encuentre en la cola
+	 * cuando se ejecute el m�todo
+	 *
+	 * @param
+	 */
+	public void jugarTurno() {
+		CartasEnJuego.ListaAnimales.hacerAnimalada();
+		CartasEnJuego.getCartasEnJuego().ejecutarRec();
+	}
+
 	public void mandarAnimalACalle(String animal) {
 		Iterator<CartaAnimal> it = CartasEnJuego.ListaAnimales.getListaAnimales().iterator();
 		while (it.hasNext()) {
@@ -214,9 +217,9 @@ public class CartasEnJuego extends Observable {
 	}
 
 	/**
-	 * Revisa las cartas en juego (o cola) para ve si está llena, si lo está, mueve
-	 * las dos primeras cartas de la cola al Bar Bestial y la última le da la
-	 * patada.
+	 * Revisa las cartas en juego (o cola) para ve si está llena, si lo está,
+	 * mueve las dos primeras cartas de la cola al Bar Bestial y la última le da
+	 * la patada.
 	 *
 	 *
 	 */
@@ -231,6 +234,10 @@ public class CartasEnJuego extends Observable {
 			setChanged();
 			notifyObservers();
 		}
+	}
+
+	public void setAll(boolean t) {
+		CartasEnJuego.ListaAnimales.setAll(t);
 	}
 
 	public static CartasEnJuego getCartasEnJuego() {

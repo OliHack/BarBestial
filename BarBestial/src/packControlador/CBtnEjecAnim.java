@@ -13,7 +13,7 @@ public class CBtnEjecAnim implements MouseListener {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		if (!IPartida.getIPartida().isAnimaladasEjecutada() && IPartida.getIPartida().isCartaEchada()) {
-			CartasEnJuego.getCartasEnJuego().ejecutarAnimalada();
+			CartasEnJuego.getCartasEnJuego().jugarTurno();
 			System.out.println("Se ha ejecutado animaladas");
 			IPartida.getIPartida().setAnimaladasEjecutada(true);
 			IPartida.getIPartida().actualizarCola();
