@@ -33,6 +33,6 @@ public class Calle {
 	}
 	
 	public int numCartas() {
-		return ListaAnimales.getListaAnimales().size();
+		return ListaAnimales.size();
 	}
 }

@@ -26,6 +26,11 @@ public class ListaCartaAnimal {
 			ListaAnimales.get(i).setActivada(t);
 		}
 	}
+	
+	public String getPathImg(int pos) {
+		return ListaAnimales.get(pos).getPathImg();
+	}
+	
 
 	/**
 	 * Borra la carta de entrada de la lista

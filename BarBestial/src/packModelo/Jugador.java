@@ -43,6 +43,14 @@ public class Jugador extends Observable {
 		else
 			return false;
 	}
+	
+	public int manoSize() {
+		return mano.size();
+	}
+	
+	public String getImgPath(int pos) {
+		return mano.getPathImg(pos);
+	}
 
 	/**
 	 *

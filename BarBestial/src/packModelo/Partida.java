@@ -51,7 +51,7 @@ public class Partida {
 				.add(JugadorFactory.getJugadorFactory().crearJugador(pNombres[3], EnumColor.AMARILLO));
 		BarBestial.getBarBestial().inicializar();
 		Calle.getCalle().inicializar();
-		turnoColor = EnumColor.ROJO;
+		turnoColor = EnumColor.ROJO; // Inicializamos a color rojo
 	}
 
 	public static Partida getPartida() {

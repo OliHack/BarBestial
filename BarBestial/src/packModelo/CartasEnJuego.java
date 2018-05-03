@@ -47,7 +47,13 @@ public class CartasEnJuego extends Observable {
 			return true;
 
 	}
-
+	public int size() {
+		return ListaAnimales.size();
+	}
+	
+	public String getImgPath(int pos){
+		return ListaAnimales.getPathImg(pos);
+	}
 	public boolean contieneAnimal(String animal) {
 		Iterator<CartaAnimal> it = CartasEnJuego.ListaAnimales.getIterator();
 		while (it.hasNext()) {

@@ -16,7 +16,7 @@ public class CBtnMazo implements MouseListener {
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		ListaJugador.getListaJugador().getJugador(jugadorColor).robarMazo();
+		ListaJugador.getListaJugador().robarMazo(jugadorColor);
 		IPartida.getIPartida().actualizarMazos();
 	}
 

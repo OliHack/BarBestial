@@ -22,6 +22,14 @@ public class ListaJugador {
 		// TODO - implement ListaJugador.actualizarPuntuacionJugador
 		throw new UnsupportedOperationException();
 	}
+	
+	public int manoSize(EnumColor pColor) {
+		return getJugador(pColor).manoSize();
+	}
+	
+	public String getImgPath(EnumColor pColor, int pos) {
+		return getJugador(pColor).getImgPath(pos);
+	}
 
 	/**
 	 *
@@ -47,6 +55,12 @@ public class ListaJugador {
 			//llamar a algun metodo que finalice el juego
 		}
 		return comprueba;
+	}
+	public void robarMazo(EnumColor pColor) {
+		getJugador(pColor).robarMazo();
+	}
+	public boolean echarCarta(EnumColor pColor, int pos) {
+		return getJugador(pColor).echarCarta(pos);
 	}
 
 	/**
@@ -100,17 +114,6 @@ public class ListaJugador {
 	
 	public int getNumJug() {
 		return miLista.size();
-	}
-
-	/**
-	 *
-	 * @param pCant
-	 */
-	public void inicializar(int pCant) {
-		// TODO - implement ListaJugador.inicializar
-
-		
-		throw new UnsupportedOperationException();
 	}
 
 	public static ListaJugador getListaJugador() {
