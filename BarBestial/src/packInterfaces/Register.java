@@ -9,10 +9,16 @@ import java.awt.Insets;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+
+import packModelo.GestorBD;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Register extends JDialog {
 
@@ -24,16 +30,16 @@ public class Register extends JDialog {
 	/**
 	 * Launch the application.
 	 */
-	public static void empezar() {
+	public void empezar() {
 		try {
-			Register dialog = new Register();
+			Register dialog = getRegister();;
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static Register getRegister() {
 		if (miRegister == null) {
 			miRegister = new Register();
@@ -51,10 +57,11 @@ public class Register extends JDialog {
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		GridBagLayout gbl_contentPanel = new GridBagLayout();
-		gbl_contentPanel.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-		gbl_contentPanel.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
-		gbl_contentPanel.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, Double.MIN_VALUE};
-		gbl_contentPanel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_contentPanel.columnWidths = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+		gbl_contentPanel.rowHeights = new int[] { 0, 0, 0, 0, 0, 0, 0, 0 };
+		gbl_contentPanel.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0,
+				Double.MIN_VALUE };
+		gbl_contentPanel.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		contentPanel.setLayout(gbl_contentPanel);
 		{
 			JLabel lblUsuario = new JLabel("Usuario");
@@ -99,12 +106,34 @@ public class Register extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton okButton = new JButton("Registrarme");
+				okButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						int h = GestorBD.getGestorBD().sqlUpdate("Insert into Usuarios(Usuario,Pass) values('" + textField.getText()
+								+ "','" + new String(passwordField.getPassword()) + "');");
+						if (h > 0) {
+							JOptionPane.showMessageDialog(null,
+									"Te has registrado correctamente, redirigiendo a la pantalla de inicio de sesión");
+							miRegister.setVisible(false);
+							miRegister.dispose();
+							Login.getLogin().empezar();
+						} else {
+							JOptionPane.showMessageDialog(null, "No se ha podido realizar el registro");
+						}
+					}
+				});
 				okButton.setActionCommand("OK");
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);
 			}
 			{
 				JButton cancelButton = new JButton("Volver");
+				cancelButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						miRegister.setVisible(false);
+						miRegister.dispose();
+						Login.getLogin().empezar();
+					}
+				});
 				cancelButton.setActionCommand("Cancel");
 				buttonPane.add(cancelButton);
 			}

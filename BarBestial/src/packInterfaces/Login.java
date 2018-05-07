@@ -8,15 +8,23 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import packModelo.GestorBD;
+
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.swing.JPasswordField;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Login extends JDialog {
 
@@ -24,19 +32,20 @@ public class Login extends JDialog {
 	private JTextField textField;
 	private JPasswordField passwordField;
 	private static Login miLogin;
+
 	/**
 	 * Launch the application.
 	 */
-	public static void empezar() {
+	public void empezar() {
 		try {
-			Login dialog = new Login();
+			Login dialog = getLogin();
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static Login getLogin() {
 		if (miLogin == null) {
 			miLogin = new Login();
@@ -54,10 +63,11 @@ public class Login extends JDialog {
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		GridBagLayout gbl_contentPanel = new GridBagLayout();
-		gbl_contentPanel.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-		gbl_contentPanel.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
-		gbl_contentPanel.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, Double.MIN_VALUE};
-		gbl_contentPanel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_contentPanel.columnWidths = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+		gbl_contentPanel.rowHeights = new int[] { 0, 0, 0, 0, 0, 0, 0, 0 };
+		gbl_contentPanel.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0,
+				Double.MIN_VALUE };
+		gbl_contentPanel.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		contentPanel.setLayout(gbl_contentPanel);
 		{
 			JLabel lblUsuario = new JLabel("Usuario");
@@ -98,17 +108,17 @@ public class Login extends JDialog {
 		}
 		{
 			JButton btnRegistrarme = new JButton("Registrarme");
+			btnRegistrarme.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					miLogin.setVisible(false);
+					miLogin.dispose();
+					Register.getRegister().empezar();
+				}
+			});
 			GridBagConstraints gbc_btnRegistrarme = new GridBagConstraints();
 			gbc_btnRegistrarme.insets = new Insets(0, 0, 0, 5);
 			gbc_btnRegistrarme.gridx = 8;
 			gbc_btnRegistrarme.gridy = 6;
-			btnRegistrarme.addMouseListener(new MouseAdapter() {
-				@Override
-				public void mouseClicked(MouseEvent e) {
-					miLogin.setVisible(false);
-					Register.empezar();
-				}
-			});
 			contentPanel.add(btnRegistrarme, gbc_btnRegistrarme);
 		}
 		{
@@ -117,12 +127,39 @@ public class Login extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton okButton = new JButton("Iniciar Sesión");
+				okButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						ResultSet rs = null;
+						rs = GestorBD.getGestorBD()
+								.sqlExec("Select * from Usuarios where usuario = '" + textField.getText()
+										+ "' and pass = '" + new String(passwordField.getPassword()) + "';");
+						try {
+							if (rs.next()) {
+								JOptionPane.showMessageDialog(null, "Has iniciado sesión correctamente");
+								miLogin.setVisible(false);
+								miLogin.dispose();
+								IPartida frame = IPartida.getIPartida();
+								frame.setVisible(true);
+							} else {
+								JOptionPane.showMessageDialog(null, "Inicio de sesión erróneo");
+							}
+						} catch (SQLException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+					}
+				});
 				okButton.setActionCommand("OK");
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);
 			}
 			{
 				JButton cancelButton = new JButton("Salir");
+				cancelButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						System.exit(0);
+					}
+				});
 				cancelButton.setActionCommand("Cancel");
 				buttonPane.add(cancelButton);
 			}

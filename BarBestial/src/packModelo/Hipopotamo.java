@@ -8,19 +8,8 @@ public class Hipopotamo implements Recurrente, ICompAnimalada {
 
 	@Override
 	public void animalada() {
-		int pos = CartasEnJuego.getCartasEnJuego().getLastPosition(), max = 0;
-		while (pos > 0) {
-			pos--;
-			if (CartasEnJuego.getCartasEnJuego().getCartaDePos(pos).getValor() >= Constantes.VALOR_HIPO
-					|| CartasEnJuego.getCartasEnJuego().getCartaDePos(pos).getTipo().equals("Cebra")) {
-				max = pos + 1;
-				break;
-			}
-		}
-		CartaAnimal hipo = CartasEnJuego.getCartasEnJuego()
-				.delCarta(CartasEnJuego.getCartasEnJuego().getLastPosition());
-		CartasEnJuego.getCartasEnJuego().ponerAnimalEnPos(hipo, max);
-
+		int pos = CartasEnJuego.getCartasEnJuego().getListaAnimales().getLastPosition();
+		this.animalada(pos);
 	}
 
 	@Override

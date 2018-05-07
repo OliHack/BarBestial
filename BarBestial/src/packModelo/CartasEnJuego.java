@@ -100,7 +100,7 @@ public class CartasEnJuego extends Observable {
 	}
 
 	public void ejecutarRec() {
-		CartasEnJuego.getCartasEnJuego();
+		//CartasEnJuego.getCartasEnJuego();
 		CartasEnJuego.ListaAnimales.ejecutarRec();
 
 	}
