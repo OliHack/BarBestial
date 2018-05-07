@@ -54,7 +54,7 @@ public class CartaAnimal {
 	}
 
 	public boolean hacerAnimaladaRec(int pPos) {
-		if (this.animalada instanceof Recurrente && this.activada == false) {
+		if (this.animalada instanceof Recurrente && !this.activada) {
 			animalada.animalada(pPos);
 			this.setActivada(true);
 			return true;

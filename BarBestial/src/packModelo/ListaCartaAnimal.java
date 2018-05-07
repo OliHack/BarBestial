@@ -58,6 +58,7 @@ public class ListaCartaAnimal {
 		if (!todasActivas()) {
 			this.ejecutarRec();
 		}
+		setAll(false);
 	}
 
 	public boolean esta(CartaAnimal pCarta) {
@@ -160,7 +161,7 @@ public class ListaCartaAnimal {
 		boolean act = true;
 		for (int k = 0; k < ListaAnimales.size(); k++) {
 			if (ListaAnimales.get(k).getAnimalada() instanceof Recurrente
-					&& ListaAnimales.get(k).activadaRec() == false) {
+					&& !ListaAnimales.get(k).activadaRec()) {
 				act = false;
 				break;
 			}

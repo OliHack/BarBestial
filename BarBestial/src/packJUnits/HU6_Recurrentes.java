@@ -1,6 +1,7 @@
 package packJUnits;
 
 import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
 
 import packModelo.Calle;
 import packModelo.CartaAnimal;
@@ -9,9 +10,17 @@ import packModelo.CartasEnJuego;
 import packModelo.EnumColor;
 
 public class HU6_Recurrentes {
+	
+	@BeforeEach
+	void setUp() throws Exception {
+		CartasEnJuego.getCartasEnJuego().inicializar();
+		Calle.getCalle().inicializar();
+	}
 
 	@Test
 	public void test() {
+		CartasEnJuego.getCartasEnJuego().inicializar();
+		Calle.getCalle().inicializar();
 		CartaAnimal leonVerde = CartaFactory.getCartaFactory().crearCarta(EnumColor.VERDE, "Leon");
 		CartaAnimal hipoAmarillo = CartaFactory.getCartaFactory().crearCarta(EnumColor.AMARILLO, "Hipopotamo");
 		CartaAnimal cebraAzul = CartaFactory.getCartaFactory().crearCarta(EnumColor.AZUL, "Cebra");
@@ -36,7 +45,8 @@ public class HU6_Recurrentes {
 		System.out.println(" -------------------------------------------------------\n");
 
 		// Las a�adimos a CartasEnJuego
-
+		
+		
 		CartasEnJuego.getCartasEnJuego().add(leonVerde);
 		CartasEnJuego.getCartasEnJuego().add(cocodRojo);
 		CartasEnJuego.getCartasEnJuego().add(loroVerde);

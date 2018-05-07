@@ -101,8 +101,7 @@ public class CartasEnJuego extends Observable {
 
 	public void ejecutarRec() {
 		//CartasEnJuego.getCartasEnJuego();
-		CartasEnJuego.ListaAnimales.ejecutarRec();
-
+		ListaAnimales.ejecutarRec();
 	}
 
 	public CartaAnimal getCartaDePos(int pos) {
@@ -191,8 +190,8 @@ public class CartasEnJuego extends Observable {
 	 * @param
 	 */
 	public void jugarTurno() {
-		CartasEnJuego.ListaAnimales.hacerAnimalada();
-		CartasEnJuego.getCartasEnJuego().ejecutarRec();
+		ListaAnimales.hacerAnimalada();
+		ejecutarRec();
 	}
 
 	public void mandarAnimalACalle(String animal) {

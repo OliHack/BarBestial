@@ -15,13 +15,16 @@ public class Mofeta implements ICompAnimalada {
 	 */
 	@Override
 	public void animalada() {
-		int j =0;
-		while(j!=2) {
+		int j = 0;
+		while (j != 2) {
 			CartaAnimal animal = CartasEnJuego.getCartasEnJuego().animalMasFuerte();
+			if (animal.getAnimalada() instanceof Mofeta)
+				break;
 			System.out.println(animal.getTipo());
-			for(int i=0; i < CartasEnJuego.getCartasEnJuego().getListaAnimales().getListaAnimales().size();i++) {
-				if(CartasEnJuego.getCartasEnJuego().getCartaDePos(i).getTipo().equals(animal.getTipo())) {
-					CartasEnJuego.getCartasEnJuego().mandarAnimalACalle(CartasEnJuego.getCartasEnJuego().getCartaDePos(i).getTipo());
+			for (int i = 0; i < CartasEnJuego.getCartasEnJuego().getListaAnimales().getListaAnimales().size(); i++) {
+				if (CartasEnJuego.getCartasEnJuego().getCartaDePos(i).getTipo().equals(animal.getTipo())) {
+					CartasEnJuego.getCartasEnJuego()
+							.mandarAnimalACalle(CartasEnJuego.getCartasEnJuego().getCartaDePos(i).getTipo());
 					break;
 				}
 			}
