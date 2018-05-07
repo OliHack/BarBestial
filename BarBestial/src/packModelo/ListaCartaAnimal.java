@@ -66,19 +66,19 @@ public class ListaCartaAnimal {
 
 	/**
 	 *
-	 * @param pValor
+	 * @param pPos
 	 */
-	public CartaAnimal getCarta(int pValor) {
+	public CartaAnimal getCarta(int pPos) {
 		CartaAnimal nueva = null;
 		Iterator<CartaAnimal> lista = ListaAnimales.iterator();
 		int i = 0;
 		while (lista.hasNext()) {
-			if (pValor == i) {
-				nueva = lista.next();
+			CartaAnimal x = lista.next();
+			if (pPos == i) {
+				nueva = x;
 				break;
 			}
 			i++;
-			lista.next();
 		}
 		return nueva;
 	}
@@ -143,11 +143,11 @@ public class ListaCartaAnimal {
 		boolean esta = false;
 		Iterator<CartaAnimal> lista = ListaAnimales.iterator();
 		while (lista.hasNext()) {
-			if (lista.next().getAnimalada() instanceof Camaleon == false) {
+			CartaAnimal x = lista.next();
+			if (x.getAnimalada() instanceof Camaleon == false) {
 				esta = true;
 				break;
 			}
-			lista.next();
 		}
 		return esta;
 	}
