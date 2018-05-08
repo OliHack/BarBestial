@@ -4,6 +4,7 @@ public class CartaAnimal {
 
 	private final EnumColor color;
 	private int valor;
+	private int puntos;
 	private String tipo;
 	private boolean activada;
 	private ICompAnimalada animalada;
@@ -16,12 +17,17 @@ public class CartaAnimal {
 	 * @param pRec
 	 * @param pPathImg
 	 */
-	public CartaAnimal(EnumColor pCol, int pValor, String pTipo, String pPathImg) {
+	public CartaAnimal(EnumColor pCol, int pValor, String pTipo, String pPathImg, int pPts) {
 		color = pCol;
 		valor = pValor;
 		tipo = pTipo;
 		pathImg = pPathImg;
 		activada = false;
+		puntos = pPts;
+	}
+
+	public int getPuntos() {
+		return puntos;
 	}
 
 	public boolean activadaRec() {

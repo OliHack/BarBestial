@@ -54,6 +54,9 @@ public class Partida {
 		Calle.getCalle().inicializar();
 		turnoColor = EnumColor.ROJO; // Inicializamos a color rojo
 	}
+	public boolean terminado() {
+		return ListaJugador.getListaJugador().comprobarCartas();
+	}
 
 	public static Partida getPartida() {
 		if (Partida.miPartida == null) {

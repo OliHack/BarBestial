@@ -1,5 +1,7 @@
 package packModelo;
 
+import java.util.Iterator;
+
 public class BarBestial {
 
 	private static BarBestial miBarBestial;
@@ -22,9 +24,16 @@ public class BarBestial {
 	 * 
 	 * @param pColor
 	 */
-	public int calcularPuntos(String pColor) {
-		// TODO - implement BarBestial.calcularPuntos
-		throw new UnsupportedOperationException();
+	public int calcularPuntos(EnumColor pColor) {
+		int m = 0;
+		Iterator<CartaAnimal> it = ListaAnimales.getIterator();
+		while (it.hasNext()) {
+			CartaAnimal x = it.next();
+			if (x.getColor() == pColor) {
+				m += x.getPuntos();
+			}
+		}
+		return m;
 	}
 
 	/**
@@ -34,13 +43,14 @@ public class BarBestial {
 	public void addAnimal(CartaAnimal pCartaAnimal) {
 		ListaAnimales.add(pCartaAnimal);
 	}
+
 	/**
 	 * Inicializa la lista de cartas (vacia)
 	 */
 	public void inicializar() {
 		ListaAnimales = new ListaCartaAnimal();
 	}
-	
+
 	public int numCartas() {
 		return ListaAnimales.size();
 	}

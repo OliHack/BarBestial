@@ -92,7 +92,11 @@ public class IPartida extends JFrame implements Observer {
 	private EnumColor turnoColor;
 	private boolean cartaEchada;
 	private boolean animaladasEjecutada;
-	private String jugador = "";
+	private String jugador;
+
+	public String getJugador() {
+		return jugador;
+	}
 
 	// colores personalizados para el apartado gráfico de la interfaz
 	private final static Color miAmarillo = new Color(254, 238, 57);

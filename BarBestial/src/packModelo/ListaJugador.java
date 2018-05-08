@@ -6,8 +6,8 @@ import java.util.Iterator;
 
 public class ListaJugador {
 
-	private static ListaJugador			miListaJugador;
-	private final Collection<Jugador>	miLista;
+	private static ListaJugador miListaJugador;
+	private final Collection<Jugador> miLista;
 
 	private ListaJugador() {
 		miLista = new ArrayList<Jugador>();
@@ -22,11 +22,11 @@ public class ListaJugador {
 		// TODO - implement ListaJugador.actualizarPuntuacionJugador
 		throw new UnsupportedOperationException();
 	}
-	
+
 	public int manoSize(EnumColor pColor) {
 		return getJugador(pColor).manoSize();
 	}
-	
+
 	public String getImgPath(EnumColor pColor, int pos) {
 		return getJugador(pColor).getImgPath(pos);
 	}
@@ -43,7 +43,7 @@ public class ListaJugador {
 		boolean comprueba = false;
 		Iterator<Jugador> lista = this.miLista.iterator();
 		while (lista.hasNext()) {
-			if (lista.next().comprobarCartas() == false) {
+			if (!lista.next().comprobarCartas()) {
 				comprueba = false;
 				break;
 			} else {
@@ -52,13 +52,15 @@ public class ListaJugador {
 		}
 		if (comprueba) {
 			System.out.println(" Todos los jugadores se han quedado sin cartas. Fin del juego.");
-			//llamar a algun metodo que finalice el juego
+			// llamar a algun metodo que finalice el juego
 		}
 		return comprueba;
 	}
+
 	public void robarMazo(EnumColor pColor) {
 		getJugador(pColor).robarMazo();
 	}
+
 	public boolean echarCarta(EnumColor pColor, int pos) {
 		return getJugador(pColor).echarCarta(pos);
 	}
@@ -106,12 +108,12 @@ public class ListaJugador {
 		while (lista.hasNext() && !enc) {
 			nuevo = lista.next();
 			if (nuevo.getColor() == pCol) {
-				enc=true;
+				enc = true;
 			}
 		}
 		return nuevo;
 	}
-	
+
 	public int getNumJug() {
 		return miLista.size();
 	}
