@@ -46,13 +46,7 @@ public class CartasEnJuego extends Observable {
 			return true;
 
 	}
-	public int size() {
-		return ListaAnimales.size();
-	}
-	
-	public String getImgPath(int pos){
-		return ListaAnimales.getPathImg(pos);
-	}
+
 	public boolean contieneAnimal(String animal) {
 		Iterator<CartaAnimal> it = CartasEnJuego.ListaAnimales.getIterator();
 		while (it.hasNext()) {
@@ -93,15 +87,14 @@ public class CartasEnJuego extends Observable {
 	 * @param
 	 */
 	public void ejecutarAnimalada() {
-		CartasEnJuego.ListaAnimales.getLast().setActivada(true);
 		CartasEnJuego.ListaAnimales.getLast().hacerAnimalada();
 		CartasEnJuego.getCartasEnJuego().ejecutarRec();
 		setAll(false);
 	}
 
 	public void ejecutarRec() {
-		//CartasEnJuego.getCartasEnJuego();
-		ListaAnimales.ejecutarRec();
+		// CartasEnJuego.getCartasEnJuego();
+		CartasEnJuego.ListaAnimales.ejecutarRec();
 	}
 
 	public CartaAnimal getCartaDePos(int pos) {
@@ -142,6 +135,10 @@ public class CartasEnJuego extends Observable {
 		CartasEnJuego.getCartasEnJuego().delCarta(0);
 		return cielo;
 
+	}
+
+	public String getImgPath(int pos) {
+		return CartasEnJuego.ListaAnimales.getPathImg(pos);
 	}
 
 	public int getLastPosition() {
@@ -190,7 +187,7 @@ public class CartasEnJuego extends Observable {
 	 * @param
 	 */
 	public void jugarTurno() {
-		ListaAnimales.hacerAnimalada();
+		CartasEnJuego.ListaAnimales.hacerAnimalada();
 		ejecutarRec();
 	}
 
@@ -237,6 +234,10 @@ public class CartasEnJuego extends Observable {
 
 	public void setAll(boolean t) {
 		CartasEnJuego.ListaAnimales.setAll(t);
+	}
+
+	public int size() {
+		return CartasEnJuego.ListaAnimales.size();
 	}
 
 	public static CartasEnJuego getCartasEnJuego() {
