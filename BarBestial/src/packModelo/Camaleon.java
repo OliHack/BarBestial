@@ -31,7 +31,7 @@ public class Camaleon implements ICompAnimalada {
 			} else {
 				int max = CartasEnJuego.getCartasEnJuego().numCartas();
 				Random rand = new Random();
-				num = rand.nextInt(max) + 1;
+				num = rand.nextInt(max + 1);
 			}
 			CartaAnimal carta = CartasEnJuego.getCartasEnJuego().getListaAnimales().getListaAnimales().get(num);
 			CartaAnimal camaleon = CartasEnJuego.getCartasEnJuego().delCarta(ult);

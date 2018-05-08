@@ -23,7 +23,7 @@ public class Canguro implements ICompAnimalada {
 				num = Integer.parseInt(input);
 			} else {
 				Random rand = new Random();
-				num = rand.nextInt(2) + 1;
+				num = rand.nextInt(2)+1;
 			}
 			if (num == 2) {
 				CartaAnimal canguro = CartasEnJuego.getCartasEnJuego().getListaAnimales().getLast();

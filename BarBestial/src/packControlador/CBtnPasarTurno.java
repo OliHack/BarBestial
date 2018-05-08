@@ -34,45 +34,43 @@ public class CBtnPasarTurno implements MouseListener {
 			msg += "¡Debes ejecutar las animaladas!";
 			JOptionPane.showMessageDialog(null, msg);
 		}
-		// try {
-		// Thread.sleep(1000);
-		// } catch (InterruptedException e1) {
-		// e1.printStackTrace();
-		// }
-		switch (IPartida.getIPartida().getTurnoColor()) {
-		case AMARILLO:
-			if (ListaJugador.getListaJugador().echarCarta(EnumColor.AMARILLO, ThreadLocalRandom.current().nextInt(0,
-					ListaJugador.getListaJugador().manoSize(EnumColor.AMARILLO)))) {
-				ListaJugador.getListaJugador().robarMazo(EnumColor.AMARILLO);
-				IPartida.getIPartida().actualizarCola();
-				IPartida.getIPartida().actualizarMazos();
-				IPartida.getIPartida().setAnimaladasEjecutada(false);
-				IPartida.getIPartida().setCartaEchada(true);
+		if (IPartida.getIPartida().isAnimaladasEjecutada()) {
+			switch (IPartida.getIPartida().getTurnoColor()) {
+			case AMARILLO:
+				if (ListaJugador.getListaJugador().echarCarta(EnumColor.AMARILLO, ThreadLocalRandom.current().nextInt(0,
+						ListaJugador.getListaJugador().manoSize(EnumColor.AMARILLO)))) {
+					ListaJugador.getListaJugador().robarMazo(EnumColor.AMARILLO);
+					IPartida.getIPartida().actualizarCola();
+					IPartida.getIPartida().actualizarMazos();
+					IPartida.getIPartida().setAnimaladasEjecutada(false);
+					IPartida.getIPartida().setCartaEchada(true);
+				}
+				break;
+			case AZUL:
+				if (ListaJugador.getListaJugador().echarCarta(EnumColor.AZUL, ThreadLocalRandom.current().nextInt(0,
+						ListaJugador.getListaJugador().manoSize(EnumColor.AZUL)))) {
+					ListaJugador.getListaJugador().robarMazo(EnumColor.AZUL);
+					IPartida.getIPartida().actualizarCola();
+					IPartida.getIPartida().actualizarMazos();
+					IPartida.getIPartida().setAnimaladasEjecutada(false);
+					IPartida.getIPartida().setCartaEchada(true);
+				}
+				break;
+			case VERDE:
+				if (ListaJugador.getListaJugador().echarCarta(EnumColor.VERDE, ThreadLocalRandom.current().nextInt(0,
+						ListaJugador.getListaJugador().manoSize(EnumColor.VERDE)))) {
+					ListaJugador.getListaJugador().robarMazo(EnumColor.VERDE);
+					IPartida.getIPartida().actualizarCola();
+					IPartida.getIPartida().actualizarMazos();
+					IPartida.getIPartida().setAnimaladasEjecutada(false);
+					IPartida.getIPartida().setCartaEchada(true);
+				}
+				break;
+			default:
+				break;
 			}
-			break;
-		case AZUL:
-			if (ListaJugador.getListaJugador().echarCarta(EnumColor.AZUL,
-					ThreadLocalRandom.current().nextInt(0, ListaJugador.getListaJugador().manoSize(EnumColor.AZUL)))) {
-				ListaJugador.getListaJugador().robarMazo(EnumColor.AZUL);
-				IPartida.getIPartida().actualizarCola();
-				IPartida.getIPartida().actualizarMazos();
-				IPartida.getIPartida().setAnimaladasEjecutada(false);
-				IPartida.getIPartida().setCartaEchada(true);
-			}
-			break;
-		case VERDE:
-			if (ListaJugador.getListaJugador().echarCarta(EnumColor.VERDE,
-					ThreadLocalRandom.current().nextInt(0, ListaJugador.getListaJugador().manoSize(EnumColor.VERDE)))) {
-				ListaJugador.getListaJugador().robarMazo(EnumColor.VERDE);
-				IPartida.getIPartida().actualizarCola();
-				IPartida.getIPartida().actualizarMazos();
-				IPartida.getIPartida().setAnimaladasEjecutada(false);
-				IPartida.getIPartida().setCartaEchada(true);
-			}
-			break;
-		default:
-			break;
 		}
+
 		if (Partida.getPartida().terminado()) {
 			int ptsRojo = BarBestial.getBarBestial().calcularPuntos(EnumColor.ROJO);
 			int ptsAmar = BarBestial.getBarBestial().calcularPuntos(EnumColor.AMARILLO);
