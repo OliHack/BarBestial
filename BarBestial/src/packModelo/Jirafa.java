@@ -26,10 +26,9 @@ public class Jirafa implements Recurrente, ICompAnimalada {
 		CartaAnimal jirafa = CartasEnJuego.getCartasEnJuego().getListaAnimales().getCarta(pPos);
 		int pos = pPos - 1;
 		if (CartasEnJuego.getCartasEnJuego().numCartas() == 1 || pPos == 0) {
-			System.out.println("Cocodrilo no puede comer :(( ");
+			System.out.println("jirafa no puede avanzar :(( ");
 		} else {
-			if (CartasEnJuego.getCartasEnJuego().getCartaDePos(pos).getValor() < 10 && CartasEnJuego.getCartasEnJuego()
-					.getListaAnimales().getCarta(pos).getAnimalada() instanceof Cebra == false) {
+			if (CartasEnJuego.getCartasEnJuego().getCartaDePos(pos).getValor() < 8) {
 				CartasEnJuego.getCartasEnJuego().getListaAnimales().getListaAnimales().add(pos, jirafa);
 				CartasEnJuego.getCartasEnJuego().getListaAnimales().getListaAnimales().remove(pPos + 1);
 			}

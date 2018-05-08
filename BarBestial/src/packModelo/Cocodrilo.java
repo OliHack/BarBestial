@@ -18,10 +18,10 @@ public class Cocodrilo implements Recurrente, ICompAnimalada {
 		CartaAnimal cocodrilo = CartasEnJuego.getCartasEnJuego().getListaAnimales().getCarta(pPos);
 		int pos = pPos - 1;
 		if (CartasEnJuego.getCartasEnJuego().numCartas() == 1 || pPos == 0) {
-			System.out.println("Cocodrilo no puede comer :(( ");
+			System.out.println("Cocodrilo no puede comer más ");
 		} else {
-			if (CartasEnJuego.getCartasEnJuego().getCartaDePos(pos).getValor() < 10 && !(CartasEnJuego.getCartasEnJuego()
-					.getListaAnimales().getCarta(pos).getAnimalada() instanceof Cebra)) {
+			if (CartasEnJuego.getCartasEnJuego().getCartaDePos(pos).getValor() < 10 && !(CartasEnJuego
+					.getCartasEnJuego().getListaAnimales().getCarta(pos).getAnimalada() instanceof Cebra)) {
 				CartasEnJuego.getCartasEnJuego().getListaAnimales().getListaAnimales().add(pos, cocodrilo);
 				CartasEnJuego.getCartasEnJuego().getListaAnimales().getListaAnimales().remove(pPos + 1);
 				Calle.getCalle().addAnimal(CartasEnJuego.getCartasEnJuego().getListaAnimales().getCarta(pPos));

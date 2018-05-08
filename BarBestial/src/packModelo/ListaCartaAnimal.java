@@ -21,17 +21,6 @@ public class ListaCartaAnimal {
 		ListaAnimales.add(pCartaAnimal);
 	}
 
-	public void setAll(boolean t) {
-		for (int i = 0; i < ListaAnimales.size(); i++) {
-			ListaAnimales.get(i).setActivada(t);
-		}
-	}
-	
-	public String getPathImg(int pos) {
-		return ListaAnimales.get(pos).getPathImg();
-	}
-	
-
 	/**
 	 * Borra la carta de entrada de la lista
 	 *
@@ -55,7 +44,7 @@ public class ListaCartaAnimal {
 				break;
 			}
 		}
-		if (!todasActivas()) {
+		if (todasActivas() == false) {
 			this.ejecutarRec();
 		}
 		setAll(false);
@@ -100,10 +89,14 @@ public class ListaCartaAnimal {
 		return ListaAnimales;
 	}
 
+	public String getPathImg(int pos) {
+		return ListaAnimales.get(pos).getPathImg();
+	}
+
 	/**
 	 * Este m�todo devuelve los que sean recurrentes teniendo en cuenta si se ha
-	 * ejecutado anteriormente, además de null en las posiciones donde las cartas no
-	 * osn recurrentes
+	 * ejecutado anteriormente, además de null en las posiciones donde las
+	 * cartas no osn recurrentes
 	 *
 	 * @return
 	 */
@@ -153,15 +146,23 @@ public class ListaCartaAnimal {
 		return esta;
 	}
 
+	public void setAll(boolean t) {
+		for (int i = 0; i < ListaAnimales.size(); i++) {
+			ListaAnimales.get(i).setActivada(t);
+		}
+	}
+
 	public int size() {
 		return ListaAnimales.size();
 	}
 
 	private boolean todasActivas() {
+		// devuelve false si hay inactivas
 		boolean act = true;
 		for (int k = 0; k < ListaAnimales.size(); k++) {
+
 			if (ListaAnimales.get(k).getAnimalada() instanceof Recurrente
-					&& !ListaAnimales.get(k).activadaRec()) {
+					&& ListaAnimales.get(k).activadaRec() == false) {
 				act = false;
 				break;
 			}

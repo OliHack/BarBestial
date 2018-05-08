@@ -2,13 +2,13 @@ package packModelo;
 
 public class CartaAnimal {
 
-	private final EnumColor color;
-	private int valor;
-	private int puntos;
-	private String tipo;
-	private boolean activada;
-	private ICompAnimalada animalada;
-	private final String pathImg;
+	private final EnumColor	color;
+	private int				valor;
+	private final int		puntos;
+	private String			tipo;
+	private boolean			activada;
+	private ICompAnimalada	animalada;
+	private final String	pathImg;
 
 	/**
 	 *
@@ -24,10 +24,6 @@ public class CartaAnimal {
 		pathImg = pPathImg;
 		activada = false;
 		puntos = pPts;
-	}
-
-	public int getPuntos() {
-		return puntos;
 	}
 
 	public boolean activadaRec() {
@@ -46,6 +42,10 @@ public class CartaAnimal {
 		return pathImg;
 	}
 
+	public int getPuntos() {
+		return puntos;
+	}
+
 	public String getTipo() {
 		return tipo;
 	}
@@ -60,7 +60,7 @@ public class CartaAnimal {
 	}
 
 	public boolean hacerAnimaladaRec(int pPos) {
-		if (this.animalada instanceof Recurrente && !this.activada) {
+		if (this.animalada instanceof Recurrente && activada == false) {
 			animalada.animalada(pPos);
 			this.setActivada(true);
 			return true;
