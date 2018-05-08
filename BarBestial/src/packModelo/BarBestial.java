@@ -1,8 +1,9 @@
 package packModelo;
 
 import java.util.Iterator;
+import java.util.Observable;
 
-public class BarBestial {
+public class BarBestial extends Observable{
 
 	private static BarBestial miBarBestial;
 	private ListaCartaAnimal ListaAnimales;
@@ -42,6 +43,8 @@ public class BarBestial {
 	 */
 	public void addAnimal(CartaAnimal pCartaAnimal) {
 		ListaAnimales.add(pCartaAnimal);
+		setChanged();
+		notifyObservers();
 	}
 
 	/**

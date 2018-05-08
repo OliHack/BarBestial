@@ -1,6 +1,8 @@
 package packModelo;
 
-public class Calle {
+import java.util.Observable;
+
+public class Calle extends Observable{
 
 	private static Calle miCalle;
 	private ListaCartaAnimal ListaAnimales;
@@ -24,6 +26,8 @@ public class Calle {
 	 */
 	public void addAnimal(CartaAnimal pCartaAnimal) {
 		ListaAnimales.add(pCartaAnimal);
+		setChanged();
+		notifyObservers();
 	}
 	/**
 	 * Inicializa la lista de cartas (vacia)
