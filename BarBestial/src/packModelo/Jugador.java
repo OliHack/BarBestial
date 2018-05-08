@@ -1,12 +1,14 @@
 package packModelo;
 
 import java.util.Observable;
+import java.util.concurrent.ThreadLocalRandom;
 
 import javax.swing.JOptionPane;
 
 public class Jugador extends Observable {
 
 	private String nombre;
+
 	private ListaCartaAnimal mano;
 	private ListaCartaAnimal mazo;
 	private EnumColor color;
@@ -43,11 +45,11 @@ public class Jugador extends Observable {
 		else
 			return false;
 	}
-	
+
 	public int manoSize() {
 		return mano.size();
 	}
-	
+
 	public String getImgPath(int pos) {
 		return mano.getPathImg(pos);
 	}
@@ -65,7 +67,7 @@ public class Jugador extends Observable {
 				ListaJugador.getListaJugador().comprobarCartas();
 				this.notificar();
 				return true;
-			}else {
+			} else {
 				JOptionPane.showMessageDialog(null, "La cola está llena, no puedes echar más cartas");
 			}
 		}
@@ -110,13 +112,19 @@ public class Jugador extends Observable {
 				mazo.del(miCarta);
 				addMano(miCarta);
 			}
-		}else {
+		} else {
 			JOptionPane.showMessageDialog(null, "¡No tienes más cartas!");
 		}
 	}
 
 	private void inicializarMano() {
 		mano = new ListaCartaAnimal();
+		if (color != EnumColor.ROJO) {
+			robarMazo();
+			robarMazo();
+			robarMazo();
+			robarMazo();
+		}
 	}
 
 	/**
