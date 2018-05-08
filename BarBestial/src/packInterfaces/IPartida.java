@@ -30,7 +30,7 @@ public class IPartida extends JFrame implements Observer {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private static IPartida miPrincipal;
+	private static IPartida miIPartida;
 	private JPanel contentPane;
 
 	// Componentes de la interfaz
@@ -92,6 +92,7 @@ public class IPartida extends JFrame implements Observer {
 	private EnumColor turnoColor;
 	private boolean cartaEchada;
 	private boolean animaladasEjecutada;
+	private String jugador = "";
 
 	// colores personalizados para el apartado gráfico de la interfaz
 	private final static Color miAmarillo = new Color(254, 238, 57);
@@ -100,10 +101,18 @@ public class IPartida extends JFrame implements Observer {
 	private final static Color miAzul = new Color(75, 89, 213);
 
 	public static IPartida getIPartida() {
-		if (miPrincipal == null) {
-			miPrincipal = new IPartida();
+		if (miIPartida == null) {
+			miIPartida = new IPartida();
 		}
-		return miPrincipal;
+		return miIPartida;
+	}
+
+	public static IPartida getIPartida(String k) {
+		if (miIPartida == null) {
+			miIPartida = new IPartida();
+		}
+		miIPartida.jugador = k;
+		return miIPartida;
 	}
 
 	/**
@@ -113,10 +122,10 @@ public class IPartida extends JFrame implements Observer {
 		EventQueue.invokeLater(() -> {
 			try {
 				String[] pNombres = new String[4];
-				pNombres[0] = "Oliver";
-				pNombres[1] = "Jonan";
-				pNombres[2] = "Unai";
-				pNombres[3] = "Frank";
+				pNombres[0] = jugador;
+				pNombres[1] = "CPU_AMARILLO";
+				pNombres[2] = "CPU_AZUL";
+				pNombres[3] = "CPU_VERDE";
 				Partida.getPartida().inicializarPartida(pNombres);
 				turnoColor = EnumColor.ROJO;
 				animaladasEjecutada = true;
@@ -436,8 +445,7 @@ public class IPartida extends JFrame implements Observer {
 		switch (verdeSize) {
 		case 1:
 			try {
-				btnCarta21.setIcon(new ImageIcon(
-						getClass().getResource(ListaJugador.getListaJugador().getImgPath(EnumColor.VERDE, 0))));
+				btnCarta21.setIcon(new ImageIcon(getClass().getResource("/packImagenes/Atras.PNG")));
 				btnCarta22.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
 				btnCarta23.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
 				btnCarta24.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
@@ -447,10 +455,8 @@ public class IPartida extends JFrame implements Observer {
 			break;
 		case 2:
 			try {
-				btnCarta21.setIcon(new ImageIcon(
-						getClass().getResource(ListaJugador.getListaJugador().getImgPath(EnumColor.VERDE, 0))));
-				btnCarta22.setIcon(new ImageIcon(
-						getClass().getResource(ListaJugador.getListaJugador().getImgPath(EnumColor.VERDE, 1))));
+				btnCarta21.setIcon(new ImageIcon(getClass().getResource("/packImagenes/Atras.PNG")));
+				btnCarta22.setIcon(new ImageIcon(getClass().getResource("/packImagenes/Atras.PNG")));
 				btnCarta23.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
 				btnCarta24.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
 			} catch (Exception ex) {
@@ -459,12 +465,9 @@ public class IPartida extends JFrame implements Observer {
 			break;
 		case 3:
 			try {
-				btnCarta21.setIcon(new ImageIcon(
-						getClass().getResource(ListaJugador.getListaJugador().getImgPath(EnumColor.VERDE, 0))));
-				btnCarta22.setIcon(new ImageIcon(
-						getClass().getResource(ListaJugador.getListaJugador().getImgPath(EnumColor.VERDE, 1))));
-				btnCarta23.setIcon(new ImageIcon(
-						getClass().getResource(ListaJugador.getListaJugador().getImgPath(EnumColor.VERDE, 2))));
+				btnCarta21.setIcon(new ImageIcon(getClass().getResource("/packImagenes/Atras.PNG")));
+				btnCarta22.setIcon(new ImageIcon(getClass().getResource("/packImagenes/Atras.PNG")));
+				btnCarta23.setIcon(new ImageIcon(getClass().getResource("/packImagenes/Atras.PNG")));
 				btnCarta24.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
 			} catch (Exception ex) {
 				System.out.println(ex);
@@ -472,14 +475,10 @@ public class IPartida extends JFrame implements Observer {
 			break;
 		case 4:
 			try {
-				btnCarta21.setIcon(new ImageIcon(
-						getClass().getResource(ListaJugador.getListaJugador().getImgPath(EnumColor.VERDE, 0))));
-				btnCarta22.setIcon(new ImageIcon(
-						getClass().getResource(ListaJugador.getListaJugador().getImgPath(EnumColor.VERDE, 1))));
-				btnCarta23.setIcon(new ImageIcon(
-						getClass().getResource(ListaJugador.getListaJugador().getImgPath(EnumColor.VERDE, 2))));
-				btnCarta24.setIcon(new ImageIcon(
-						getClass().getResource(ListaJugador.getListaJugador().getImgPath(EnumColor.VERDE, 3))));
+				btnCarta21.setIcon(new ImageIcon(getClass().getResource("/packImagenes/Atras.PNG")));
+				btnCarta22.setIcon(new ImageIcon(getClass().getResource("/packImagenes/Atras.PNG")));
+				btnCarta23.setIcon(new ImageIcon(getClass().getResource("/packImagenes/Atras.PNG")));
+				btnCarta24.setIcon(new ImageIcon(getClass().getResource("/packImagenes/Atras.PNG")));
 			} catch (Exception ex) {
 				System.out.println(ex);
 			}
@@ -500,8 +499,7 @@ public class IPartida extends JFrame implements Observer {
 		switch (azulSize) {
 		case 1:
 			try {
-				btnCarta31.setIcon(new ImageIcon(
-						getClass().getResource(ListaJugador.getListaJugador().getImgPath(EnumColor.AZUL, 0))));
+				btnCarta31.setIcon(new ImageIcon(getClass().getResource("/packImagenes/Atras.PNG")));
 				btnCarta32.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
 				btnCarta33.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
 				btnCarta34.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
@@ -511,10 +509,8 @@ public class IPartida extends JFrame implements Observer {
 			break;
 		case 2:
 			try {
-				btnCarta31.setIcon(new ImageIcon(
-						getClass().getResource(ListaJugador.getListaJugador().getImgPath(EnumColor.AZUL, 0))));
-				btnCarta32.setIcon(new ImageIcon(
-						getClass().getResource(ListaJugador.getListaJugador().getImgPath(EnumColor.AZUL, 1))));
+				btnCarta31.setIcon(new ImageIcon(getClass().getResource("/packImagenes/Atras.PNG")));
+				btnCarta32.setIcon(new ImageIcon(getClass().getResource("/packImagenes/Atras.PNG")));
 				btnCarta33.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
 				btnCarta34.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
 			} catch (Exception ex) {
@@ -523,12 +519,9 @@ public class IPartida extends JFrame implements Observer {
 			break;
 		case 3:
 			try {
-				btnCarta31.setIcon(new ImageIcon(
-						getClass().getResource(ListaJugador.getListaJugador().getImgPath(EnumColor.AZUL, 0))));
-				btnCarta32.setIcon(new ImageIcon(
-						getClass().getResource(ListaJugador.getListaJugador().getImgPath(EnumColor.AZUL, 1))));
-				btnCarta33.setIcon(new ImageIcon(
-						getClass().getResource(ListaJugador.getListaJugador().getImgPath(EnumColor.AZUL, 2))));
+				btnCarta31.setIcon(new ImageIcon(getClass().getResource("/packImagenes/Atras.PNG")));
+				btnCarta32.setIcon(new ImageIcon(getClass().getResource("/packImagenes/Atras.PNG")));
+				btnCarta33.setIcon(new ImageIcon(getClass().getResource("/packImagenes/Atras.PNG")));
 				btnCarta34.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
 			} catch (Exception ex) {
 				System.out.println(ex);
@@ -536,14 +529,10 @@ public class IPartida extends JFrame implements Observer {
 			break;
 		case 4:
 			try {
-				btnCarta31.setIcon(new ImageIcon(
-						getClass().getResource(ListaJugador.getListaJugador().getImgPath(EnumColor.AZUL, 0))));
-				btnCarta32.setIcon(new ImageIcon(
-						getClass().getResource(ListaJugador.getListaJugador().getImgPath(EnumColor.AZUL, 1))));
-				btnCarta33.setIcon(new ImageIcon(
-						getClass().getResource(ListaJugador.getListaJugador().getImgPath(EnumColor.AZUL, 2))));
-				btnCarta34.setIcon(new ImageIcon(
-						getClass().getResource(ListaJugador.getListaJugador().getImgPath(EnumColor.AZUL, 3))));
+				btnCarta31.setIcon(new ImageIcon(getClass().getResource("/packImagenes/Atras.PNG")));
+				btnCarta32.setIcon(new ImageIcon(getClass().getResource("/packImagenes/Atras.PNG")));
+				btnCarta33.setIcon(new ImageIcon(getClass().getResource("/packImagenes/Atras.PNG")));
+				btnCarta34.setIcon(new ImageIcon(getClass().getResource("/packImagenes/Atras.PNG")));
 			} catch (Exception ex) {
 				System.out.println(ex);
 			}
@@ -564,8 +553,7 @@ public class IPartida extends JFrame implements Observer {
 		switch (amarSize) {
 		case 1:
 			try {
-				btnCarta41.setIcon(new ImageIcon(
-						getClass().getResource(ListaJugador.getListaJugador().getImgPath(EnumColor.AMARILLO, 0))));
+				btnCarta41.setIcon(new ImageIcon(getClass().getResource("/packImagenes/Atras.PNG")));
 				btnCarta42.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
 				btnCarta43.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
 				btnCarta44.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
@@ -575,10 +563,8 @@ public class IPartida extends JFrame implements Observer {
 			break;
 		case 2:
 			try {
-				btnCarta41.setIcon(new ImageIcon(
-						getClass().getResource(ListaJugador.getListaJugador().getImgPath(EnumColor.AMARILLO, 0))));
-				btnCarta42.setIcon(new ImageIcon(
-						getClass().getResource(ListaJugador.getListaJugador().getImgPath(EnumColor.AMARILLO, 1))));
+				btnCarta41.setIcon(new ImageIcon(getClass().getResource("/packImagenes/Atras.PNG")));
+				btnCarta42.setIcon(new ImageIcon(getClass().getResource("/packImagenes/Atras.PNG")));
 				btnCarta43.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
 				btnCarta44.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
 			} catch (Exception ex) {
@@ -587,12 +573,9 @@ public class IPartida extends JFrame implements Observer {
 			break;
 		case 3:
 			try {
-				btnCarta41.setIcon(new ImageIcon(
-						getClass().getResource(ListaJugador.getListaJugador().getImgPath(EnumColor.AMARILLO, 0))));
-				btnCarta42.setIcon(new ImageIcon(
-						getClass().getResource(ListaJugador.getListaJugador().getImgPath(EnumColor.AMARILLO, 1))));
-				btnCarta43.setIcon(new ImageIcon(
-						getClass().getResource(ListaJugador.getListaJugador().getImgPath(EnumColor.AMARILLO, 2))));
+				btnCarta41.setIcon(new ImageIcon(getClass().getResource("/packImagenes/Atras.PNG")));
+				btnCarta42.setIcon(new ImageIcon(getClass().getResource("/packImagenes/Atras.PNG")));
+				btnCarta43.setIcon(new ImageIcon(getClass().getResource("/packImagenes/Atras.PNG")));
 				btnCarta44.setIcon(new ImageIcon(getClass().getResource("/packImagenes/NoCarta.png")));
 			} catch (Exception ex) {
 				System.out.println(ex);
@@ -600,14 +583,10 @@ public class IPartida extends JFrame implements Observer {
 			break;
 		case 4:
 			try {
-				btnCarta41.setIcon(new ImageIcon(
-						getClass().getResource(ListaJugador.getListaJugador().getImgPath(EnumColor.AMARILLO, 0))));
-				btnCarta42.setIcon(new ImageIcon(
-						getClass().getResource(ListaJugador.getListaJugador().getImgPath(EnumColor.AMARILLO, 1))));
-				btnCarta43.setIcon(new ImageIcon(
-						getClass().getResource(ListaJugador.getListaJugador().getImgPath(EnumColor.AMARILLO, 2))));
-				btnCarta44.setIcon(new ImageIcon(
-						getClass().getResource(ListaJugador.getListaJugador().getImgPath(EnumColor.AMARILLO, 3))));
+				btnCarta41.setIcon(new ImageIcon(getClass().getResource("/packImagenes/Atras.PNG")));
+				btnCarta42.setIcon(new ImageIcon(getClass().getResource("/packImagenes/Atras.PNG")));
+				btnCarta43.setIcon(new ImageIcon(getClass().getResource("/packImagenes/Atras.PNG")));
+				btnCarta44.setIcon(new ImageIcon(getClass().getResource("/packImagenes/Atras.PNG")));
 			} catch (Exception ex) {
 				System.out.println(ex);
 			}

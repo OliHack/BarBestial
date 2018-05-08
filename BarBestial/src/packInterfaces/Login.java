@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import packModelo.GestorBD;
+import packModelo.ListaJugador;
 
 import javax.swing.JTextField;
 import javax.swing.JLabel;
@@ -136,7 +137,7 @@ public class Login extends JDialog {
 								JOptionPane.showMessageDialog(null, "Has iniciado sesión correctamente");
 								miLogin.setVisible(false);
 								miLogin.dispose();
-								IPartida frame = IPartida.getIPartida();
+								IPartida frame = IPartida.getIPartida(textField.getText());
 								frame.setVisible(true);
 							} else {
 								JOptionPane.showMessageDialog(null, "Inicio de sesión erróneo");
