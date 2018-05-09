@@ -1,5 +1,6 @@
 package packModelo;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import javax.swing.JOptionPane;
@@ -18,7 +19,13 @@ public class Loro implements ICompAnimalada {
 			System.out.println("El loro esta solo");
 		} else {
 			if (CartasEnJuego.getCartasEnJuego().getListaAnimales().getLast().getColor().equals(EnumColor.ROJO)) {
-				String[] choices = { "1", "2", "3", "4" };
+				ArrayList<String> list = new ArrayList<String>();
+				for (int i = 0; i < CartasEnJuego.getCartasEnJuego().getListaAnimales().size(); i++) {
+					list.add(Integer.toString(i + 1));
+				}
+				list.remove(list.size() - 1);
+				String[] choices = new String[list.size()];
+				choices = list.toArray(choices);
 				String input = (String) JOptionPane.showInputDialog(null, "Loro: Elija el animal que quieres echar",
 						"LORO", JOptionPane.QUESTION_MESSAGE, null, choices, choices[0]);
 				num = Integer.parseInt(input) - 1;
