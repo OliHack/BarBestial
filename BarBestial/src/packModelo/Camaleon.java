@@ -17,7 +17,6 @@ public class Camaleon implements ICompAnimalada {
 		int ult = CartasEnJuego.getCartasEnJuego().getLastPosition();
 		if (CartasEnJuego.getCartasEnJuego().getListaAnimales().getListaAnimales().size() != 0
 				&& CartasEnJuego.getCartasEnJuego().getListaAnimales().otroAnimalExcepto("Camaleon")) {
-
 			if (CartasEnJuego.getCartasEnJuego().getListaAnimales().getLast().getColor().equals(EnumColor.ROJO)) {
 				ArrayList<String> list = new ArrayList<String>();
 				for (int i = 0; i < CartasEnJuego.getCartasEnJuego().getListaAnimales().size(); i++) {
@@ -31,10 +30,11 @@ public class Camaleon implements ICompAnimalada {
 						JOptionPane.QUESTION_MESSAGE, null, choices, choices[0]);
 				num = Integer.parseInt(input) - 1;
 			} else {
-				int max = CartasEnJuego.getCartasEnJuego().numCartas();
+				int max = CartasEnJuego.getCartasEnJuego().numCartas() - 1;
 				Random rand = new Random();
 				num = rand.nextInt(max);
 			}
+
 			CartaAnimal carta = CartasEnJuego.getCartasEnJuego().getListaAnimales().getListaAnimales().get(num);
 			CartaAnimal camaleon = CartasEnJuego.getCartasEnJuego().delCarta(ult);
 			if (carta == null || carta.getAnimalada() instanceof Camaleon) {
@@ -42,10 +42,6 @@ public class Camaleon implements ICompAnimalada {
 				this.animalada();
 			} else {
 				CartasEnJuego.getCartasEnJuego().ponerAnimalEnPos(carta, ult);
-				/*
-				 * System.out.println("\n --> El orden ahora es :\n");
-				 * CartasEnJuego.getCartasEnJuego().imprimir();
-				 */
 				CartasEnJuego.getCartasEnJuego().jugarTurno();
 				int rep = CartasEnJuego.getCartasEnJuego().getPosDeCartaRepetida(carta);
 				CartasEnJuego.getCartasEnJuego().delCarta(rep);

@@ -13,7 +13,6 @@ public class Loro implements ICompAnimalada {
 
 	@Override
 	public void animalada() {
-		// hay errores en el loro
 		int num;
 		if (CartasEnJuego.getCartasEnJuego().numCartas() == 1) {
 			System.out.println("El loro esta solo");
@@ -30,9 +29,9 @@ public class Loro implements ICompAnimalada {
 						"LORO", JOptionPane.QUESTION_MESSAGE, null, choices, choices[0]);
 				num = Integer.parseInt(input) - 1;
 			} else {
-				int max = CartasEnJuego.getCartasEnJuego().numCartas();
+				int max = CartasEnJuego.getCartasEnJuego().numCartas() - 1;
 				Random rand = new Random();
-				num = rand.nextInt(max - 1) + 1;
+				num = rand.nextInt(max);
 			}
 
 			if (num > CartasEnJuego.getCartasEnJuego().size()) {
