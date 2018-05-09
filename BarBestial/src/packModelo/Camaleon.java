@@ -36,16 +36,13 @@ public class Camaleon implements ICompAnimalada {
 			}
 
 			CartaAnimal carta = CartasEnJuego.getCartasEnJuego().getListaAnimales().getListaAnimales().get(num);
-			CartaAnimal camaleon = CartasEnJuego.getCartasEnJuego().delCarta(ult);
 			if (carta == null || carta.getAnimalada() instanceof Camaleon) {
 				JOptionPane.showMessageDialog(null, "Seleccione otra carta");
 				this.animalada();
 			} else {
-				CartasEnJuego.getCartasEnJuego().ponerAnimalEnPos(carta, ult);
-				CartasEnJuego.getCartasEnJuego().jugarTurno();
-				int rep = CartasEnJuego.getCartasEnJuego().getPosDeCartaRepetida(carta);
-				CartasEnJuego.getCartasEnJuego().delCarta(rep);
-				CartasEnJuego.getCartasEnJuego().ponerAnimalEnPos(camaleon, rep);
+				CartasEnJuego.getCartasEnJuego().getListaAnimales().getListaAnimales().get(ult)
+						.setICompAnimalada(carta.getAnimalada());
+				CartasEnJuego.getCartasEnJuego().getListaAnimales().hacerAnimalada();
 			}
 		}
 
