@@ -12,8 +12,6 @@ public class Ia extends Jugador {
 
 	@Override
 	public boolean echarCarta(int pCual) {
-		int max = manoSize();
-		int n = rand.nextInt(max) + 1;
-		return super.echarCarta(n);
+		return super.echarCarta(pCual);
 	}
 }

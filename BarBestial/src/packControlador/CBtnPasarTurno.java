@@ -34,44 +34,56 @@ public class CBtnPasarTurno implements MouseListener {
 			msg += "¡Debes ejecutar las animaladas!";
 			JOptionPane.showMessageDialog(null, msg);
 		}
+
 		if (IPartida.getIPartida().isAnimaladasEjecutada()) {
 			switch (IPartida.getIPartida().getTurnoColor()) {
 			case AMARILLO:
-				if (ListaJugador.getListaJugador().echarCarta(EnumColor.AMARILLO, ThreadLocalRandom.current().nextInt(0,
-						ListaJugador.getListaJugador().manoSize(EnumColor.AMARILLO)))) {
+				int boundAm = ThreadLocalRandom.current().nextInt(0,
+						ListaJugador.getListaJugador().manoSize(EnumColor.AMARILLO));
+				if (ListaJugador.getListaJugador().echarCarta(EnumColor.AMARILLO, boundAm)) {
 					ListaJugador.getListaJugador().robarMazo(EnumColor.AMARILLO);
 					IPartida.getIPartida().actualizarCola();
 					IPartida.getIPartida().actualizarMazos();
 					IPartida.getIPartida().setAnimaladasEjecutada(false);
 					IPartida.getIPartida().setCartaEchada(true);
+				} else {
+					JOptionPane.showMessageDialog(null, "No se ha podido echar la carta");
 				}
 				break;
 			case AZUL:
-				if (ListaJugador.getListaJugador().echarCarta(EnumColor.AZUL, ThreadLocalRandom.current().nextInt(0,
-						ListaJugador.getListaJugador().manoSize(EnumColor.AZUL)))) {
+				int boundA = ThreadLocalRandom.current().nextInt(0,
+						ListaJugador.getListaJugador().manoSize(EnumColor.AZUL));
+				if (ListaJugador.getListaJugador().echarCarta(EnumColor.AZUL, boundA)) {
 					ListaJugador.getListaJugador().robarMazo(EnumColor.AZUL);
 					IPartida.getIPartida().actualizarCola();
 					IPartida.getIPartida().actualizarMazos();
 					IPartida.getIPartida().setAnimaladasEjecutada(false);
 					IPartida.getIPartida().setCartaEchada(true);
+				} else {
+					JOptionPane.showMessageDialog(null, "No se ha podido echar la carta");
 				}
 				break;
 			case VERDE:
-				if (ListaJugador.getListaJugador().echarCarta(EnumColor.VERDE, ThreadLocalRandom.current().nextInt(0,
-						ListaJugador.getListaJugador().manoSize(EnumColor.VERDE)))) {
+				int boundV = ThreadLocalRandom.current().nextInt(0,
+						ListaJugador.getListaJugador().manoSize(EnumColor.VERDE));
+				if (ListaJugador.getListaJugador().echarCarta(EnumColor.VERDE, boundV)) {
 					ListaJugador.getListaJugador().robarMazo(EnumColor.VERDE);
 					IPartida.getIPartida().actualizarCola();
 					IPartida.getIPartida().actualizarMazos();
 					IPartida.getIPartida().setAnimaladasEjecutada(false);
 					IPartida.getIPartida().setCartaEchada(true);
+				} else {
+					JOptionPane.showMessageDialog(null, "No se ha podido echar la carta");
 				}
 				break;
 			default:
 				break;
 			}
+		} else {
+			JOptionPane.showMessageDialog(null, "No se han ejecutado las animaladas!");
 		}
 
-		if (Partida.getPartida().terminado()) {
+		if (Partida.getPartida().terminado() && IPartida.getIPartida().isAnimaladasEjecutada()) {
 			int ptsRojo = BarBestial.getBarBestial().calcularPuntos(EnumColor.ROJO);
 			int ptsAmar = BarBestial.getBarBestial().calcularPuntos(EnumColor.AMARILLO);
 			int ptsAzul = BarBestial.getBarBestial().calcularPuntos(EnumColor.AZUL);
