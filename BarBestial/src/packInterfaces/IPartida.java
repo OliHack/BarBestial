@@ -154,6 +154,8 @@ public class IPartida extends JFrame implements Observer {
 		contentPane = new JPanel();
 
 		CartasEnJuego.getCartasEnJuego().addObserver(this);
+		BarBestial.getBarBestial().addObserver(this);
+		Calle.getCalle().addObserver(this);
 
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -705,6 +707,15 @@ public class IPartida extends JFrame implements Observer {
 			cCielo.setText(cielo);
 			cCalle.setText(calle);
 
+		}
+		if (observable instanceof Calle) {
+			String calle = String.format("%d Carta/s", Calle.getCalle().numCartas());
+			cCalle.setText(calle);
+
+		}
+		if (observable instanceof BarBestial) {
+			String cielo = String.format("%d Carta/s", BarBestial.getBarBestial().numCartas());
+			cCielo.setText(cielo);
 		}
 
 	}

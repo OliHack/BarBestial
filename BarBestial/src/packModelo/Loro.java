@@ -34,6 +34,9 @@ public class Loro implements ICompAnimalada {
 				CartaAnimal animal = CartasEnJuego.getCartasEnJuego().delCarta(num);
 				Calle.getCalle().addAnimal(animal);
 			}
+			int max = CartasEnJuego.getCartasEnJuego().numCartas();
+			Random rand = new Random();
+			num = rand.nextInt(max + 1);
 		}
 	}
 
