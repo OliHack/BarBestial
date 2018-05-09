@@ -21,12 +21,7 @@ public class Camaleon implements ICompAnimalada {
 				String[] choices = { "1", "2", "3", "4" };
 				String input = (String) JOptionPane.showInputDialog(null,
 						"Camale�n: Elija la posicion de la carta que desea copiar", "The Choice of a Lifetime",
-						JOptionPane.QUESTION_MESSAGE, null, // Use
-															// default
-															// icon
-						choices, // Array of choices
-						choices[0]); // Initial choice
-				// System.out.println(input);
+						JOptionPane.QUESTION_MESSAGE, null, choices, choices[0]);
 				num = Integer.parseInt(input) - 1;
 			} else {
 				int max = CartasEnJuego.getCartasEnJuego().numCartas();

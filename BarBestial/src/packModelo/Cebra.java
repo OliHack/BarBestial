@@ -17,12 +17,6 @@ public class Cebra implements Recurrente, ICompAnimalada {
 	@Override
 	public void animalada(int pos) {
 		System.out.println("Esta cebra no deja a un hipopótamo o a un cocodrilo hacerle nada");
-		try {
-			Thread.sleep(4000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 
 	@Override
