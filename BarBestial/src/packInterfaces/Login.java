@@ -114,6 +114,27 @@ public class Login extends JDialog {
 					Register.getRegister().empezar();
 				}
 			});
+			{
+				JButton btnVerRankings = new JButton("Ranking");
+				btnVerRankings.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						miLogin.setVisible(false);
+						try {
+							Ranking.getRankings().setVisible(true);
+						} catch (SQLException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+
+					}
+				});
+				GridBagConstraints gbc_btnVerRankings = new GridBagConstraints();
+				gbc_btnVerRankings.gridwidth = 2;
+				gbc_btnVerRankings.insets = new Insets(0, 0, 0, 5);
+				gbc_btnVerRankings.gridx = 6;
+				gbc_btnVerRankings.gridy = 6;
+				contentPanel.add(btnVerRankings, gbc_btnVerRankings);
+			}
 			GridBagConstraints gbc_btnRegistrarme = new GridBagConstraints();
 			gbc_btnRegistrarme.insets = new Insets(0, 0, 0, 5);
 			gbc_btnRegistrarme.gridx = 8;
