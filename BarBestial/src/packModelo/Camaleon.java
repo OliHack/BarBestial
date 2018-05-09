@@ -20,7 +20,7 @@ public class Camaleon implements ICompAnimalada {
 			if (CartasEnJuego.getCartasEnJuego().getListaAnimales().getLast().getColor().equals(EnumColor.ROJO)) {
 				String[] choices = { "1", "2", "3", "4" };
 				String input = (String) JOptionPane.showInputDialog(null,
-						"Camale�n: Elija la posicion de la carta que desea copiar", "The Choice of a Lifetime",
+						"Camale�n: Elija la posicion de la carta que desea copiar", "Camaleon",
 						JOptionPane.QUESTION_MESSAGE, null, choices, choices[0]);
 				num = Integer.parseInt(input) - 1;
 			} else {
@@ -31,7 +31,7 @@ public class Camaleon implements ICompAnimalada {
 			CartaAnimal carta = CartasEnJuego.getCartasEnJuego().getListaAnimales().getListaAnimales().get(num);
 			CartaAnimal camaleon = CartasEnJuego.getCartasEnJuego().delCarta(ult);
 			if (carta == null || carta.getAnimalada() instanceof Camaleon) {
-				JOptionPane.showInputDialog("Seleccione otra carta");
+				JOptionPane.showMessageDialog(null, "Seleccione otra carta");
 				this.animalada();
 			} else {
 				CartasEnJuego.getCartasEnJuego().ponerAnimalEnPos(carta, ult);

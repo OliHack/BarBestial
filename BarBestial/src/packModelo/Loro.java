@@ -29,10 +29,10 @@ public class Loro implements ICompAnimalada {
 			}
 
 			if (num > CartasEnJuego.getCartasEnJuego().size()) {
-				JOptionPane.showInputDialog(null, "Elija otra posición correcta");
+				JOptionPane.showMessageDialog(null, "Elija otra posición correcta");
 				this.animalada();
 			} else {
-				CartaAnimal animal = CartasEnJuego.getCartasEnJuego().delCarta(num - 1);
+				CartaAnimal animal = CartasEnJuego.getCartasEnJuego().delCarta(num);
 				Calle.getCalle().addAnimal(animal);
 			}
 		}
