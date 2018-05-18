@@ -149,23 +149,21 @@ public class Login extends JDialog {
 				JButton okButton = new JButton("Iniciar Sesión");
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						ResultSet rs = null;
-						rs = GestorBD.getGestorBD()
-								.sqlExec("Select * from Usuarios where usuario = '" + textField.getText()
-										+ "' and pass = '" + new String(passwordField.getPassword()) + "';");
+						boolean y = false;
 						try {
-							if (rs.next()) {
-								JOptionPane.showMessageDialog(null, "Has iniciado sesión correctamente");
-								miLogin.setVisible(false);
-								miLogin.dispose();
-								IPartida frame = IPartida.getIPartida(textField.getText());
-								frame.setVisible(true);
-							} else {
-								JOptionPane.showMessageDialog(null, "Inicio de sesión erróneo");
-							}
-						} catch (SQLException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
+							y = GestorBD.getGestorBD().login(textField.getText(),
+									new String(passwordField.getPassword()));
+						} catch (SQLException e2) {
+							e2.printStackTrace();
+						}
+						if (y) {
+							JOptionPane.showMessageDialog(null, "Has iniciado sesión correctamente");
+							miLogin.setVisible(false);
+							miLogin.dispose();
+							IPartida frame = IPartida.getIPartida(textField.getText());
+							frame.setVisible(true);
+						} else {
+							JOptionPane.showMessageDialog(null, "Inicio de sesión erróneo");
 						}
 					}
 				});

@@ -108,8 +108,7 @@ public class Register extends JDialog {
 				JButton okButton = new JButton("Registrarme");
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						int h = GestorBD.getGestorBD().sqlUpdate("Insert into Usuarios (Usuario,Pass) values('" + textField.getText()
-								+ "','" + new String(passwordField.getPassword()) + "');");
+						int h =GestorBD.getGestorBD().registrar(textField.getText(), new String(passwordField.getPassword()));
 						if (h > 0) {
 							JOptionPane.showMessageDialog(null,
 									"Te has registrado correctamente, redirigiendo a la pantalla de inicio de sesión");

@@ -52,13 +52,10 @@ public class Ranking extends JFrame {
 		contentPane.setLayout(null);
 
 		// Rellenar las tablas con datos de la BBDD
-		String sql1 = "SELECT COUNT(*) FROM Puntuaciones";
-		ResultSet rk = GestorBD.getGestorBD().sqlExec(sql1);
-		rk.next();
-		int size = rk.getInt(1);
+		int size = GestorBD.getGestorBD().rowsRanking();
 
-		String sql = "SELECT nombreJugador, Puntuacion, FechaPartida from Puntuaciones ORDER BY Puntuacion DESC LIMIT 10";
-		ResultSet rs = GestorBD.getGestorBD().sqlExec(sql);
+		ResultSet rs = GestorBD.getGestorBD().ranking();
+
 		DefaultTableModel modelo = new DefaultTableModel();
 		modelo.setColumnCount(3);
 		modelo.setColumnIdentifiers(new String[] { "Usuario", "Puntuacion", "Fecha" });
@@ -69,9 +66,9 @@ public class Ranking extends JFrame {
 		modelo.setValueAt("Fecha", 0, 2);
 		for (int i = 0; i < size; i++) {
 			rs.next();
-			modelo.setValueAt(rs.getString(1), i+1, 0);
-			modelo.setValueAt(rs.getInt(2), i+1, 1);
-			modelo.setValueAt(rs.getDate(3), i+1, 2);
+			modelo.setValueAt(rs.getString(1), i + 1, 0);
+			modelo.setValueAt(rs.getInt(2), i + 1, 1);
+			modelo.setValueAt(rs.getDate(3), i + 1, 2);
 		}
 		table = new JTable();
 		table.setModel(modelo);
