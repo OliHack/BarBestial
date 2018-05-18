@@ -1,18 +1,14 @@
 package packModelo;
 
 import java.util.Observable;
-import java.util.concurrent.ThreadLocalRandom;
-
 import javax.swing.JOptionPane;
 
 public class Jugador extends Observable {
 
 	private String nombre;
-
 	private ListaCartaAnimal mano;
 	private ListaCartaAnimal mazo;
 	private EnumColor color;
-	private int[] info;
 
 	/**
 	 * se crea e inicializa un jugador segun el nombre y un color concretamente se
@@ -99,10 +95,8 @@ public class Jugador extends Observable {
 	}
 
 	public void notificar() {
-		// el jugador va a notificar a la interfaz solo cuando cambie su mano
-		// this.actualizarInfo();
 		setChanged();
-		notifyObservers(info);
+		notifyObservers();
 	}
 
 	public void robarMazo() {
