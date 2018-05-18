@@ -15,19 +15,19 @@ public class JugadorFactory {
 	 */
 	public Jugador crearJugador(String pNombre, EnumColor pColor) {
 		Jugador player = null;
-		player = new Ia(pColor);
+		player = new IA(pColor);
 		switch (pColor) {
 		case ROJO:
 			player = new Jugador(pNombre, pColor);
 			break;
 		case AMARILLO:
-			player = new Ia(pColor);
+			player = new IA(pColor);
 			break;
 		case AZUL:
-			player = new Ia(pColor);
+			player = new IA(pColor);
 			break;
 		case VERDE:
-			player = new Ia(pColor);
+			player = new IA(pColor);
 			break;
 		default:
 			break;

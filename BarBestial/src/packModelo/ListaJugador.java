@@ -13,16 +13,6 @@ public class ListaJugador {
 		miLista = new ArrayList<Jugador>();
 	}
 
-	/**
-	 *
-	 * @param pNombre
-	 * @param pPunt
-	 */
-	public void actualizarPuntuacionJugador(String pNombre, int pPunt) {
-		// TODO - implement ListaJugador.actualizarPuntuacionJugador
-		throw new UnsupportedOperationException();
-	}
-
 	public int manoSize(EnumColor pColor) {
 		return getJugador(pColor).manoSize();
 	}
@@ -52,7 +42,6 @@ public class ListaJugador {
 		}
 		if (comprueba) {
 			System.out.println(" Todos los jugadores se han quedado sin cartas. Fin del juego.");
-			// llamar a algun metodo que finalice el juego
 		}
 		return comprueba;
 	}
@@ -63,34 +52,6 @@ public class ListaJugador {
 
 	public boolean echarCarta(EnumColor pColor, int pos) {
 		return getJugador(pColor).echarCarta(pos);
-	}
-
-	/**
-	 * nos dice si hay un jugador con ese color en la lista
-	 *
-	 * @param pColor
-	 */
-	public boolean comprobarColor(String pColor) {
-		// TODO - implement ListaJugador.comprobarColor
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 *
-	 * @param pNombre
-	 */
-	public boolean comprobarJugador(String pNombre) {
-		// TODO - implement ListaJugador.comprobarJugador
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 *
-	 * @param pJugador
-	 */
-	public void del(Jugador pJugador) {
-		// TODO - implement ListaJugador.del
-		throw new UnsupportedOperationException();
 	}
 
 	public Iterator<Jugador> getIterator() {

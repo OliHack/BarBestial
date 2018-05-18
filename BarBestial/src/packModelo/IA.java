@@ -1,13 +1,10 @@
 package packModelo;
 
-import java.util.Random;
 
-public class Ia extends Jugador {
-	private final Random rand;
-
-	public Ia(EnumColor pColor) {
+public class IA extends Jugador {
+	
+	public IA(EnumColor pColor) {
 		super("IA" + pColor.toString(), pColor);
-		rand = new Random();
 	}
 
 	@Override
