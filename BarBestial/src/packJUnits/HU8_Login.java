@@ -16,11 +16,11 @@ public class HU8_Login {
 		System.out.println("###################################");
 		System.out.println("Caso 1: login de un usuario que está en la BBDD");
 		System.out.println("Devuelve true si se ha logeado bien, false si no");
-		System.out.println("Resulatdo de login de usuario : " + GestorBD.getGestorBD().login("user1", "user1"));
+		System.out.println("Resultado de login de usuario : " + GestorBD.getGestorBD().login("user1", "user1"));
 		System.out.println("###################################");
 		System.out.println("Caso 2: login de usuario y contraseña incorrectos");
 		System.out.println("Devuelve true si se ha logeado bien, false si no");
-		System.out.println("Resulatdo de login de usuario : " + GestorBD.getGestorBD().login("user1", "123654"));
+		System.out.println("Resultado de login de usuario : " + GestorBD.getGestorBD().login("user1", "123654"));
 	}
 
 	@BeforeEach

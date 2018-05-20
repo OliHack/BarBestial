@@ -17,7 +17,7 @@ public class HU9_Ranking {
 		System.out.println("###################################");
 		System.out.println("Caso 1: ranking de usuarios de la BBDD");
 		System.out.println("Devuelve ranking de los usuarios");
-		System.out.println("Resulatdo de ranking de usuarios : ");
+		System.out.println("Resultado de ranking de usuarios : ");
 		ResultSet rs = GestorBD.getGestorBD().ranking();
 		ResultSetMetaData rsmd = rs.getMetaData();
 		int columnsNumber = rsmd.getColumnCount();
